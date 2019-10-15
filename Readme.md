@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Сергей Иншаков](https://up.htmlacademy.ru/react/2/user/59949).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Фаллер](https://up.htmlacademy.ru/react/2/user/505933).
 
 ---
 
