@@ -1,4 +1,4 @@
-import App from './components/app/app.jsx';
+import App from './components/app/app';
 
 const init = () => {
   ReactDOM.render(

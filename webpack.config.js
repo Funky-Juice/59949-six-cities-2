@@ -30,5 +30,8 @@ module.exports = {
       'ReactDOM': `react-dom`
     })
   ],
+  resolve: {
+    extensions: [`.js`, `.jsx`]
+  },
   devtool: `source-map`
 };
