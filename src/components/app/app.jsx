@@ -1,7 +1,7 @@
-import WelcomeScreen from '../welcome-screen/welcome-screen';
+import MainScreen from '../main-screen/main-screen';
 
 const App = () => {
-  return <WelcomeScreen />;
+  return <MainScreen />;
 };
 
 export default App;
