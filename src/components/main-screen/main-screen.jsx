@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const MainScreen = (props) => {
   const {offers} = props;
 
@@ -23,6 +25,10 @@ const MainScreen = (props) => {
       </section>
     </div>
   </div>;
+};
+
+MainScreen.propTypes = {
+  offers: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default MainScreen;
