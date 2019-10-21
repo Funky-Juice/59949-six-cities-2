@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainScreen correctly renders 1`] = `
+<div
+  className="cities"
+>
+  <div
+    className="cities__places-container container"
+  >
+    <section
+      className="cities__places places"
+    >
+      <div
+        className="cities__places-list places__list tabs__content"
+      />
+    </section>
+  </div>
+</div>
+`;
