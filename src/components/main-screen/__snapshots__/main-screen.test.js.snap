@@ -12,7 +12,41 @@ exports[`MainScreen correctly renders 1`] = `
     >
       <div
         className="cities__places-list places__list tabs__content"
-      />
+      >
+        <article
+          className="cities__place-card place-card"
+        >
+          <div
+            className="cities__image-wrapper place-card__image-wrapper"
+          >
+            <a
+              href="#"
+            >
+              <img
+                alt="Place image"
+                className="place-card__image"
+                height="200"
+                src="img/apartment-02.jpg"
+                width="260"
+              />
+            </a>
+          </div>
+          <div
+            className="place-card__info"
+          >
+            <h2
+              className="place-card__name"
+              onClick={[Function]}
+            >
+              <a
+                href="#"
+              >
+                offer
+              </a>
+            </h2>
+          </div>
+        </article>
+      </div>
     </section>
   </div>
 </div>
