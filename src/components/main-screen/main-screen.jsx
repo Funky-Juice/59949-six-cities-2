@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 const MainScreen = (props) => {
-  const {offers} = props;
+  const {offers, showOffer} = props;
 
   return <div className="cities">
     <div className="cities__places-container container">
@@ -15,7 +15,7 @@ const MainScreen = (props) => {
                 </a>
               </div>
               <div className="place-card__info">
-                <h2 className="place-card__name">
+                <h2 className="place-card__name" onClick={showOffer}>
                   <a href="#">{offer}</a>
                 </h2>
               </div>
@@ -28,7 +28,8 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.string).isRequired
+  offers: PropTypes.arrayOf(PropTypes.string).isRequired,
+  showOffer: PropTypes.func.isRequired
 };
 
 export default MainScreen;
