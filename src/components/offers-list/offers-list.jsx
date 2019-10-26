@@ -9,7 +9,11 @@ class OffersList extends PureComponent {
     return <section className="cities__places places">
       <div className="cities__places-list places__list tabs__content">
         {offers.map((offer, i) =>
-          <OfferCard key={`offer-${i}-${offer.price}`} offer={offer} showOffer={showOffer}/>
+          <OfferCard
+            key={`offer-${i}-${offer.price}`}
+            offer={offer}
+            showOffer={showOffer}
+          />
         )}
       </div>
     </section>;
