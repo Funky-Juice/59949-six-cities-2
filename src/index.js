@@ -1,16 +1,12 @@
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
+import {offers} from './mocks/offers';
 
-const init = () => {
-  const offers = [`Beautiful &amp; luxurious apartment at great location`, `Wood and stone place`, `Canal View Prinsengracht`, `Nice, cozy, warm big bed apartment`];
-  const showOffer = () => {
-    return `showOffer`;
-  };
-
+const init = (data) => {
   ReactDOM.render(
-      <App offers={offers} showOffer={showOffer}/>,
+      <App offers={data}/>,
       document.getElementById(`root`)
   );
 };
 
-init();
+init(offers);
