@@ -6,6 +6,10 @@ class OffersList extends PureComponent {
   static getScreen(props, showOffer) {
     const {offers} = props;
 
+    const getOfferDetails = (id) => {
+      location.pathname = `offer-${id}`;
+    };
+
     return <section className="cities__places places">
       <div className="cities__places-list places__list tabs__content">
         {offers.map((offer, i) =>
@@ -13,6 +17,7 @@ class OffersList extends PureComponent {
             key={`offer-${i}-${offer.price}`}
             offer={offer}
             showOffer={showOffer}
+            getOfferDetails={getOfferDetails}
           />
         )}
       </div>
