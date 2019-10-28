@@ -47,7 +47,7 @@ exports[`OfferCard correctly renders 1`] = `
             </span>
           </div>
           <button
-            className="place-card__bookmark-button null  button"
+            className="place-card__bookmark-button  button"
             type="button"
           >
             <svg
