@@ -13,7 +13,11 @@ const mockOffer = {
 
 it(`OfferCard correctly renders`, () => {
   const tree = renderer
-    .create(<OfferCard offer={mockOffer} showOffer={() => {}}/>)
+    .create(<OfferCard
+      offer={mockOffer}
+      showOffer={() => {}}
+      getOfferDetails={() => {}}
+    />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
