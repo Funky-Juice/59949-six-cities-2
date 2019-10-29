@@ -23,6 +23,7 @@ class OffersList extends PureComponent {
             key={`offer-${i}-${offer.price}`}
             offer={offer}
             showOffer={this._setOffer.bind(this, offer)}
+            getOfferDetails={this._showOfferDetails}
           />
         )}
       </div>
@@ -33,6 +34,10 @@ class OffersList extends PureComponent {
     this.setState(() => {
       return {offer};
     });
+  }
+
+  _showOfferDetails(id) {
+    location.pathname = `offer-${id}`;
   }
 }
 

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const OfferCard = (props) => {
-  const {offer, showOffer} = props;
+  const {offer, showOffer, getOfferDetails} = props;
 
   return <article className="cities__place-card place-card" onMouseEnter={() => (showOffer(offer))}>
     {offer.isPremium && <div className="place-card__mark">
@@ -32,7 +32,7 @@ const OfferCard = (props) => {
           <span className="visually-hidden">Rating</span>
         </div>
       </div>
-      <h2 className="place-card__name">
+      <h2 className="place-card__name" onClick={() => getOfferDetails(offer.id)}>
         <a href="#">{offer.title}</a>
       </h2>
       <p className="place-card__type">{offer.type}</p>
@@ -42,7 +42,8 @@ const OfferCard = (props) => {
 
 OfferCard.propTypes = {
   offer: PropTypes.object.isRequired,
-  showOffer: PropTypes.func.isRequired
+  showOffer: PropTypes.func.isRequired,
+  getOfferDetails: PropTypes.func.isRequired
 };
 
 export default OfferCard;

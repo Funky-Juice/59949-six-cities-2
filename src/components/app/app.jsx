@@ -1,13 +1,37 @@
 import PropTypes from 'prop-types';
+import {Fragment} from 'react';
 import MainScreen from '../main-screen/main-screen';
+import OfferDetails from '../offer-details/offer-details';
 
-const App = (props) => {
-  const {offers} = props;
 
-  return <MainScreen offers={offers}/>;
+const getPageScreen = (props) => {
+  const path = location.pathname;
+  let offerId = null;
+  let offer = {};
+
+  if (path.includes(`offer-`)) {
+    offerId = path.substring(7);
+    offer = props.offers.find(({id}) => id === parseInt(offerId, 10));
+  }
+
+  switch (path) {
+    case `/`:
+      return <MainScreen offers={props.offers}/>;
+    case `/offer-${offerId}`:
+      return <OfferDetails offer={offer}/>;
+    default:
+      return <div style={{textAlign: `center`}}>
+        <h1>404</h1>
+        <h1>Page not found</h1>
+      </div>;
+  }
 };
 
-App.propTypes = {
+const App = (props) => {
+  return <Fragment>{getPageScreen(props)}</Fragment>;
+};
+
+getPageScreen.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
