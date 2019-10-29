@@ -1,9 +1,9 @@
 import renderer from 'react-test-renderer';
-import App from './app';
+import OffersList from './offers-list';
 
-it(`App correctly renders`, () => {
+it(`OfferCard correctly renders`, () => {
   const tree = renderer
-    .create(<App offers={[{}]}/>)
+    .create(<OffersList offers={[{}]}/>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
