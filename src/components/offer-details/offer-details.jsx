@@ -24,7 +24,7 @@ const OfferDetails = (props) => {
           <h1 className="property__name">
             {offer.title}
           </h1>
-          <button className={`property__bookmark-button ${offer.isFavorite && `property__bookmark-button--active`} button`} type="button">
+          <button className={`property__bookmark-button ${offer.isFavorite ? `property__bookmark-button--active` : ``} button`} type="button">
             <svg className="property__bookmark-icon" width="31" height="33">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
@@ -66,7 +66,7 @@ const OfferDetails = (props) => {
         <div className="property__host">
           <h2 className="property__host-title">Meet the host</h2>
           <div className="property__host-user user">
-            <div className={`property__avatar-wrapper ${offer.host.status === `Pro` && `property__avatar-wrapper--pro`} user__avatar-wrapper`}>
+            <div className={`property__avatar-wrapper ${offer.host.status === `Pro` ? `property__avatar-wrapper--pro` : ``} user__avatar-wrapper`}>
               <img className="property__avatar user__avatar" src={`img/${offer.host.avatar ? offer.host.avatar : `avatar.svg`}`}
                 width="74"
                 height="74"
