@@ -22,7 +22,7 @@ class OffersList extends PureComponent {
           <OfferCard
             key={`offer-${i}-${offer.price}`}
             offer={offer}
-            showOffer={() => this._setOffer.call(this, offer)}
+            showOffer={this._setOffer.bind(this, offer)}
           />
         )}
       </div>
