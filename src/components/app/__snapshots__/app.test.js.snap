@@ -27,7 +27,7 @@ exports[`App correctly renders 1`] = `
                 alt="Place image"
                 className="place-card__image"
                 height="200"
-                src="img/undefined"
+                src="img/room.jpg"
                 width="260"
               />
             </a>
@@ -45,6 +45,7 @@ exports[`App correctly renders 1`] = `
                   className="place-card__price-value"
                 >
                   €
+                  80
                 </b>
                 <span
                   className="place-card__price-text"
@@ -53,7 +54,7 @@ exports[`App correctly renders 1`] = `
                 </span>
               </div>
               <button
-                className="place-card__bookmark-button  button"
+                className="place-card__bookmark-button place-card__bookmark-button--active button"
                 type="button"
               >
                 <svg
@@ -68,7 +69,7 @@ exports[`App correctly renders 1`] = `
                 <span
                   className="visually-hidden"
                 >
-                  To bookmarks
+                  In bookmarks
                 </span>
               </button>
             </div>
@@ -84,7 +85,9 @@ exports[`App correctly renders 1`] = `
                       "width": "100%",
                     }
                   }
-                />
+                >
+                  3
+                </span>
                 <span
                   className="visually-hidden"
                 >
@@ -98,15 +101,34 @@ exports[`App correctly renders 1`] = `
             >
               <a
                 href="#"
-              />
+              >
+                Wood and stone place
+              </a>
             </h2>
             <p
               className="place-card__type"
-            />
+            >
+              Room
+            </p>
           </div>
         </article>
       </div>
     </section>
+    <div
+      className="cities__right-section"
+    >
+      <section
+        className="cities__map map"
+      >
+        <div
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
+        />
+      </section>
+    </div>
   </div>
 </div>
 `;
