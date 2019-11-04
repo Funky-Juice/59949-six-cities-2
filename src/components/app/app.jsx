@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import {offerPropTypes} from '../../prop-types/prop-types';
 import {Fragment} from 'react';
 import MainScreen from '../main-screen/main-screen';
 import OfferDetails from '../offer-details/offer-details';
@@ -32,7 +33,7 @@ const App = (props) => {
 };
 
 getPageScreen.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.object).isRequired
+  offers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
 export default App;

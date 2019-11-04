@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import {offerPropTypes} from '../../prop-types/prop-types';
 
 const OfferCard = (props) => {
   const {offer, showOffer, getOfferDetails} = props;
@@ -43,29 +44,7 @@ const OfferCard = (props) => {
 OfferCard.propTypes = {
   showOffer: PropTypes.func.isRequired,
   getOfferDetails: PropTypes.func.isRequired,
-  offer: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    type: PropTypes.oneOf([`Apartment`, `Room`, `House`, `Hotel`]).isRequired,
-    price: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
-    features: PropTypes.arrayOf(PropTypes.string).isRequired,
-    items: PropTypes.arrayOf(PropTypes.string).isRequired,
-    rating: PropTypes.number.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    isFavorite: PropTypes.bool.isRequired,
-    description: PropTypes.string,
-    host: PropTypes.shape({
-      avatar: PropTypes.string,
-      name: PropTypes.string,
-      status: PropTypes.string,
-    }).isRequired,
-    location: PropTypes.shape({
-      latitude: PropTypes.number.isRequired,
-      longitude: PropTypes.number.isRequired
-    }).isRequired
-  }).isRequired
+  offer: offerPropTypes
 };
 
 export default OfferCard;
