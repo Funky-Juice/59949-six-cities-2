@@ -1,6 +1,6 @@
 import leaflet from 'leaflet';
 
-export default (offersList) => {
+export default (offersList, container) => {
   const city = [52.38333, 4.9];
   const zoom = 12;
 
@@ -9,7 +9,7 @@ export default (offersList) => {
     iconSize: [30, 30]
   });
 
-  const map = leaflet.map(`map`, {
+  const map = leaflet.map(container, {
     center: city,
     zoom,
     zoomControl: false,

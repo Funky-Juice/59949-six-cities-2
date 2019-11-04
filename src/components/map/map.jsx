@@ -1,4 +1,4 @@
-import {PureComponent} from 'react';
+import {PureComponent, createRef} from 'react';
 import PropTypes from 'prop-types';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import initMap from './map-config';
@@ -6,16 +6,18 @@ import initMap from './map-config';
 class Map extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.ref = createRef();
   }
 
   render() {
     return <section className="cities__map map">
-      <div id="map" style={{height: `100%`}}></div>
+      <div ref={this.ref} style={{height: `100%`}}></div>
     </section>;
   }
 
   componentDidMount() {
-    initMap(this.props.offers);
+    initMap(this.props.offers, this.ref.current);
   }
 }
 
