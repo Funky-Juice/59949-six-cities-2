@@ -10,7 +10,7 @@ const MainScreen = (props) => {
       <OffersList offers={offers}/>
 
       <div className="cities__right-section">
-        <Map/>
+        <Map offers={offers}/>
       </div>
     </div>
   </div>;

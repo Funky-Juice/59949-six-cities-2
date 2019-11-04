@@ -1,7 +1,6 @@
 import leaflet from 'leaflet';
 
-export default () => {
-  const offerCords = [52.3709553943508, 4.89309666406198];
+export default (offersList) => {
   const city = [52.38333, 4.9];
   const zoom = 12;
 
@@ -28,7 +27,16 @@ export default () => {
     })
     .addTo(map);
 
-  leaflet
-    .marker(offerCords, {icon})
-    .addTo(map);
+
+  if (!offersList) {
+    return;
+  }
+
+  offersList.map((offer) => {
+    const {latitude: x, longitude: y} = offer.location;
+
+    leaflet
+      .marker([x, y], {icon})
+      .addTo(map);
+  });
 };

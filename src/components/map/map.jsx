@@ -1,4 +1,5 @@
 import {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import initMap from './map-config';
 
 class Map extends PureComponent {
@@ -13,8 +14,12 @@ class Map extends PureComponent {
   }
 
   componentDidMount() {
-    initMap();
+    initMap(this.props.offers);
   }
 }
+
+Map.propTypes = {
+  offers: PropTypes.arrayOf(PropTypes.object).isRequired
+};
 
 export default Map;
