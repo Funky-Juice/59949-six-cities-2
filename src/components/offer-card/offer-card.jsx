@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {offerPropTypes} from '../../prop-types/prop-types';
 
 const OfferCard = (props) => {

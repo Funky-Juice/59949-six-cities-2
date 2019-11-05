@@ -27,7 +27,8 @@ module.exports = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      'React': `react`
+      'React': `react`,
+      'PropTypes': `prop-types`
     })
   ],
   resolve: {
