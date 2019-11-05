@@ -1,5 +1,4 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
-import {Fragment} from 'react';
 import MainScreen from '../main-screen/main-screen';
 import OfferDetails from '../offer-details/offer-details';
 
@@ -28,7 +27,7 @@ const getPageScreen = (props) => {
 };
 
 const App = (props) => {
-  return <Fragment>{getPageScreen(props)}</Fragment>;
+  return <>{getPageScreen(props)}</>;
 };
 
 getPageScreen.propTypes = {
