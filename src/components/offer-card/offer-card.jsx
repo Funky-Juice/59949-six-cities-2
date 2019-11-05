@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import {offerPropTypes} from '../../prop-types/prop-types';
 
 const OfferCard = (props) => {
   const {offer, showOffer, getOfferDetails} = props;
@@ -41,9 +41,9 @@ const OfferCard = (props) => {
 };
 
 OfferCard.propTypes = {
-  offer: PropTypes.object.isRequired,
   showOffer: PropTypes.func.isRequired,
-  getOfferDetails: PropTypes.func.isRequired
+  getOfferDetails: PropTypes.func.isRequired,
+  offer: offerPropTypes
 };
 
 export default OfferCard;

@@ -6,13 +6,6 @@ exports[`OfferCard correctly renders 1`] = `
   onMouseEnter={[Function]}
 >
   <div
-    className="place-card__mark"
-  >
-    <span>
-      Premium
-    </span>
-  </div>
-  <div
     className="cities__image-wrapper place-card__image-wrapper"
   >
     <a
@@ -22,7 +15,7 @@ exports[`OfferCard correctly renders 1`] = `
         alt="Place image"
         className="place-card__image"
         height="200"
-        src="img/apartment-01.jpg"
+        src="img/room.jpg"
         width="260"
       />
     </a>
@@ -40,7 +33,7 @@ exports[`OfferCard correctly renders 1`] = `
           className="place-card__price-value"
         >
           €
-          120
+          80
         </b>
         <span
           className="place-card__price-text"
@@ -49,7 +42,7 @@ exports[`OfferCard correctly renders 1`] = `
         </span>
       </div>
       <button
-        className="place-card__bookmark-button  button"
+        className="place-card__bookmark-button place-card__bookmark-button--active button"
         type="button"
       >
         <svg
@@ -64,7 +57,7 @@ exports[`OfferCard correctly renders 1`] = `
         <span
           className="visually-hidden"
         >
-          To bookmarks
+          In bookmarks
         </span>
       </button>
     </div>
@@ -81,7 +74,7 @@ exports[`OfferCard correctly renders 1`] = `
             }
           }
         >
-          5
+          3
         </span>
         <span
           className="visually-hidden"
@@ -97,13 +90,13 @@ exports[`OfferCard correctly renders 1`] = `
       <a
         href="#"
       >
-        Beautiful & luxurious apartment at great location
+        Wood and stone place
       </a>
     </h2>
     <p
       className="place-card__type"
     >
-      Apartment
+      Room
     </p>
   </div>
 </article>

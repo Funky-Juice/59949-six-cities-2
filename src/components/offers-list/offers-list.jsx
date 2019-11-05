@@ -1,5 +1,6 @@
 import {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+
+import {offerPropTypes} from '../../prop-types/prop-types';
 import OfferCard from '../offer-card/offer-card';
 
 class OffersList extends PureComponent {
@@ -42,7 +43,7 @@ class OffersList extends PureComponent {
 }
 
 OffersList.propTypes = {
-  offers: PropTypes.arrayOf(PropTypes.object).isRequired
+  offers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
 export default OffersList;

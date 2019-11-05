@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import {offerPropTypes} from '../../prop-types/prop-types';
 
 const OfferDetails = (props) => {
   const {offer} = props;
@@ -52,7 +52,7 @@ const OfferDetails = (props) => {
           <span className="property__price-text">&nbsp;night</span>
         </div>
 
-        {offer.items.length ? <div className="property__inside">
+        {offer.items.length > 0 && <div className="property__inside">
           <h2 className="property__inside-title">What&apos;s inside</h2>
           <ul className="property__inside-list">
             {offer.items.map((item, i) =>
@@ -61,7 +61,7 @@ const OfferDetails = (props) => {
               </li>
             )}
           </ul>
-        </div> : null}
+        </div>}
 
         <div className="property__host">
           <h2 className="property__host-title">Meet the host</h2>
@@ -87,7 +87,7 @@ const OfferDetails = (props) => {
 };
 
 OfferDetails.propTypes = {
-  offer: PropTypes.object.isRequired
+  offer: offerPropTypes
 };
 
 export default OfferDetails;
