@@ -2,13 +2,13 @@ import * as types from './action-types';
 
 
 const ActionCreator = {
-  setCity: (payload) => ({
-    type: types.SET_CITY,
+  setActiveCity: (payload) => ({
+    type: types.SET_ACTIVE_CITY,
     payload
   }),
 
-  setOffers: (payload) => ({
-    type: types.SET_OFFERS,
+  setActiveOffers: (payload) => ({
+    type: types.SET_ACTIVE_OFFERS,
     payload
   })
 };

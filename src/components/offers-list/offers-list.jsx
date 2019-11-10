@@ -14,7 +14,7 @@ class OffersList extends PureComponent {
   }
 
   render() {
-    return this._renderOffers(this.props.offers);
+    return this._renderOffers(this.props.activeOffers);
   }
 
   _renderOffers(offers) {
@@ -45,13 +45,13 @@ class OffersList extends PureComponent {
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
-    offers: state.offers
+    activeOffers: state.activeOffers
   });
 };
 
 
 OffersList.propTypes = {
-  offers: PropTypes.arrayOf(offerPropTypes).isRequired
+  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
 export default connect(mapStateToProps)(OffersList);

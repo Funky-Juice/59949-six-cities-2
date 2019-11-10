@@ -67,13 +67,13 @@ export class CitiesList extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
-    city: state.city
+    activeCity: state.activeCity
   });
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  setActiveCity: (city) => dispatch(ActionCreator.setCity(city)),
-  setActiveOffers: (offers) => dispatch(ActionCreator.setOffers(offers))
+  setActiveCity: (city) => dispatch(ActionCreator.setActiveCity(city)),
+  setActiveOffers: (offers) => dispatch(ActionCreator.setActiveOffers(offers))
 });
 
 

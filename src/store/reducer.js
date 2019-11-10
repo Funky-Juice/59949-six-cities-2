@@ -2,18 +2,18 @@ import * as types from './action-types';
 
 
 const initialState = {
-  city: null,
-  offers: []
+  activeCity: null,
+  activeOffers: []
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.SET_CITY: return Object.assign({}, state, {
-      city: action.payload
+    case types.SET_ACTIVE_CITY: return Object.assign({}, state, {
+      activeCity: action.payload
     });
 
-    case types.SET_OFFERS: return Object.assign({}, state, {
-      offers: action.payload
+    case types.SET_ACTIVE_OFFERS: return Object.assign({}, state, {
+      activeOffers: action.payload
     });
   }
 

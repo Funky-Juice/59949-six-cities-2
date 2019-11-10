@@ -1,2 +1,2 @@
-export const SET_CITY = `SET_CITY`;
-export const SET_OFFERS = `SET_OFFERS`;
+export const SET_ACTIVE_CITY = `SET_ACTIVE_CITY`;
+export const SET_ACTIVE_OFFERS = `SET_ACTIVE_OFFERS`;
