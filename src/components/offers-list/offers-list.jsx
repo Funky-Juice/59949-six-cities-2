@@ -1,4 +1,5 @@
 import {PureComponent} from 'react';
+import {connect} from 'react-redux';
 
 import {offerPropTypes} from '../../prop-types/prop-types';
 import OfferCard from '../offer-card/offer-card';
@@ -42,8 +43,15 @@ class OffersList extends PureComponent {
   }
 }
 
+const mapStateToProps = (state, ownProps) => {
+  return Object.assign({}, ownProps, {
+    offers: state.offers
+  });
+};
+
+
 OffersList.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
-export default OffersList;
+export default connect(mapStateToProps)(OffersList);

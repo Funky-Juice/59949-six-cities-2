@@ -12,7 +12,7 @@ const MainScreen = (props) => {
 
       <div className="cities">
         <div className="cities__places-container container">
-          <OffersList offers={offers}/>
+          <OffersList/>
 
           <div className="cities__right-section">
             <Map offers={offers}/>
