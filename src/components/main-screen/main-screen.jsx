@@ -1,5 +1,6 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
 import {connect} from 'react-redux';
+import {getNoun} from '../../utils/utils';
 
 import OffersList from '../offers-list/offers-list';
 import CitiesList from '../cities-list/cities-list';
@@ -16,7 +17,10 @@ const MainScreen = (props) => {
         <div className="cities__places-container container">
           <section className="cities__places places">
             {activeCity.name && activeOffers.length && <>
-              <b className="places__found">{activeOffers.length} places to stay in {activeCity.name}</b>
+              <b className="places__found">
+                {activeOffers.length}&nbsp;
+                {getNoun(activeOffers.length, `place`, `places`, `places`)} to stay in {activeCity.name}
+              </b>
             </>}
 
             <OffersList/>
