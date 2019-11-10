@@ -8,7 +8,7 @@ const MainScreen = (props) => {
 
   return <>
     <main className="page__main page__main--index">
-      <CitiesList/>
+      <CitiesList offers={offers}/>
 
       <div className="cities">
         <div className="cities__places-container container">
