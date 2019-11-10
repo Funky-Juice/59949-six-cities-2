@@ -65,6 +65,12 @@ export class CitiesList extends Component {
   }
 }
 
+const mapStateToProps = (state, ownProps) => {
+  return Object.assign({}, ownProps, {
+    city: state.city
+  });
+};
+
 const mapDispatchToProps = (dispatch) => ({
   setActiveCity: (city) => dispatch(ActionCreator.setCity(city)),
   setActiveOffers: (offers) => dispatch(ActionCreator.setOffers(offers))
@@ -77,4 +83,4 @@ CitiesList.propTypes = {
   setActiveOffers: PropTypes.func.isRequired
 };
 
-export default connect(null, mapDispatchToProps)(CitiesList);
+export default connect(mapStateToProps, mapDispatchToProps)(CitiesList);
