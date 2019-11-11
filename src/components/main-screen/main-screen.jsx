@@ -2,7 +2,7 @@ import {offerPropTypes} from '../../prop-types/prop-types';
 import {connect} from 'react-redux';
 import {getNoun} from '../../utils/utils';
 
-import OffersList from '../offers-list/offers-list';
+import OffersList from '../offers-list/index';
 import CitiesList from '../cities-list/cities-list';
 import Map from '../map/map';
 
