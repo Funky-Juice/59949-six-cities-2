@@ -1,5 +1,4 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
-import {connect} from 'react-redux';
 import {getNoun} from '../../utils/utils';
 
 import OffersList from '../offers-list/index';
@@ -35,13 +34,6 @@ const MainScreen = (props) => {
   </>;
 };
 
-const mapStateToProps = (state, ownProps) => {
-  return Object.assign({}, ownProps, {
-    activeCity: state.activeCity,
-    activeOffers: state.activeOffers
-  });
-};
-
 
 MainScreen.propTypes = {
   activeCity: PropTypes.object.isRequired,
@@ -49,6 +41,4 @@ MainScreen.propTypes = {
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
-export {MainScreen};
-
-export default connect(mapStateToProps)(MainScreen);
+export default MainScreen;

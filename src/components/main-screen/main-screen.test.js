@@ -2,7 +2,7 @@ import renderer from 'react-test-renderer';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import offerTestObj from '../../mocks/test-offer';
-import MainScreen from './main-screen';
+import MainScreen from './index';
 
 
 const mockOffers = [offerTestObj];

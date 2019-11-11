@@ -1,8 +1,8 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
 
 import PageHeader from '../page-header/page-header';
-import MainScreen from '../main-screen/main-screen';
 import OfferDetails from '../offer-details/offer-details';
+import MainScreen from '../main-screen';
 
 
 const getPageScreen = (props) => {
