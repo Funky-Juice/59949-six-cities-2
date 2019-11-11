@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 import offerTestObj from '../../mocks/test-offer';
-import Map from './map';
+import {Map} from './map';
 
 const mockOffers = [offerTestObj];
 
@@ -11,7 +11,10 @@ it(`Map correctly renders`, () => {
   const options = {createNodeMock};
 
   const tree = renderer
-    .create(<Map offers={mockOffers}/>, options)
+    .create(<Map
+      activeOffers={mockOffers}
+      activeCity={{}}
+    />, options)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

@@ -49,4 +49,6 @@ MainScreen.propTypes = {
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
+export {MainScreen};
+
 export default connect(mapStateToProps)(MainScreen);

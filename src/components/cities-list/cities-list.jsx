@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import ActionCreator from '../../store/actions';
 
 
-export class CitiesList extends Component {
+class CitiesList extends Component {
   constructor(props) {
     super(props);
 
@@ -82,5 +82,7 @@ CitiesList.propTypes = {
   setActiveCity: PropTypes.func.isRequired,
   setActiveOffers: PropTypes.func.isRequired
 };
+
+export {CitiesList};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CitiesList);

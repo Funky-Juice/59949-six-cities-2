@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OfferCard correctly renders 1`] = `
+exports[`OffersList correctly renders 1`] = `
 <section
   className="cities__places places"
 >

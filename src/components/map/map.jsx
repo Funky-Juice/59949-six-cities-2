@@ -102,4 +102,6 @@ Map.propTypes = {
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
+export {Map};
+
 export default connect(mapStateToProps)(Map);

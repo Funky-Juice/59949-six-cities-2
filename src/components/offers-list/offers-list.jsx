@@ -54,4 +54,6 @@ OffersList.propTypes = {
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
+export {OffersList};
+
 export default connect(mapStateToProps)(OffersList);
