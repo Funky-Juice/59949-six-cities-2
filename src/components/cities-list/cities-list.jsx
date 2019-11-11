@@ -1,8 +1,7 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
-import {PureComponent} from 'react';
 
 
-class CitiesList extends PureComponent {
+class CitiesList extends React.PureComponent {
   constructor(props) {
     super(props);
 

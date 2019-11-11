@@ -1,9 +1,9 @@
-import {PureComponent, createRef} from 'react';
+import {createRef} from 'react';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import leaflet from 'leaflet';
 
 
-class Map extends PureComponent {
+class Map extends React.PureComponent {
   constructor(props) {
     super(props);
 
