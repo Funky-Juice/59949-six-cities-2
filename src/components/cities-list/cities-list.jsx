@@ -1,23 +1,23 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
-import {Component} from 'react';
-import {connect} from 'react-redux';
-import ActionCreator from '../../store/actions';
+import {PureComponent} from 'react';
 
 
-class CitiesList extends Component {
+class CitiesList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.activeTab = 0;
-    this.filteredCitiesList = [];
+    this.state = {
+      activeTab: 0
+    };
 
+    this.filteredCitiesList = [];
     this.offers = this.props.offers;
     this.setActiveCity = this.props.setActiveCity;
     this.setActiveOffers = this.props.setActiveOffers;
   }
 
   componentDidMount() {
-    const activeCity = this.filteredCitiesList[this.activeTab];
+    const activeCity = this.filteredCitiesList[this.state.activeTab];
 
     this.setActiveCity(activeCity);
     this._setActiveOffers(activeCity);
@@ -35,7 +35,9 @@ class CitiesList extends Component {
   }
 
   handleClick(city, index) {
-    this.activeTab = index;
+    this.setState(() => {
+      return {activeTab: index};
+    });
     this.setActiveCity(city);
     this._setActiveOffers(city);
   }
@@ -50,7 +52,7 @@ class CitiesList extends Component {
             {this.filteredCitiesList.map((city, i) => (
               <li className="locations__item" key={i}>
                 <a
-                  className={`locations__item-link tabs__item ${i === this.activeTab && `tabs__item--active`}`}
+                  className={`locations__item-link tabs__item ${i === this.state.activeTab && `tabs__item--active`}`}
                   href="#"
                   onClick={() => this.handleClick(city, i)}
                 >
@@ -65,17 +67,6 @@ class CitiesList extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return Object.assign({}, ownProps, {
-    activeCity: state.activeCity
-  });
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  setActiveCity: (city) => dispatch(ActionCreator.setActiveCity(city)),
-  setActiveOffers: (offers) => dispatch(ActionCreator.setActiveOffers(offers))
-});
-
 
 CitiesList.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes).isRequired,
@@ -83,6 +74,4 @@ CitiesList.propTypes = {
   setActiveOffers: PropTypes.func.isRequired
 };
 
-export {CitiesList};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CitiesList);
+export default CitiesList;

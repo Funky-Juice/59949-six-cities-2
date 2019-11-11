@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 import offerTestObj from '../../mocks/test-offer';
-import {CitiesList} from './cities-list';
+import CitiesList from './cities-list';
 
 const mockOffers = [offerTestObj];
 

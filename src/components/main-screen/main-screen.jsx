@@ -2,8 +2,9 @@ import {offerPropTypes} from '../../prop-types/prop-types';
 import {getNoun} from '../../utils/utils';
 
 import OffersList from '../offers-list/index';
-import CitiesList from '../cities-list/cities-list';
+import CitiesList from '../cities-list';
 import Map from '../map';
+
 
 const MainScreen = (props) => {
   const {offers, activeCity, activeOffers} = props;
