@@ -1,6 +1,5 @@
 import {PureComponent, createRef} from 'react';
 import {offerPropTypes} from '../../prop-types/prop-types';
-import {connect} from 'react-redux';
 import leaflet from 'leaflet';
 
 
@@ -89,19 +88,10 @@ class Map extends PureComponent {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return Object.assign({}, ownProps, {
-    activeCity: state.activeCity,
-    activeOffers: state.activeOffers
-  });
-};
-
 
 Map.propTypes = {
   activeCity: PropTypes.object.isRequired,
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
-export {Map};
-
-export default connect(mapStateToProps)(Map);
+export default Map;

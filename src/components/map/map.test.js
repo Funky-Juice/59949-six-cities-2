@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 import offerTestObj from '../../mocks/test-offer';
-import {Map} from './map';
+import Map from './map';
 
 const mockOffers = [offerTestObj];
 

@@ -3,7 +3,7 @@ import {getNoun} from '../../utils/utils';
 
 import OffersList from '../offers-list/index';
 import CitiesList from '../cities-list/cities-list';
-import Map from '../map/map';
+import Map from '../map';
 
 const MainScreen = (props) => {
   const {offers, activeCity, activeOffers} = props;
