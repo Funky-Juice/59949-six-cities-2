@@ -15,6 +15,7 @@ class Map extends PureComponent {
     this.zoom = 12;
     this.iconUrl = `img/pin.svg`;
     this.iconSize = [30, 30];
+    this.markers = leaflet.layerGroup();
   }
 
   get icon() {
@@ -25,11 +26,17 @@ class Map extends PureComponent {
   }
 
   componentDidMount() {
-    this.mapInit(this.props.offers, this.ref.current);
+    this._mapInit(this.ref.current);
   }
 
   componentDidUpdate() {
+    this.markers.clearLayers();
     this._focusView(this.props.activeCity);
+    this._renderPoints(this.props.activeOffers);
+  }
+
+  componentWillUnmount() {
+    this.map.remove();
   }
 
   _focusView(city) {
@@ -37,7 +44,7 @@ class Map extends PureComponent {
     this.map.setView([x, y], this.zoom);
   }
 
-  mapInit(offersList, container) {
+  _mapInit(container) {
     this.map = leaflet.map(container, {
       center: this.city,
       zoom: this.zoom,
@@ -46,11 +53,6 @@ class Map extends PureComponent {
     });
 
     this.renderLayer();
-
-    if (offersList) {
-      this.renderPoints(offersList);
-    }
-
     this.map.setView(this.city, this.zoom);
   }
 
@@ -65,14 +67,17 @@ class Map extends PureComponent {
       .addTo(this.map);
   }
 
-  renderPoints(offersList) {
+  _renderPoints(offersList) {
     offersList.map((offer) => {
       const {latitude: x, longitude: y} = offer.location;
+      const marker = leaflet.marker(
+          [x, y], {icon: this.icon}
+      );
 
-      leaflet
-        .marker([x, y], {icon: this.icon})
-        .addTo(this.map);
+      this.markers.addLayer(marker);
     });
+
+    this.map.addLayer(this.markers);
   }
 
   render() {
@@ -86,14 +91,15 @@ class Map extends PureComponent {
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
-    activeCity: state.activeCity
+    activeCity: state.activeCity,
+    activeOffers: state.activeOffers
   });
 };
 
 
 Map.propTypes = {
   activeCity: PropTypes.object.isRequired,
-  offers: PropTypes.arrayOf(offerPropTypes).isRequired
+  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
 export default connect(mapStateToProps)(Map);

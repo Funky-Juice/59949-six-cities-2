@@ -64,8 +64,8 @@ export const offers = [
     },
     description: null,
     location: {
-      latitude: 52.369553943508,
-      longitude: 4.85309666406198
+      latitude: 52.358097,
+      longitude: 4.921088
     }
   },
   {
