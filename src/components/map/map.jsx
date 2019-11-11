@@ -1,6 +1,8 @@
 import {PureComponent, createRef} from 'react';
 import {offerPropTypes} from '../../prop-types/prop-types';
+import {connect} from 'react-redux';
 import leaflet from 'leaflet';
+
 
 class Map extends PureComponent {
   constructor(props) {
@@ -24,6 +26,15 @@ class Map extends PureComponent {
 
   componentDidMount() {
     this.mapInit(this.props.offers, this.ref.current);
+  }
+
+  componentDidUpdate() {
+    this._focusView(this.props.activeCity);
+  }
+
+  _focusView(city) {
+    const {latitude: x, longitude: y} = city.location;
+    this.map.setView([x, y], this.zoom);
   }
 
   mapInit(offersList, container) {
@@ -65,14 +76,24 @@ class Map extends PureComponent {
   }
 
   render() {
-    return <section className="cities__map map">
-      <div ref={this.ref} style={{height: `100%`}}></div>
-    </section>;
+    return <>
+      <section className="cities__map map">
+        <div ref={this.ref} style={{height: `100%`}}></div>
+      </section>
+    </>;
   }
 }
 
+const mapStateToProps = (state, ownProps) => {
+  return Object.assign({}, ownProps, {
+    activeCity: state.activeCity
+  });
+};
+
+
 Map.propTypes = {
+  activeCity: PropTypes.object.isRequired,
   offers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
-export default Map;
+export default connect(mapStateToProps)(Map);
