@@ -4,12 +4,12 @@ import * as types from './action-types';
 const ActionCreator = {
   setActiveCity: (payload) => ({
     type: types.SET_ACTIVE_CITY,
-    payload
+    payload: payload || {}
   }),
 
   setActiveOffers: (payload) => ({
     type: types.SET_ACTIVE_OFFERS,
-    payload
+    payload: payload || []
   })
 };
 
