@@ -1,6 +1,8 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
-import MainScreen from '../main-screen/main-screen';
+
+import PageHeader from '../page-header/page-header';
 import OfferDetails from '../offer-details/offer-details';
+import MainScreen from '../main-screen';
 
 
 const getPageScreen = (props) => {
@@ -27,7 +29,12 @@ const getPageScreen = (props) => {
 };
 
 const App = (props) => {
-  return <>{getPageScreen(props)}</>;
+  return <>
+    <div className="page page--gray page--main">
+      <PageHeader/>
+      {getPageScreen(props)}
+    </div>
+  </>;
 };
 
 getPageScreen.propTypes = {

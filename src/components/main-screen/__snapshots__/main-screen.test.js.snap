@@ -1,134 +1,172 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MainScreen correctly renders 1`] = `
-<div
-  className="cities"
+<main
+  className="page__main page__main--index"
 >
   <div
-    className="cities__places-container container"
+    className="tabs"
   >
     <section
-      className="cities__places places"
+      className="locations container"
     >
-      <div
-        className="cities__places-list places__list tabs__content"
+      <ul
+        className="locations__list tabs__list"
       >
-        <article
-          className="cities__place-card place-card"
-          onMouseEnter={[Function]}
+        <li
+          className="locations__item"
         >
-          <div
-            className="cities__image-wrapper place-card__image-wrapper"
+          <a
+            className="locations__item-link tabs__item tabs__item--active"
+            href="#"
+            onClick={[Function]}
           >
-            <a
-              href="#"
-            >
-              <img
-                alt="Place image"
-                className="place-card__image"
-                height="200"
-                src="img/room.jpg"
-                width="260"
-              />
-            </a>
-          </div>
-          <div
-            className="place-card__info"
+            <span>
+              Amsterdam
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </div>
+  <div
+    className="cities"
+  >
+    <div
+      className="cities__places-container container"
+    >
+      <section
+        className="cities__places places"
+      >
+        <b
+          className="places__found"
+        >
+          1
+           
+          place
+           to stay in 
+          Amsterdam
+        </b>
+        <div
+          className="cities__places-list places__list tabs__content"
+        >
+          <article
+            className="cities__place-card place-card"
+            onMouseEnter={[Function]}
           >
             <div
-              className="place-card__price-wrapper"
-            >
-              <div
-                className="place-card__price"
-              >
-                <b
-                  className="place-card__price-value"
-                >
-                  €
-                  80
-                </b>
-                <span
-                  className="place-card__price-text"
-                >
-                  / night
-                </span>
-              </div>
-              <button
-                className="place-card__bookmark-button place-card__bookmark-button--active button"
-                type="button"
-              >
-                <svg
-                  className="place-card__bookmark-icon"
-                  height="19"
-                  width="18"
-                >
-                  <use
-                    xlinkHref="#icon-bookmark"
-                  />
-                </svg>
-                <span
-                  className="visually-hidden"
-                >
-                  In bookmarks
-                </span>
-              </button>
-            </div>
-            <div
-              className="place-card__rating rating"
-            >
-              <div
-                className="place-card__stars rating__stars"
-              >
-                <span
-                  style={
-                    Object {
-                      "width": "100%",
-                    }
-                  }
-                >
-                  3
-                </span>
-                <span
-                  className="visually-hidden"
-                >
-                  Rating
-                </span>
-              </div>
-            </div>
-            <h2
-              className="place-card__name"
-              onClick={[Function]}
+              className="cities__image-wrapper place-card__image-wrapper"
             >
               <a
                 href="#"
               >
-                Wood and stone place
+                <img
+                  alt="Place image"
+                  className="place-card__image"
+                  height="200"
+                  src="img/room.jpg"
+                  width="260"
+                />
               </a>
-            </h2>
-            <p
-              className="place-card__type"
+            </div>
+            <div
+              className="place-card__info"
             >
-              Room
-            </p>
-          </div>
-        </article>
-      </div>
-    </section>
-    <div
-      className="cities__right-section"
-    >
-      <section
-        className="cities__map map"
-      >
-        <div
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        />
+              <div
+                className="place-card__price-wrapper"
+              >
+                <div
+                  className="place-card__price"
+                >
+                  <b
+                    className="place-card__price-value"
+                  >
+                    €
+                    80
+                  </b>
+                  <span
+                    className="place-card__price-text"
+                  >
+                    / night
+                  </span>
+                </div>
+                <button
+                  className="place-card__bookmark-button place-card__bookmark-button--active button"
+                  type="button"
+                >
+                  <svg
+                    className="place-card__bookmark-icon"
+                    height="19"
+                    width="18"
+                  >
+                    <use
+                      xlinkHref="#icon-bookmark"
+                    />
+                  </svg>
+                  <span
+                    className="visually-hidden"
+                  >
+                    In bookmarks
+                  </span>
+                </button>
+              </div>
+              <div
+                className="place-card__rating rating"
+              >
+                <div
+                  className="place-card__stars rating__stars"
+                >
+                  <span
+                    style={
+                      Object {
+                        "width": "100%",
+                      }
+                    }
+                  >
+                    3
+                  </span>
+                  <span
+                    className="visually-hidden"
+                  >
+                    Rating
+                  </span>
+                </div>
+              </div>
+              <h2
+                className="place-card__name"
+                onClick={[Function]}
+              >
+                <a
+                  href="#"
+                >
+                  Wood and stone place
+                </a>
+              </h2>
+              <p
+                className="place-card__type"
+              >
+                Room
+              </p>
+            </div>
+          </article>
+        </div>
       </section>
+      <div
+        className="cities__right-section"
+      >
+        <section
+          className="cities__map map"
+        >
+          <div
+            style={
+              Object {
+                "height": "100%",
+              }
+            }
+          />
+        </section>
+      </div>
     </div>
   </div>
-</div>
+</main>
 `;

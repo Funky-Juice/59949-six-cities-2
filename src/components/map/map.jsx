@@ -1,8 +1,9 @@
-import {PureComponent, createRef} from 'react';
+import {createRef} from 'react';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import leaflet from 'leaflet';
 
-class Map extends PureComponent {
+
+class Map extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -13,6 +14,7 @@ class Map extends PureComponent {
     this.zoom = 12;
     this.iconUrl = `img/pin.svg`;
     this.iconSize = [30, 30];
+    this.markers = leaflet.layerGroup();
   }
 
   get icon() {
@@ -23,10 +25,27 @@ class Map extends PureComponent {
   }
 
   componentDidMount() {
-    this.mapInit(this.props.offers, this.ref.current);
+    this._mapInit(this.ref.current);
   }
 
-  mapInit(offersList, container) {
+  componentDidUpdate() {
+    this.markers.clearLayers();
+    this._focusView(this.props.activeCity);
+    this._renderPoints(this.props.activeOffers);
+  }
+
+  componentWillUnmount() {
+    this.map.remove();
+  }
+
+  _focusView(city) {
+    if (city.location) {
+      const {latitude: x, longitude: y} = city.location;
+      this.map.setView([x, y], this.zoom);
+    }
+  }
+
+  _mapInit(container) {
     this.map = leaflet.map(container, {
       center: this.city,
       zoom: this.zoom,
@@ -35,11 +54,6 @@ class Map extends PureComponent {
     });
 
     this.renderLayer();
-
-    if (offersList) {
-      this.renderPoints(offersList);
-    }
-
     this.map.setView(this.city, this.zoom);
   }
 
@@ -54,25 +68,32 @@ class Map extends PureComponent {
       .addTo(this.map);
   }
 
-  renderPoints(offersList) {
+  _renderPoints(offersList) {
     offersList.map((offer) => {
       const {latitude: x, longitude: y} = offer.location;
+      const marker = leaflet.marker(
+          [x, y], {icon: this.icon}
+      );
 
-      leaflet
-        .marker([x, y], {icon: this.icon})
-        .addTo(this.map);
+      this.markers.addLayer(marker);
     });
+
+    this.map.addLayer(this.markers);
   }
 
   render() {
-    return <section className="cities__map map">
-      <div ref={this.ref} style={{height: `100%`}}></div>
-    </section>;
+    return <>
+      <section className="cities__map map">
+        <div ref={this.ref} style={{height: `100%`}}></div>
+      </section>
+    </>;
   }
 }
 
+
 Map.propTypes = {
-  offers: PropTypes.arrayOf(offerPropTypes).isRequired
+  activeCity: PropTypes.object.isRequired,
+  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
 export default Map;

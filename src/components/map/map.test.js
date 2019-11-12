@@ -11,7 +11,10 @@ it(`Map correctly renders`, () => {
   const options = {createNodeMock};
 
   const tree = renderer
-    .create(<Map offers={mockOffers}/>, options)
+    .create(<Map
+      activeOffers={mockOffers}
+      activeCity={{}}
+    />, options)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

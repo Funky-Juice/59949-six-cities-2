@@ -1,0 +1,2 @@
+export const SET_ACTIVE_CITY = `SET_ACTIVE_CITY`;
+export const SET_ACTIVE_OFFERS = `SET_ACTIVE_OFFERS`;

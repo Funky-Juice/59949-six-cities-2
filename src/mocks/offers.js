@@ -1,6 +1,14 @@
 export const offers = [
   {
     id: 1,
+    city: {
+      name: `Amsterdam`,
+      location: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      }
+    },
     type: `Apartment`,
     price: 120,
     title: `Beautiful & luxurious apartment at great location`,
@@ -31,6 +39,14 @@ export const offers = [
   },
   {
     id: 2,
+    city: {
+      name: `Amsterdam`,
+      location: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      }
+    },
     type: `Room`,
     price: 80,
     title: `Wood and stone place`,
@@ -48,12 +64,20 @@ export const offers = [
     },
     description: null,
     location: {
-      latitude: 52.369553943508,
-      longitude: 4.85309666406198
+      latitude: 52.358097,
+      longitude: 4.921088
     }
   },
   {
     id: 3,
+    city: {
+      name: `Berlin`,
+      location: {
+        latitude: 52.519881,
+        longitude: 13.407338,
+        zoom: 10
+      }
+    },
     type: `Hotel`,
     price: 220,
     title: `Canal View Prinsengracht`,
@@ -71,12 +95,20 @@ export const offers = [
     },
     description: null,
     location: {
-      latitude: 52.3909553943508,
-      longitude: 4.929309666406198
+      latitude: 52.517779,
+      longitude: 13.413796
     }
   },
   {
     id: 4,
+    city: {
+      name: `Paris`,
+      location: {
+        latitude: 48.856663,
+        longitude: 2.351556,
+        zoom: 10
+      }
+    },
     type: `House`,
     price: 180,
     title: `Nice, cozy, warm big bed apartment`,
@@ -94,8 +126,132 @@ export const offers = [
     },
     description: null,
     location: {
-      latitude: 52.3809553943508,
-      longitude: 4.939309666406198
+      latitude: 48.859424,
+      longitude: 2.356474
+    }
+  },
+  {
+    id: 5,
+    city: {
+      name: `Brussels`,
+      location: {
+        latitude: 50.851309,
+        longitude: 4.351718,
+        zoom: 10
+      }
+    },
+    type: `House`,
+    price: 180,
+    title: `House in Brussels`,
+    img: `apartment-01.jpg`,
+    images: [`apartment-01.jpg`, `apartment-01.jpg`, `apartment-01.jpg`, `apartment-01.jpg`, `apartment-01.jpg`, `apartment-01.jpg`],
+    features: [],
+    items: [],
+    rating: 4,
+    isPremium: false,
+    isFavorite: false,
+    host: {
+      avatar: null,
+      name: null,
+      status: null
+    },
+    description: null,
+    location: {
+      latitude: 50.845104,
+      longitude: 4.354321
+    }
+  },
+  {
+    id: 6,
+    city: {
+      name: `St.Petersburg`,
+      location: {
+        latitude: 59.939095,
+        longitude: 30.315868,
+        zoom: 10
+      }
+    },
+    type: `Apartment`,
+    price: 180,
+    title: `Apartment in St.Petersburg`,
+    img: `apartment-02.jpg`,
+    images: [`apartment-02.jpg`, `apartment-02.jpg`, `apartment-02.jpg`, `apartment-02.jpg`, `apartment-02.jpg`, `apartment-02.jpg`],
+    features: [],
+    items: [],
+    rating: 4,
+    isPremium: false,
+    isFavorite: false,
+    host: {
+      avatar: `keks.jpg`,
+      name: `Keks`,
+      status: `Pro`
+    },
+    description: null,
+    location: {
+      latitude: 59.938631,
+      longitude: 30.323055
+    }
+  },
+  {
+    id: 7,
+    city: {
+      name: `Prague`,
+      location: {
+        latitude: 50.080293,
+        longitude: 14.428983,
+        zoom: 10
+      }
+    },
+    type: `Hotel`,
+    price: 180,
+    title: `Hotel in Prague`,
+    img: `room.jpg`,
+    images: [`room.jpg`, `room.jpg`, `room.jpg`, `room.jpg`, `room.jpg`, `room.jpg`],
+    features: [],
+    items: [],
+    rating: 4,
+    isPremium: false,
+    isFavorite: false,
+    host: {
+      avatar: null,
+      name: null,
+      status: null
+    },
+    description: null,
+    location: {
+      latitude: 50.085722,
+      longitude: 14.423757
+    }
+  },
+  {
+    id: 8,
+    city: {
+      name: `Amsterdam`,
+      location: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10
+      }
+    },
+    type: `Apartment`,
+    price: 80,
+    title: `Apartment in Amsterdam`,
+    img: `apartment-03.jpg`,
+    images: [`apartment-03.jpg`, `apartment-03.jpg`, `apartment-03.jpg`, `apartment-03.jpg`, `apartment-03.jpg`, `apartment-03.jpg`],
+    features: [`Entire place`],
+    items: [`Wi-Fi`],
+    rating: 3,
+    isPremium: false,
+    isFavorite: true,
+    host: {
+      avatar: `avatar-max.jpg`,
+      name: `Max`,
+      status: null
+    },
+    description: null,
+    location: {
+      latitude: 52.369553943508,
+      longitude: 4.85309666406198
     }
   }
 ];

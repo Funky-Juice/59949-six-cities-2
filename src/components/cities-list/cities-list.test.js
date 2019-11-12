@@ -1,12 +1,16 @@
 import renderer from 'react-test-renderer';
 import offerTestObj from '../../mocks/test-offer';
-import OffersList from './offers-list';
+import CitiesList from './cities-list';
 
 const mockOffers = [offerTestObj];
 
-it(`OffersList correctly renders`, () => {
+it(`CitiesList correctly renders`, () => {
   const tree = renderer
-    .create(<OffersList activeOffers={mockOffers}/>)
+    .create(<CitiesList
+      offers={mockOffers}
+      setActiveCity={() => {}}
+      setActiveOffers={() => {}}
+    />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

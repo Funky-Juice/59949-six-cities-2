@@ -1,9 +1,8 @@
-import {PureComponent} from 'react';
-
 import {offerPropTypes} from '../../prop-types/prop-types';
 import OfferCard from '../offer-card/offer-card';
 
-class OffersList extends PureComponent {
+
+class OffersList extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -13,11 +12,11 @@ class OffersList extends PureComponent {
   }
 
   render() {
-    return this._renderOffers(this.props.offers);
+    return this._renderOffers(this.props.activeOffers);
   }
 
   _renderOffers(offers) {
-    return <section className="cities__places places">
+    return <>
       <div className="cities__places-list places__list tabs__content">
         {offers.map((offer, i) =>
           <OfferCard
@@ -28,7 +27,7 @@ class OffersList extends PureComponent {
           />
         )}
       </div>
-    </section>;
+    </>;
   }
 
   _setOffer(offer) {
@@ -42,8 +41,9 @@ class OffersList extends PureComponent {
   }
 }
 
+
 OffersList.propTypes = {
-  offers: PropTypes.arrayOf(offerPropTypes).isRequired
+  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
 export default OffersList;
