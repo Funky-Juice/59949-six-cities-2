@@ -39,8 +39,10 @@ class Map extends React.PureComponent {
   }
 
   _focusView(city) {
-    const {latitude: x, longitude: y} = city.location;
-    this.map.setView([x, y], this.zoom);
+    if (city.location) {
+      const {latitude: x, longitude: y} = city.location;
+      this.map.setView([x, y], this.zoom);
+    }
   }
 
   _mapInit(container) {

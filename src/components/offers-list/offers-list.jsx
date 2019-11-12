@@ -16,7 +16,7 @@ class OffersList extends React.PureComponent {
   }
 
   _renderOffers(offers) {
-    return <section className="cities__places places">
+    return <>
       <div className="cities__places-list places__list tabs__content">
         {offers.map((offer, i) =>
           <OfferCard
@@ -27,7 +27,7 @@ class OffersList extends React.PureComponent {
           />
         )}
       </div>
-    </section>;
+    </>;
   }
 
   _setOffer(offer) {

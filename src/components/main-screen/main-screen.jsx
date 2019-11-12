@@ -16,7 +16,7 @@ const MainScreen = (props) => {
       <div className="cities">
         <div className="cities__places-container container">
           <section className="cities__places places">
-            {activeCity.name && activeOffers.length && <>
+            {activeCity.name && activeOffers.length > 0 && <>
               <b className="places__found">
                 {activeOffers.length}&nbsp;
                 {getNoun(activeOffers.length, `place`, `places`, `places`)} to stay in {activeCity.name}
