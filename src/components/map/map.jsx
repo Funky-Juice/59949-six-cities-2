@@ -2,7 +2,6 @@ import {createRef} from 'react';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import leaflet from 'leaflet';
 
-
 class Map extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -90,10 +89,16 @@ class Map extends React.PureComponent {
   }
 }
 
-
 Map.propTypes = {
-  activeCity: PropTypes.object.isRequired,
-  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired
+  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
+  activeCity: PropTypes.shape({
+    name: PropTypes.string,
+    location: PropTypes.shape({
+      latitude: PropTypes.number,
+      longitude: PropTypes.number,
+      zoom: PropTypes.number
+    })
+  }).isRequired
 };
 
 export default Map;

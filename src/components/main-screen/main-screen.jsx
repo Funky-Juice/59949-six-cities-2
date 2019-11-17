@@ -5,7 +5,6 @@ import OffersList from '../offers-list/index';
 import CitiesList from '../cities-list';
 import Map from '../map';
 
-
 const MainScreen = (props) => {
   const {offers, activeCity, activeOffers} = props;
 
@@ -35,11 +34,17 @@ const MainScreen = (props) => {
   </>;
 };
 
-
 MainScreen.propTypes = {
-  activeCity: PropTypes.object.isRequired,
   offers: PropTypes.arrayOf(offerPropTypes).isRequired,
-  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired
+  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
+  activeCity: PropTypes.shape({
+    name: PropTypes.string,
+    location: PropTypes.shape({
+      latitude: PropTypes.number,
+      longitude: PropTypes.number,
+      zoom: PropTypes.number
+    })
+  }).isRequired
 };
 
 export default MainScreen;
