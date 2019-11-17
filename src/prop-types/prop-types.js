@@ -12,6 +12,14 @@ export const offerPropTypes = PropTypes.shape({
   isPremium: PropTypes.bool.isRequired,
   isFavorite: PropTypes.bool.isRequired,
   description: PropTypes.string,
+  city: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    location: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+      zoom: PropTypes.number.isRequired
+    })
+  }).isRequired,
   host: PropTypes.shape({
     avatar: PropTypes.string,
     name: PropTypes.string,
