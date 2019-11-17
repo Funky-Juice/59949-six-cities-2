@@ -1,7 +1,6 @@
 import * as types from './action-types';
 import ActionCreator from './actions';
 
-
 describe(`Action creators work correctly`, () => {
 
   it(`Action creator for setting active city returns correct action`, () => {

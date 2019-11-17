@@ -1,6 +1,5 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
 
-
 class CitiesList extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -65,7 +64,6 @@ class CitiesList extends React.PureComponent {
     </>;
   }
 }
-
 
 CitiesList.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes).isRequired,

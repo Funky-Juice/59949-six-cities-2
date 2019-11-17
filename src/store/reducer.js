@@ -1,6 +1,5 @@
 import * as types from './action-types';
 
-
 const initialState = {
   activeCity: {},
   activeOffers: []

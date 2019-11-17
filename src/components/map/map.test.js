@@ -6,7 +6,6 @@ const mockOffers = [offerTestObj];
 
 const createNodeMock = () => document.createElement(`div`);
 
-
 it(`Map correctly renders`, () => {
   const options = {createNodeMock};
 

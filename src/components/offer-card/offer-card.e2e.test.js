@@ -4,7 +4,6 @@ import OfferCard from './offer-card';
 
 const mockOffer = offerTestObj;
 
-
 it(`OfferCard onMouseEnter returns offer object`, () => {
   const showOfferCB = jest.fn();
   const wrapper = shallow(<OfferCard

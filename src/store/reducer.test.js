@@ -2,7 +2,6 @@ import * as types from './action-types';
 import reducer from './reducer';
 import testOffer from '../mocks/test-offer';
 
-
 describe(`Reducer works correctly`, () => {
 
   it(`Reducer without additional params should return initial state`, () => {
@@ -49,7 +48,6 @@ describe(`Reducer works correctly`, () => {
       activeOffers: []
     });
   });
-
 
   it(`Reducer should return array of active offers`, () => {
     expect(reducer({
