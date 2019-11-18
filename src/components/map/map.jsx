@@ -12,6 +12,7 @@ class Map extends React.PureComponent {
     this.city = [52.38333, 4.9];
     this.zoom = 12;
     this.iconUrl = `img/pin.svg`;
+    this.activeIconUrl = `img/pin-active.svg`;
     this.iconSize = [30, 30];
     this.markers = leaflet.layerGroup();
   }
@@ -19,6 +20,13 @@ class Map extends React.PureComponent {
   get icon() {
     return leaflet.icon({
       iconUrl: this.iconUrl,
+      iconSize: this.iconSize
+    });
+  }
+
+  get activeIcon() {
+    return leaflet.icon({
+      iconUrl: this.activeIconUrl,
       iconSize: this.iconSize
     });
   }
@@ -31,6 +39,7 @@ class Map extends React.PureComponent {
     this.markers.clearLayers();
     this._focusView(this.props.activeCity);
     this._renderPoints(this.props.activeOffers);
+    this._highlightActiveOffer(this.props.activeOfferId);
   }
 
   componentWillUnmount() {
@@ -41,6 +50,16 @@ class Map extends React.PureComponent {
     if (city.location) {
       const {latitude: x, longitude: y} = city.location;
       this.map.setView([x, y], this.zoom);
+    }
+  }
+
+  _highlightActiveOffer(offerId) {
+    const activeOffer = this.props.activeOffers.find((it) => it.id === offerId);
+    if (activeOffer) {
+      const {latitude: x, longitude: y} = activeOffer.location;
+      leaflet
+          .marker([x, y], {icon: this.activeIcon})
+          .addTo(this.map);
     }
   }
 
@@ -90,6 +109,7 @@ class Map extends React.PureComponent {
 }
 
 Map.propTypes = {
+  activeOfferId: PropTypes.number,
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
   activeCity: PropTypes.shape({
     name: PropTypes.string,
