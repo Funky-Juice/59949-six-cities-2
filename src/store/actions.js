@@ -9,6 +9,11 @@ const ActionCreator = {
   setActiveOffers: (payload = []) => ({
     type: types.SET_ACTIVE_OFFERS,
     payload
+  }),
+
+  setActiveOfferId: (payload = null) => ({
+    type: types.SET_ACTIVE_OFFER_ID,
+    payload
   })
 };
 

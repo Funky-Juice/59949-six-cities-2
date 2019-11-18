@@ -5,15 +5,12 @@ class OffersList extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      activeOfferId: {}
-    };
-
+    this.setActiveOfferId = this.props.setActiveOfferId;
     this._setActiveOfferId = this._setActiveOfferId.bind(this);
   }
 
   _setActiveOfferId(id) {
-    this.setState({activeOfferId: id});
+    this.setActiveOfferId(id);
   }
 
   _showOfferDetails(id) {
@@ -41,6 +38,7 @@ class OffersList extends React.PureComponent {
 }
 
 OffersList.propTypes = {
+  setActiveOfferId: PropTypes.func.isRequired,
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 

@@ -1,3 +1,4 @@
+import ActionCreator from '../../store/actions';
 import {connect} from 'react-redux';
 import OffersList from './offers-list';
 
@@ -7,4 +8,8 @@ const mapStateToProps = (state, ownProps) => {
   });
 };
 
-export default connect(mapStateToProps)(OffersList);
+const mapDispatchToProps = (dispatch) => ({
+  setActiveOfferId: (id) => dispatch(ActionCreator.setActiveOfferId(id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(OffersList);
