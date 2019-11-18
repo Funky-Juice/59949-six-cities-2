@@ -1,4 +1,3 @@
-import {createRef} from 'react';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import leaflet from 'leaflet';
 
@@ -6,7 +5,6 @@ class Map extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.ref = createRef();
     this.map = null;
 
     this.city = [52.38333, 4.9];
@@ -15,6 +13,7 @@ class Map extends React.PureComponent {
     this.activeIconUrl = `img/pin-active.svg`;
     this.iconSize = [30, 30];
     this.markers = leaflet.layerGroup();
+    this.activeMarker = leaflet.layerGroup();
   }
 
   get icon() {
@@ -31,36 +30,24 @@ class Map extends React.PureComponent {
     });
   }
 
-  componentDidMount() {
-    this._mapInit(this.ref.current);
-  }
+  componentDidUpdate(prevProps) {
+    if (!this.map) {
+      this._mapInit(this.props.mapRef.current);
+    }
 
-  componentDidUpdate() {
-    this.markers.clearLayers();
-    this._focusView(this.props.activeCity);
-    this._renderPoints(this.props.activeOffers);
-    this._highlightActiveOffer(this.props.activeOfferId);
+    if (prevProps.activeCity !== this.props.activeCity) {
+      this._focusView(this.props.activeCity);
+    }
+    if (prevProps.activeOffers !== this.props.activeOffers) {
+      this._renderPoints(this.props.activeOffers);
+    }
+    if (prevProps.activeOfferId !== this.props.activeOfferId) {
+      this._highlightActiveOffer(this.props.activeOfferId);
+    }
   }
 
   componentWillUnmount() {
     this.map.remove();
-  }
-
-  _focusView(city) {
-    if (city.location) {
-      const {latitude: x, longitude: y} = city.location;
-      this.map.setView([x, y], this.zoom);
-    }
-  }
-
-  _highlightActiveOffer(offerId) {
-    const activeOffer = this.props.activeOffers.find((it) => it.id === offerId);
-    if (activeOffer) {
-      const {latitude: x, longitude: y} = activeOffer.location;
-      leaflet
-          .marker([x, y], {icon: this.activeIcon})
-          .addTo(this.map);
-    }
   }
 
   _mapInit(container) {
@@ -71,11 +58,32 @@ class Map extends React.PureComponent {
       marker: true
     });
 
-    this.renderLayer();
+    this._renderLayer();
     this.map.setView(this.city, this.zoom);
   }
 
-  renderLayer() {
+  _focusView(city) {
+    if (city && city.location) {
+      const {latitude: x, longitude: y} = city.location;
+      this.map.setView([x, y], this.zoom);
+    }
+  }
+
+  _highlightActiveOffer(offerId) {
+    this.activeMarker.clearLayers();
+    const activeOffer = this.props.activeOffers.find((it) => it.id === offerId);
+
+    if (activeOffer) {
+      const {latitude: x, longitude: y} = activeOffer.location;
+      leaflet
+          .marker([x, y], {icon: this.activeIcon})
+          .addTo(this.activeMarker);
+
+      this.map.addLayer(this.activeMarker);
+    }
+  }
+
+  _renderLayer() {
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
         attribution: `\
@@ -87,6 +95,9 @@ class Map extends React.PureComponent {
   }
 
   _renderPoints(offersList) {
+    this.markers.clearLayers();
+    this.activeMarker.clearLayers();
+
     offersList.map((offer) => {
       const {latitude: x, longitude: y} = offer.location;
       const marker = leaflet.marker(
@@ -100,15 +111,12 @@ class Map extends React.PureComponent {
   }
 
   render() {
-    return <>
-      <section className="cities__map map">
-        <div ref={this.ref} style={{height: `100%`}}></div>
-      </section>
-    </>;
+    return <></>;
   }
 }
 
 Map.propTypes = {
+  mapRef: PropTypes.object.isRequired,
   activeOfferId: PropTypes.number,
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
   activeCity: PropTypes.shape({

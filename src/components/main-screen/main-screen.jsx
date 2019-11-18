@@ -1,9 +1,12 @@
+import withMap from '../../hocs/with-map/with-map';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import {getNoun} from '../../utils/utils';
 
 import OffersList from '../offers-list/index';
 import CitiesList from '../cities-list';
 import Map from '../map';
+
+const MapWrapped = withMap(Map);
 
 const MainScreen = (props) => {
   const {offers, activeCity, activeOffers} = props;
@@ -26,7 +29,7 @@ const MainScreen = (props) => {
           </section>
 
           <div className="cities__right-section">
-            <Map/>
+            <MapWrapped/>
           </div>
         </div>
       </div>
