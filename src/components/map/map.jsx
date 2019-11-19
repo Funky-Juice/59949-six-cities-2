@@ -30,11 +30,15 @@ class Map extends React.PureComponent {
     });
   }
 
-  componentDidUpdate(prevProps) {
-    if (!this.map) {
+  componentDidMount() {
+    setTimeout(() => {
       this._mapInit(this.props.mapRef.current);
-    }
+      this._focusView(this.props.activeCity);
+      this._renderPoints(this.props.activeOffers);
+    }, 10);
+  }
 
+  componentDidUpdate(prevProps) {
     if (prevProps.activeCity !== this.props.activeCity) {
       this._focusView(this.props.activeCity);
     }
