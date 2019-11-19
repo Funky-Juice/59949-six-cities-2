@@ -1,3 +1,4 @@
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import withMap from '../../hocs/with-map/with-map';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import {getNoun} from '../../utils/utils';
@@ -7,13 +8,14 @@ import CitiesList from '../cities-list';
 import Map from '../map';
 
 const MapWrapped = withMap(Map);
+const CitiesListWrapped = withActiveItem(CitiesList);
 
 const MainScreen = (props) => {
   const {offers, activeCity, activeOffers} = props;
 
   return <>
     <main className="page__main page__main--index">
-      <CitiesList offers={offers}/>
+      <CitiesListWrapped offers={offers}/>
 
       <div className="cities">
         <div className="cities__places-container container">
