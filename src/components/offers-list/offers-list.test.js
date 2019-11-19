@@ -6,7 +6,10 @@ const mockOffers = [offerTestObj];
 
 it(`OffersList correctly renders`, () => {
   const tree = renderer
-    .create(<OffersList activeOffers={mockOffers}/>)
+    .create(<OffersList
+      activeOffers={mockOffers}
+      setActiveOfferId={() => {}}
+    />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

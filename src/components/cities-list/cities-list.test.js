@@ -8,8 +8,11 @@ it(`CitiesList correctly renders`, () => {
   const tree = renderer
     .create(<CitiesList
       offers={mockOffers}
+      activeItem={0}
+      onItemClick={() => {}}
       setActiveCity={() => {}}
       setActiveOffers={() => {}}
+      setActiveOfferId={() => {}}
     />)
     .toJSON();
 
