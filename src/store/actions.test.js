@@ -30,4 +30,18 @@ describe(`Action creators work correctly`, () => {
       payload: []
     });
   });
+
+  it(`Action creator for setting active offer ID returns correct action`, () => {
+    const id = 1;
+
+    expect(ActionCreator.setActiveOfferId(id)).toEqual({
+      type: types.SET_ACTIVE_OFFER_ID,
+      payload: id
+    });
+
+    expect(ActionCreator.setActiveOfferId()).toEqual({
+      type: types.SET_ACTIVE_OFFER_ID,
+      payload: null
+    });
+  });
 });

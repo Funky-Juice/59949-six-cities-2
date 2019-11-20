@@ -81,4 +81,32 @@ describe(`Reducer works correctly`, () => {
       activeOfferId: null
     });
   });
+
+  it(`Reducer should return active offer ID`, () => {
+    expect(reducer({
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null
+    }, {
+      type: types.SET_ACTIVE_OFFER_ID,
+      payload: null
+    })).toEqual({
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null
+    });
+
+    expect(reducer({
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null
+    }, {
+      type: types.SET_ACTIVE_OFFER_ID,
+      payload: 1
+    })).toEqual({
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: 1
+    });
+  });
 });
