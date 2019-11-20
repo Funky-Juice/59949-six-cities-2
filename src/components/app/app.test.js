@@ -4,7 +4,6 @@ import {Provider} from 'react-redux';
 import offerTestObj from '../../mocks/test-offer';
 import App from './app';
 
-
 const mockOffers = [offerTestObj];
 const createNodeMock = () => document.createElement(`div`);
 

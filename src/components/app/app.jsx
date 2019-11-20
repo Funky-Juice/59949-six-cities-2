@@ -4,7 +4,6 @@ import PageHeader from '../page-header/page-header';
 import OfferDetails from '../offer-details/offer-details';
 import MainScreen from '../main-screen';
 
-
 const getPageScreen = (props) => {
   const path = location.pathname;
   let offerId = null;

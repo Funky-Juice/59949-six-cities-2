@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OffersListTitle correctly renders 1`] = `
+<b
+  className="places__found"
+>
+  1
+   
+  place
+   to stay in 
+  Amsterdam
+</b>
+`;

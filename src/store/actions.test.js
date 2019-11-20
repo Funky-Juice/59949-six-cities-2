@@ -1,7 +1,6 @@
 import * as types from './action-types';
 import ActionCreator from './actions';
 
-
 describe(`Action creators work correctly`, () => {
 
   it(`Action creator for setting active city returns correct action`, () => {
@@ -29,6 +28,20 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.setActiveOffers()).toEqual({
       type: types.SET_ACTIVE_OFFERS,
       payload: []
+    });
+  });
+
+  it(`Action creator for setting active offer ID returns correct action`, () => {
+    const id = 1;
+
+    expect(ActionCreator.setActiveOfferId(id)).toEqual({
+      type: types.SET_ACTIVE_OFFER_ID,
+      payload: id
+    });
+
+    expect(ActionCreator.setActiveOfferId()).toEqual({
+      type: types.SET_ACTIVE_OFFER_ID,
+      payload: null
     });
   });
 });

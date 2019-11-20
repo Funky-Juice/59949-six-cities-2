@@ -4,8 +4,7 @@ import OfferCard from './offer-card';
 
 const mockOffer = offerTestObj;
 
-
-it(`OfferCard onMouseEnter returns offer object`, () => {
+it(`OfferCard onMouseEnter returns offer id`, () => {
   const showOfferCB = jest.fn();
   const wrapper = shallow(<OfferCard
     offer={mockOffer}
@@ -18,7 +17,7 @@ it(`OfferCard onMouseEnter returns offer object`, () => {
   offerCard.simulate(`mouseenter`);
 
   expect(showOfferCB).toHaveBeenCalledTimes(1);
-  expect(showOfferCB.mock.calls[0][0]).toEqual(mockOffer);
+  expect(showOfferCB.mock.calls[0][0]).toEqual(mockOffer.id);
 });
 
 it(`OfferCard title onClick returns offer id`, () => {

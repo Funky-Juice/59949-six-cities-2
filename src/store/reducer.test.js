@@ -2,31 +2,34 @@ import * as types from './action-types';
 import reducer from './reducer';
 import testOffer from '../mocks/test-offer';
 
-
 describe(`Reducer works correctly`, () => {
 
   it(`Reducer without additional params should return initial state`, () => {
     expect(reducer(undefined, {})).toEqual({
       activeCity: {},
-      activeOffers: []
+      activeOffers: [],
+      activeOfferId: null
     });
   });
 
   it(`Reducer should return active city object`, () => {
     expect(reducer({
       activeCity: {},
-      activeOffers: []
+      activeOffers: [],
+      activeOfferId: null
     }, {
       type: types.SET_ACTIVE_CITY,
       payload: {}
     })).toEqual({
       activeCity: {},
-      activeOffers: []
+      activeOffers: [],
+      activeOfferId: null
     });
 
     expect(reducer({
       activeCity: {},
-      activeOffers: []
+      activeOffers: [],
+      activeOfferId: null
     }, {
       type: types.SET_ACTIVE_CITY,
       payload: {
@@ -46,32 +49,64 @@ describe(`Reducer works correctly`, () => {
           zoom: 10
         }
       },
-      activeOffers: []
+      activeOffers: [],
+      activeOfferId: null
     });
   });
-
 
   it(`Reducer should return array of active offers`, () => {
     expect(reducer({
       activeCity: {},
-      activeOffers: []
+      activeOffers: [],
+      activeOfferId: null
     }, {
       type: types.SET_ACTIVE_OFFERS,
       payload: []
     })).toEqual({
       activeCity: {},
-      activeOffers: []
+      activeOffers: [],
+      activeOfferId: null
     });
 
     expect(reducer({
       activeCity: {},
-      activeOffers: []
+      activeOffers: [],
+      activeOfferId: null
     }, {
       type: types.SET_ACTIVE_OFFERS,
       payload: [testOffer]
     })).toEqual({
       activeCity: {},
-      activeOffers: [testOffer]
+      activeOffers: [testOffer],
+      activeOfferId: null
+    });
+  });
+
+  it(`Reducer should return active offer ID`, () => {
+    expect(reducer({
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null
+    }, {
+      type: types.SET_ACTIVE_OFFER_ID,
+      payload: null
+    })).toEqual({
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null
+    });
+
+    expect(reducer({
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null
+    }, {
+      type: types.SET_ACTIVE_OFFER_ID,
+      payload: 1
+    })).toEqual({
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: 1
     });
   });
 });

@@ -1,25 +1,24 @@
 import renderer from 'react-test-renderer';
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
+import OffersListContainer from './offers-list-container';
 import offerTestObj from '../../mocks/test-offer';
-import MainScreen from './index';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
 
 const mockOffers = [offerTestObj];
-const createNodeMock = () => document.createElement(`div`);
 
 const store = createStore(() => ({
   activeCity: mockOffers[0].city,
   activeOffers: mockOffers
 }));
 
-it(`MainScreen correctly renders`, () => {
-  const options = {createNodeMock};
+it(`OffersListContainer correctly renders`, () => {
   const tree = renderer
     .create(<Provider store={store}>
-      <MainScreen
-        offers={mockOffers}
+      <OffersListContainer
+        activeCity={mockOffers[0].city}
+        activeOffers={mockOffers}
       />
-    </Provider>, options)
+    </Provider>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

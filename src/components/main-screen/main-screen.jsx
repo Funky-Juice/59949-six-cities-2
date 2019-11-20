@@ -1,33 +1,30 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
-import {getNoun} from '../../utils/utils';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
+import withMap from '../../hocs/with-map/with-map';
 
-import OffersList from '../offers-list/index';
+import OffersListContainer from '../offers-list-container/offers-list-container';
 import CitiesList from '../cities-list';
 import Map from '../map';
 
+const MapWrapped = withMap(Map);
+const CitiesListWrapped = withActiveItem(CitiesList);
 
 const MainScreen = (props) => {
   const {offers, activeCity, activeOffers} = props;
 
   return <>
-    <main className="page__main page__main--index">
-      <CitiesList offers={offers}/>
+    <main className={`page__main page__main--index ${!activeOffers.length ? `page__main--index-empty` : ``}`}>
+      {offers.length > 0 && <CitiesListWrapped offers={offers}/>}
 
       <div className="cities">
-        <div className="cities__places-container container">
-          <section className="cities__places places">
-            {activeCity.name && activeOffers.length > 0 && <>
-              <b className="places__found">
-                {activeOffers.length}&nbsp;
-                {getNoun(activeOffers.length, `place`, `places`, `places`)} to stay in {activeCity.name}
-              </b>
-            </>}
-
-            <OffersList/>
-          </section>
+        <div className={`cities__places-container container ${!activeOffers.length ? `cities__places-container--empty` : ``}`}>
+          <OffersListContainer
+            activeOffers={activeOffers}
+            activeCity={activeCity}
+          />
 
           <div className="cities__right-section">
-            <Map/>
+            {activeOffers.length > 0 && <MapWrapped/>}
           </div>
         </div>
       </div>
@@ -35,11 +32,17 @@ const MainScreen = (props) => {
   </>;
 };
 
-
 MainScreen.propTypes = {
-  activeCity: PropTypes.object.isRequired,
   offers: PropTypes.arrayOf(offerPropTypes).isRequired,
-  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired
+  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
+  activeCity: PropTypes.shape({
+    name: PropTypes.string,
+    location: PropTypes.shape({
+      latitude: PropTypes.number,
+      longitude: PropTypes.number,
+      zoom: PropTypes.number
+    })
+  }).isRequired
 };
 
 export default MainScreen;
