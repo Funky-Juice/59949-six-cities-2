@@ -23,3 +23,14 @@ it(`OffersListContainer correctly renders`, () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+it(`OffersListContainer correctly renders without any offers`, () => {
+  const tree = renderer
+    .create(<OffersListContainer
+      activeCity={{}}
+      activeOffers={[]}
+    />)
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
