@@ -1,3 +1,4 @@
+export const SET_OFFERS = `SET_OFFERS`;
 export const SET_ACTIVE_CITY = `SET_ACTIVE_CITY`;
 export const SET_ACTIVE_OFFERS = `SET_ACTIVE_OFFERS`;
 export const SET_ACTIVE_OFFER_ID = `SET_ACTIVE_OFFER_ID`;
