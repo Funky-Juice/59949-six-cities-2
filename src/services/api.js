@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiURL = `https://htmlacademy-react-2.appspot.com/guess-melody`;
+const apiURL = `https://htmlacademy-react-2.appspot.com/six-cities`;
 
 export const createAPI = () => {
   const api = axios.create({
