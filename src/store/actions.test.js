@@ -1,3 +1,5 @@
+import MockAdapter from 'axios-mock-adapter';
+import {createAPI} from '../services/api';
 import * as types from './action-types';
 import ActionCreator from './actions';
 
@@ -43,5 +45,25 @@ describe(`Action creators work correctly`, () => {
       type: types.SET_ACTIVE_OFFER_ID,
       payload: null
     });
+  });
+
+  it(`Action creator for fetch Offers data returns correct action`, () => {
+    const dispatch = jest.fn();
+    const api = createAPI();
+    const apiMock = new MockAdapter(api);
+    const questionLoader = ActionCreator.getOffers();
+
+    apiMock
+      .onGet(`/hotels`)
+      .reply(200, [{fake: true}]);
+
+    return questionLoader(dispatch, jest.fn(), api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: types.SET_OFFERS,
+          payload: [{fake: true}],
+        });
+      });
   });
 });

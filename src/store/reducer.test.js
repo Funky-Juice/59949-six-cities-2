@@ -13,6 +13,23 @@ describe(`Reducer works correctly`, () => {
     });
   });
 
+  it(`Reducer should correctly set offers data`, () => {
+    expect(reducer({
+      offers: [],
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null
+    }, {
+      type: types.SET_OFFERS,
+      payload: [{}, {}, {}]
+    })).toEqual({
+      offers: [{}, {}, {}],
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null
+    });
+  });
+
   it(`Reducer should return active city object`, () => {
     expect(reducer({
       offers: [],
