@@ -1,16 +1,15 @@
-
+/* eslint-disable camelcase */
 export const offerPropTypes = PropTypes.shape({
   id: PropTypes.number.isRequired,
-  type: PropTypes.oneOf([`Apartment`, `Room`, `House`, `Hotel`]).isRequired,
+  type: PropTypes.oneOf([`apartment`, `room`, `house`, `hotel`]).isRequired,
   price: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  img: PropTypes.string.isRequired,
+  preview_image: PropTypes.string.isRequired,
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
-  features: PropTypes.arrayOf(PropTypes.string).isRequired,
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  goods: PropTypes.arrayOf(PropTypes.string).isRequired,
   rating: PropTypes.number.isRequired,
-  isPremium: PropTypes.bool.isRequired,
-  isFavorite: PropTypes.bool.isRequired,
+  is_premium: PropTypes.bool.isRequired,
+  is_favorite: PropTypes.bool.isRequired,
   description: PropTypes.string,
   city: PropTypes.shape({
     name: PropTypes.string.isRequired,
@@ -21,7 +20,7 @@ export const offerPropTypes = PropTypes.shape({
     })
   }).isRequired,
   host: PropTypes.shape({
-    avatar: PropTypes.string,
+    avatar_url: PropTypes.string,
     name: PropTypes.string,
     status: PropTypes.string,
   }).isRequired,
@@ -30,3 +29,4 @@ export const offerPropTypes = PropTypes.shape({
     longitude: PropTypes.number.isRequired
   }).isRequired
 }).isRequired;
+/* eslint-enable */

@@ -8,7 +8,7 @@ const OfferCard = (props) => {
       className="cities__place-card place-card"
       onMouseEnter={() => (showOffer(offer.id))}
     >
-      {offer.isPremium && <>
+      {offer.is_premium && <>
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
@@ -16,7 +16,7 @@ const OfferCard = (props) => {
 
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={`img/${offer.img}`} width="260" height="200" alt="Place image"></img>
+          <img className="place-card__image" src={offer.preview_image} width="260" height="200" alt="Place image"></img>
         </a>
       </div>
 
@@ -28,13 +28,13 @@ const OfferCard = (props) => {
           </div>
 
           <button
-            className={`place-card__bookmark-button ${offer.isFavorite ? `place-card__bookmark-button--active` : ``} button`}
+            className={`place-card__bookmark-button ${offer.is_favorite ? `place-card__bookmark-button--active` : ``} button`}
             type="button"
           >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
-            <span className="visually-hidden">{offer.isFavorite ? `In bookmarks` : `To bookmarks`}</span>
+            <span className="visually-hidden">{offer.is_favorite ? `In bookmarks` : `To bookmarks`}</span>
           </button>
         </div>
 
