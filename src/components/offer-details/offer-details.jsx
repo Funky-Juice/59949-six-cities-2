@@ -3,6 +3,10 @@ import {offerPropTypes} from '../../prop-types/prop-types';
 const OfferDetails = (props) => {
   const {offer} = props;
 
+  if (!offer) {
+    return <></>;
+  }
+
   return <section className="property">
     <div className="property__gallery-container container">
       <div className="property__gallery">
