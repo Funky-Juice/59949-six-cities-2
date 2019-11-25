@@ -8,11 +8,12 @@ import App from './components/app';
 const init = () => {
   store.dispatch(ActionCreator.getOffers());
 
-  ReactDOM.render(<Provider store={store}>
-    <App/>
-  </Provider>,
-  document.getElementById(`root`)
-  );
+  setTimeout(() => {
+    ReactDOM.render(<Provider store={store}>
+      <App/>
+    </Provider>,
+    document.getElementById(`root`));
+  }, 200);
 };
 
 init();
