@@ -13,3 +13,10 @@ export const getNoun = (number, one, two, five) => {
   }
   return five;
 };
+
+export const calcRatingPercent = (rating) => {
+  const maxRating = 5;
+  const maxRatingPercent = 100;
+
+  return Math.round(rating * maxRatingPercent / maxRating);
+};
