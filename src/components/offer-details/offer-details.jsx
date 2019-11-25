@@ -1,5 +1,5 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
-import {calcRatingPercent} from '../../utils/utils';
+import {calcRatingPercent, getPlural} from '../../utils/utils';
 
 const OfferDetails = (props) => {
   const {offer} = props;
@@ -47,10 +47,10 @@ const OfferDetails = (props) => {
 
         <ul className="property__features">
           <li className="property__feature property__feature--bedrooms">
-            {offer.bedrooms} Bedrooms
+            {offer.bedrooms} {getPlural(offer.bedrooms, `Bedroom`, `Bedrooms`, `Bedrooms`)}
           </li>
           <li className="property__feature property__feature--adults">
-            Max {offer.max_adults} adults
+            Max {offer.max_adults} {getPlural(offer.max_adults, `adult`, `adults`, `adults`)}
           </li>
         </ul>
 

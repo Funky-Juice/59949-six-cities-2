@@ -1,4 +1,4 @@
-export const getNoun = (number, one, two, five) => {
+export const getPlural = (number, one, two, five) => {
   let n = Math.abs(number);
   n %= 100;
   if (n >= 5 && n <= 20) {
