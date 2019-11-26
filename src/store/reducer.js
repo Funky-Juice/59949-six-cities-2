@@ -4,7 +4,8 @@ const initialState = {
   offers: [],
   activeCity: {},
   activeOffers: [],
-  activeOfferId: null
+  activeOfferId: null,
+  isAuthorizationRequired: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -23,6 +24,10 @@ const reducer = (state = initialState, action) => {
 
     case types.SET_ACTIVE_OFFER_ID: return Object.assign({}, state, {
       activeOfferId: action.payload
+    });
+
+    case types.REQUIRED_AUTHORIZATION: return Object.assign({}, state, {
+      isAuthorizationRequired: action.payload,
     });
   }
 

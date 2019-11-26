@@ -28,7 +28,14 @@ const ActionCreator = {
       type: types.SET_OFFERS,
       payload,
     };
-  }
+  },
+
+  requireAuthorization: (status) => {
+    return {
+      type: types.REQUIRED_AUTHORIZATION,
+      payload: status,
+    };
+  },
 };
 
 export default ActionCreator;
