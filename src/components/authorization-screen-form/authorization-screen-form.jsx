@@ -1,5 +1,5 @@
 
-const SignInForm = () => {
+const AuthorizationScreenForm = () => {
   return <>
     <section className="login">
       <h1 className="login__title">Sign in</h1>
@@ -38,4 +38,4 @@ const SignInForm = () => {
   </>;
 };
 
-export default SignInForm;
+export default AuthorizationScreenForm;

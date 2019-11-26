@@ -3,7 +3,7 @@ import {offerPropTypes} from '../../prop-types/prop-types';
 import PageHeader from '../page-header/page-header';
 import OfferDetails from '../offer-details/offer-details';
 import MainScreen from '../main-screen';
-import SignIn from '../sign-in/sign-in';
+import AuthorizationScreen from '../authorization-screen/authorization-screen';
 
 const getPageType = () => {
   let path = location.pathname;
@@ -38,7 +38,7 @@ const getPageScreen = (props) => {
     case `/`:
       return <MainScreen offers={props.offers}/>;
     case `/sign-in`:
-      return <SignIn/>;
+      return <AuthorizationScreen/>;
     case `/offer-${offerId}`:
       return <OfferDetails offer={offer}/>;
     default:

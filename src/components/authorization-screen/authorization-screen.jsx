@@ -1,10 +1,10 @@
-import SignInForm from '../sign-in-form/sign-in-form';
+import AuthorizationScreenForm from '../authorization-screen-form/authorization-screen-form';
 
-const SignIn = () => {
+const AuthorizationScreen = () => {
   return <>
     <main className="page__main page__main--login">
       <div className="page__login-container container">
-        <SignInForm/>
+        <AuthorizationScreenForm/>
 
         <section className="locations locations--login locations--current">
           <div className="locations__item">
@@ -18,4 +18,4 @@ const SignIn = () => {
   </>;
 };
 
-export default SignIn;
+export default AuthorizationScreen;
