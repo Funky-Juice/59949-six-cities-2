@@ -36,6 +36,20 @@ const ActionCreator = {
       payload: status,
     };
   },
+
+  getUser: () => (dispatch, _getState, api) => {
+    return api.get(`/login`)
+      .then((response) => {
+        dispatch(ActionCreator.setUser(response.data));
+      });
+  },
+
+  setUser: (payload = {}) => {
+    return {
+      type: types.SET_USER,
+      payload,
+    };
+  },
 };
 
 export default ActionCreator;
