@@ -1,6 +1,7 @@
 import * as types from './action-types';
 
 const initialState = {
+  user: {},
   offers: [],
   activeCity: {},
   activeOffers: [],
@@ -10,6 +11,10 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.SET_USER: return Object.assign({}, state, {
+      user: action.payload
+    });
+
     case types.SET_OFFERS: return Object.assign({}, state, {
       offers: action.payload
     });
