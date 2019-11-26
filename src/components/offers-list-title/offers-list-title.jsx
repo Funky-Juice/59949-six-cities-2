@@ -1,5 +1,5 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
-import {getNoun} from '../../utils/utils';
+import {getPlural} from '../../utils/utils';
 
 const OffersListTitle = (props) => {
   const {activeCity, activeOffers} = props;
@@ -8,7 +8,7 @@ const OffersListTitle = (props) => {
     {activeCity.name && activeOffers.length > 0 && <>
       <b className="places__found">
         {activeOffers.length}&nbsp;
-        {getNoun(activeOffers.length, `place`, `places`, `places`)} to stay in {activeCity.name}
+        {getPlural(activeOffers.length, `place`, `places`, `places`)} to stay in {activeCity.name}
       </b>
     </>}
   </>;

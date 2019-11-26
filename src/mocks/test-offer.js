@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const offerTestObj = {
   id: 2,
   city: {
@@ -8,16 +9,15 @@ const offerTestObj = {
       zoom: 10
     }
   },
-  type: `Room`,
+  type: `room`,
   price: 80,
   title: `Wood and stone place`,
-  img: `room.jpg`,
+  preview_image: `room.jpg`,
   images: [`room.jpg`, `room.jpg`, `room.jpg`, `room.jpg`, `room.jpg`, `room.jpg`],
-  features: [`Entire place`],
-  items: [`Wi-Fi`],
+  goods: [`Wi-Fi`],
   rating: 3,
-  isPremium: false,
-  isFavorite: true,
+  is_premium: false,
+  is_favorite: true,
   host: {
     avatar: `avatar-max.jpg`,
     name: `Max`,
@@ -29,5 +29,6 @@ const offerTestObj = {
     longitude: 4.85309666406198
   }
 };
+/* eslint-enable */
 
 export default offerTestObj;

@@ -39,6 +39,10 @@ class Map extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
+    if (!this.map) {
+      return;
+    }
+
     if (prevProps.activeCity !== this.props.activeCity) {
       this._focusView(this.props.activeCity);
     }

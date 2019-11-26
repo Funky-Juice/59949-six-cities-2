@@ -1,4 +1,4 @@
-export const getNoun = (number, one, two, five) => {
+export const getPlural = (number, one, two, five) => {
   let n = Math.abs(number);
   n %= 100;
   if (n >= 5 && n <= 20) {
@@ -12,4 +12,11 @@ export const getNoun = (number, one, two, five) => {
     return two;
   }
   return five;
+};
+
+export const calcRatingPercent = (rating) => {
+  const maxRating = 5;
+  const maxRatingPercent = 100;
+
+  return Math.round(rating * maxRatingPercent / maxRating);
 };

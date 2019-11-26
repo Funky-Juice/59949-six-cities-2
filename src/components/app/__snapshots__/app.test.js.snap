@@ -120,7 +120,7 @@ exports[`App correctly renders 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/room.jpg"
+                    src="room.jpg"
                     width="260"
                   />
                 </a>
@@ -175,7 +175,7 @@ exports[`App correctly renders 1`] = `
                     <span
                       style={
                         Object {
-                          "width": "100%",
+                          "width": "60%",
                         }
                       }
                     >
@@ -201,7 +201,7 @@ exports[`App correctly renders 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  Room
+                  room
                 </p>
               </div>
             </article>

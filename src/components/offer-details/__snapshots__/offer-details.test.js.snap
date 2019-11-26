@@ -14,54 +14,54 @@ exports[`OfferDetails correctly renders 1`] = `
         className="property__image-wrapper"
       >
         <img
-          alt="room.jpg"
+          alt="img"
           className="property__image"
-          src="img/room.jpg"
+          src="room.jpg"
         />
       </div>
       <div
         className="property__image-wrapper"
       >
         <img
-          alt="room.jpg"
+          alt="img"
           className="property__image"
-          src="img/room.jpg"
+          src="room.jpg"
         />
       </div>
       <div
         className="property__image-wrapper"
       >
         <img
-          alt="room.jpg"
+          alt="img"
           className="property__image"
-          src="img/room.jpg"
+          src="room.jpg"
         />
       </div>
       <div
         className="property__image-wrapper"
       >
         <img
-          alt="room.jpg"
+          alt="img"
           className="property__image"
-          src="img/room.jpg"
+          src="room.jpg"
         />
       </div>
       <div
         className="property__image-wrapper"
       >
         <img
-          alt="room.jpg"
+          alt="img"
           className="property__image"
-          src="img/room.jpg"
+          src="room.jpg"
         />
       </div>
       <div
         className="property__image-wrapper"
       >
         <img
-          alt="room.jpg"
+          alt="img"
           className="property__image"
-          src="img/room.jpg"
+          src="room.jpg"
         />
       </div>
     </div>
@@ -109,7 +109,7 @@ exports[`OfferDetails correctly renders 1`] = `
           <span
             style={
               Object {
-                "width": "96%",
+                "width": "60%",
               }
             }
           />
@@ -129,9 +129,17 @@ exports[`OfferDetails correctly renders 1`] = `
         className="property__features"
       >
         <li
-          className="property__feature"
+          className="property__feature property__feature--bedrooms"
         >
-          Entire place
+           
+          Bedrooms
+        </li>
+        <li
+          className="property__feature property__feature--adults"
+        >
+          Max 
+           
+          adults
         </li>
       </ul>
       <div
@@ -185,7 +193,7 @@ exports[`OfferDetails correctly renders 1`] = `
               alt="Host avatar"
               className="property__avatar user__avatar"
               height="74"
-              src="img/avatar-max.jpg"
+              src="img/avatar.svg"
               width="74"
             />
           </div>
@@ -200,11 +208,6 @@ exports[`OfferDetails correctly renders 1`] = `
         </div>
         <div
           className="property__description"
-          dangerouslySetInnerHTML={
-            Object {
-              "__html": null,
-            }
-          }
         />
       </div>
     </div>

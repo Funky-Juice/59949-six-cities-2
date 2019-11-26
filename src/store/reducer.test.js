@@ -6,6 +6,24 @@ describe(`Reducer works correctly`, () => {
 
   it(`Reducer without additional params should return initial state`, () => {
     expect(reducer(undefined, {})).toEqual({
+      offers: [],
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null
+    });
+  });
+
+  it(`Reducer should correctly set offers data`, () => {
+    expect(reducer({
+      offers: [],
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null
+    }, {
+      type: types.SET_OFFERS,
+      payload: [{}, {}, {}]
+    })).toEqual({
+      offers: [{}, {}, {}],
       activeCity: {},
       activeOffers: [],
       activeOfferId: null
@@ -14,6 +32,7 @@ describe(`Reducer works correctly`, () => {
 
   it(`Reducer should return active city object`, () => {
     expect(reducer({
+      offers: [],
       activeCity: {},
       activeOffers: [],
       activeOfferId: null
@@ -21,12 +40,14 @@ describe(`Reducer works correctly`, () => {
       type: types.SET_ACTIVE_CITY,
       payload: {}
     })).toEqual({
+      offers: [],
       activeCity: {},
       activeOffers: [],
       activeOfferId: null
     });
 
     expect(reducer({
+      offers: [],
       activeCity: {},
       activeOffers: [],
       activeOfferId: null
@@ -41,6 +62,7 @@ describe(`Reducer works correctly`, () => {
         }
       }
     })).toEqual({
+      offers: [],
       activeCity: {
         name: `Amsterdam`,
         location: {
@@ -56,6 +78,7 @@ describe(`Reducer works correctly`, () => {
 
   it(`Reducer should return array of active offers`, () => {
     expect(reducer({
+      offers: [],
       activeCity: {},
       activeOffers: [],
       activeOfferId: null
@@ -63,12 +86,14 @@ describe(`Reducer works correctly`, () => {
       type: types.SET_ACTIVE_OFFERS,
       payload: []
     })).toEqual({
+      offers: [],
       activeCity: {},
       activeOffers: [],
       activeOfferId: null
     });
 
     expect(reducer({
+      offers: [],
       activeCity: {},
       activeOffers: [],
       activeOfferId: null
@@ -76,6 +101,7 @@ describe(`Reducer works correctly`, () => {
       type: types.SET_ACTIVE_OFFERS,
       payload: [testOffer]
     })).toEqual({
+      offers: [],
       activeCity: {},
       activeOffers: [testOffer],
       activeOfferId: null
@@ -84,6 +110,7 @@ describe(`Reducer works correctly`, () => {
 
   it(`Reducer should return active offer ID`, () => {
     expect(reducer({
+      offers: [],
       activeCity: {},
       activeOffers: [],
       activeOfferId: null
@@ -91,12 +118,14 @@ describe(`Reducer works correctly`, () => {
       type: types.SET_ACTIVE_OFFER_ID,
       payload: null
     })).toEqual({
+      offers: [],
       activeCity: {},
       activeOffers: [],
       activeOfferId: null
     });
 
     expect(reducer({
+      offers: [],
       activeCity: {},
       activeOffers: [],
       activeOfferId: null
@@ -104,6 +133,7 @@ describe(`Reducer works correctly`, () => {
       type: types.SET_ACTIVE_OFFER_ID,
       payload: 1
     })).toEqual({
+      offers: [],
       activeCity: {},
       activeOffers: [],
       activeOfferId: 1
