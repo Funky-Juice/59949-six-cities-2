@@ -3,7 +3,8 @@ import App from './app';
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
-    offers: state.offers
+    offers: state.offers,
+    isAuthorizationRequired: state.isAuthorizationRequired
   });
 };
 
