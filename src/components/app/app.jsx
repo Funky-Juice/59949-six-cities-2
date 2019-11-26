@@ -5,6 +5,25 @@ import OfferDetails from '../offer-details/offer-details';
 import MainScreen from '../main-screen';
 import SignIn from '../sign-in/sign-in';
 
+const getPageType = () => {
+  let path = location.pathname;
+
+  if (path.includes(`offer-`)) {
+    path = `/offer`;
+  }
+
+  switch (path) {
+    case `/`:
+      return `main`;
+    case `/sign-in`:
+      return `login`;
+    case `/offer`:
+      return `property`;
+    default:
+      return ``;
+  }
+};
+
 const getPageScreen = (props) => {
   const path = location.pathname;
   let offerId = null;
@@ -32,7 +51,7 @@ const getPageScreen = (props) => {
 
 const App = (props) => {
   return <>
-    <div className="page page--gray page--login">
+    <div className={`page page--gray page--${getPageType()}`}>
       <PageHeader/>
       {getPageScreen(props)}
     </div>
