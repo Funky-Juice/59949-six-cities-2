@@ -44,6 +44,14 @@ const ActionCreator = {
       });
   },
 
+  authUser: (data) => (dispatch, _getState, api) => {
+    return api.post(`/login`, data)
+      .then((response) => {
+        dispatch(ActionCreator.setUser(response.data));
+        dispatch(ActionCreator.requireAuthorization(false));
+      });
+  },
+
   setUser: (payload = {}) => {
     return {
       type: types.SET_USER,
