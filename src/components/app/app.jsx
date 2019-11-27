@@ -25,10 +25,6 @@ const getPageType = () => {
 };
 
 const getPageScreen = (props) => {
-  if (props.isAuthorizationRequired) {
-    return <AuthorizationScreen/>;
-  }
-
   const path = location.pathname;
   let offerId = null;
   let offer = {};
@@ -41,6 +37,8 @@ const getPageScreen = (props) => {
   switch (path) {
     case `/`:
       return <MainScreen offers={props.offers}/>;
+    case `/sign-in`:
+      return <AuthorizationScreen/>;
     case `/offer-${offerId}`:
       return <OfferDetails offer={offer}/>;
     default:
