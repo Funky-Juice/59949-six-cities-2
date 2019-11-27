@@ -62,7 +62,6 @@ const App = (props) => {
 
 getPageScreen.propTypes = {
   user: PropTypes.object.isRequired,
-  isAuthorizationRequired: PropTypes.bool.isRequired,
   offers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
