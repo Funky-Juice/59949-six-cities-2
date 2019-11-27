@@ -54,7 +54,7 @@ const getPageScreen = (props) => {
 const App = (props) => {
   return <>
     <div className={`page page--gray page--${getPageType()}`}>
-      <PageHeader/>
+      <PageHeader user={props.user}/>
       {getPageScreen(props)}
     </div>
   </>;
@@ -63,6 +63,10 @@ const App = (props) => {
 getPageScreen.propTypes = {
   user: PropTypes.object.isRequired,
   offers: PropTypes.arrayOf(offerPropTypes).isRequired
+};
+
+App.propTypes = {
+  user: PropTypes.object.isRequired
 };
 
 export default App;
