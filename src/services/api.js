@@ -13,8 +13,9 @@ export const createAPI = (dispatch) => {
   const onSuccess = (res) => res;
 
   const onFail = (err) => {
-    if (err.response.status === 403) {
+    if (err.response.status === 401 || err.response.status === 403) {
       dispatch(ActionCreator.requireAuthorization(true));
+      history.pushState({}, null, `/sign-in`);
     }
     throw err;
   };
