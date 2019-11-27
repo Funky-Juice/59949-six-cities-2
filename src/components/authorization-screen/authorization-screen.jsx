@@ -1,4 +1,4 @@
-import AuthorizationScreenForm from '../authorization-screen-form/authorization-screen-form';
+import AuthorizationScreenForm from '../authorization-screen-form';
 
 const AuthorizationScreen = () => {
   return <>
