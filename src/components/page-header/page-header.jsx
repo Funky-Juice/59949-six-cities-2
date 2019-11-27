@@ -1,3 +1,5 @@
+import {userPropTypes} from '../../prop-types/prop-types';
+
 const PageHeader = (props) => {
   return <header className="header">
     <div className="container">
@@ -24,7 +26,7 @@ const PageHeader = (props) => {
 };
 
 PageHeader.propTypes = {
-  user: PropTypes.object.isRequired
+  user: userPropTypes
 };
 
 export default PageHeader;

@@ -1,4 +1,4 @@
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {offerPropTypes, userPropTypes} from '../../prop-types/prop-types';
 
 import AuthorizationScreen from '../authorization-screen/authorization-screen';
 import PageHeader from '../page-header/page-header';
@@ -61,12 +61,12 @@ const App = (props) => {
 };
 
 getPageScreen.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: userPropTypes,
   offers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
 App.propTypes = {
-  user: PropTypes.object.isRequired
+  user: userPropTypes
 };
 
 export default App;
