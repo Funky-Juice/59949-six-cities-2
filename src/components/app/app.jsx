@@ -29,7 +29,9 @@ const getPageScreen = (props) => {
   let offerId = null;
   let offer = {};
 
-  if (path.includes(`offer-`)) {
+  if (path === `/sign-in` && props.user.id) {
+    location.pathname = `/`;
+  } else if (path.includes(`offer-`)) {
     offerId = path.substring(7);
     offer = props.offers.find(({id}) => id === parseInt(offerId, 10));
   }
@@ -59,6 +61,7 @@ const App = (props) => {
 };
 
 getPageScreen.propTypes = {
+  user: PropTypes.object.isRequired,
   isAuthorizationRequired: PropTypes.bool.isRequired,
   offers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
