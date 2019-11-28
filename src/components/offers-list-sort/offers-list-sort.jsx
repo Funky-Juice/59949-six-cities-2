@@ -112,11 +112,6 @@ class OffersListSort extends React.PureComponent {
           className="places__options places__options--custom places__options--opened"
           style={{display: `${ this.state.showSortList ? `block` : `none`}`}}
         >
-          {/* <li className="places__option places__option--active" tabIndex="0">Popular</li>*/}
-          {/* <li className="places__option" tabIndex="0">Price: low to high</li>*/}
-          {/* <li className="places__option" tabIndex="0">Price: high to low</li>*/}
-          {/* <li className="places__option" tabIndex="0">Top rated first</li>*/}
-
           {this.sortTypes.map((sort, i) => (
             <li
               key={i}
@@ -125,13 +120,6 @@ class OffersListSort extends React.PureComponent {
             </li>
           ))}
         </ul>
-
-        <select className="places__sorting-type" id="places-sorting" style={{display: `none`}}>
-          <option className="places__option" value="popular" selected="">Popular</option>
-          <option className="places__option" value="to-high">Price: low to high</option>
-          <option className="places__option" value="to-low">Price: high to low</option>
-          <option className="places__option" value="top-rated">Top rated first</option>
-        </select>
       </form>
     </>;
   }
