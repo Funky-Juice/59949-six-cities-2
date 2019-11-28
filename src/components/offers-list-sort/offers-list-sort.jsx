@@ -9,6 +9,7 @@ class OffersListSort extends React.PureComponent {
     };
 
     this.activeOffers = this.props.activeOffers;
+    this.setActiveOffers = this.props.setActiveOffers;
     this._sortByClickHandler = this._sortByClickHandler.bind(this);
     this._sortTypeClickHandler = this._sortTypeClickHandler.bind(this);
 
@@ -44,41 +45,50 @@ class OffersListSort extends React.PureComponent {
 
   _sortOffers(i) {
     const {activeOffers} = this.props;
+    const activeOffersClone = [];
+
+    Object.assign(activeOffersClone, activeOffers);
 
     switch (this.sortTypes[i]) {
       case `Popular`:
         return this._sortByPopular();
       case `Price: low to high`:
-        return this._sortByPriceLowToHigh(activeOffers);
+        return this._sortByPriceLowToHigh(activeOffersClone);
       case `Price: high to low`:
-        return this._sortByPriceHighToLow(activeOffers);
+        return this._sortByPriceHighToLow(activeOffersClone);
       case `Top rated first`:
-        return this._sortByTopRated(activeOffers);
+        return this._sortByTopRated(activeOffersClone);
       default:
         return this.activeOffers;
     }
   }
 
   _sortByPopular() {
-    return this.activeOffers;
+    this.setActiveOffers(this.activeOffers);
   }
 
   _sortByPriceLowToHigh(offers) {
     offers.sort((a, b) => {
       return a.price - b.price;
     });
+
+    this.setActiveOffers(offers);
   }
 
   _sortByPriceHighToLow(offers) {
     offers.sort((a, b) => {
       return b.price - a.price;
     });
+
+    this.setActiveOffers(offers);
   }
 
   _sortByTopRated(offers) {
     offers.sort((a, b) => {
       return b.rating - a.rating;
     });
+
+    this.setActiveOffers(offers);
   }
 
   _renderSortForm() {
@@ -134,6 +144,7 @@ class OffersListSort extends React.PureComponent {
 OffersListSort.propTypes = {
   activeItem: PropTypes.number.isRequired,
   onItemClick: PropTypes.func.isRequired,
+  setActiveOffers: PropTypes.func.isRequired,
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
 };
 
