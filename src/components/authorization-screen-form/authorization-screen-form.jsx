@@ -8,7 +8,7 @@ class AuthorizationScreenForm extends React.PureComponent {
   }
 
   _getInputsValues() {
-    const formInputsArray = Array.prototype.slice.call(this._form.current);
+    const formInputsArray = [...this._form.current.elements];
     const authData = {};
 
     formInputsArray.forEach((it) => {
