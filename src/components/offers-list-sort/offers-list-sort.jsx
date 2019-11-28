@@ -96,8 +96,12 @@ class OffersListSort extends React.PureComponent {
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by</span>
 
-        <span className="places__sorting-type" tabIndex="0" onClick={this._sortByClickHandler}>
-          Popular
+        <span
+          className="places__sorting-type"
+          style={{paddingLeft: `5px`}}
+          onClick={this._sortByClickHandler}
+        >
+          {this.sortTypes[this.activeItem]}
           <svg
             className="places__sorting-arrow"
             style={{transform: `rotateX(${ this.state.showSortList ? `180` : `0`}deg)`}}
