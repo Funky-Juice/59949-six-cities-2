@@ -15,6 +15,27 @@ describe(`Reducer works correctly`, () => {
     });
   });
 
+  it(`Reducer should correctly set user data`, () => {
+    expect(reducer({
+      user: {},
+      offers: [],
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null,
+      isAuthorizationRequired: false
+    }, {
+      type: types.SET_USER,
+      payload: {id: 1, email: `test@mail.ru`}
+    })).toEqual({
+      user: {id: 1, email: `test@mail.ru`},
+      offers: [],
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null,
+      isAuthorizationRequired: false
+    });
+  });
+
   it(`Reducer should correctly set offers data`, () => {
     expect(reducer({
       user: {},
@@ -167,6 +188,46 @@ describe(`Reducer works correctly`, () => {
       activeOffers: [],
       activeOfferId: 1,
       isAuthorizationRequired: false
+    });
+  });
+
+  it(`Reducer should set need of authorization`, () => {
+    expect(reducer({
+      user: {},
+      offers: [],
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null,
+      isAuthorizationRequired: true
+    }, {
+      type: types.REQUIRED_AUTHORIZATION,
+      payload: false
+    })).toEqual({
+      user: {},
+      offers: [],
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null,
+      isAuthorizationRequired: false
+    });
+
+    expect(reducer({
+      user: {},
+      offers: [],
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null,
+      isAuthorizationRequired: false
+    }, {
+      type: types.REQUIRED_AUTHORIZATION,
+      payload: true
+    })).toEqual({
+      user: {},
+      offers: [],
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null,
+      isAuthorizationRequired: true
     });
   });
 });
