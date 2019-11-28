@@ -1,4 +1,4 @@
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {activeCityPropTypes, offerPropTypes} from '../../prop-types/prop-types';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import OffersListTitle from '../offers-list-title/offers-list-title';
 import OffersListSort from '../offers-list-sort';
@@ -37,14 +37,7 @@ const OffersListContainer = (props) => {
 
 OffersListContainer.propTypes = {
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
-  activeCity: PropTypes.shape({
-    name: PropTypes.string,
-    location: PropTypes.shape({
-      latitude: PropTypes.number,
-      longitude: PropTypes.number,
-      zoom: PropTypes.number
-    })
-  }).isRequired
+  activeCity: activeCityPropTypes
 };
 
 export default OffersListContainer;

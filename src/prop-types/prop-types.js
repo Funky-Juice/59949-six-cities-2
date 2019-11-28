@@ -37,4 +37,13 @@ export const userPropTypes = PropTypes.shape({
   avatar_url: PropTypes.string.isRequired,
   is_pro: PropTypes.bool.isRequired
 }).isRequired;
+
+export const activeCityPropTypes = PropTypes.shape({
+  name: PropTypes.string,
+  location: PropTypes.shape({
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
+    zoom: PropTypes.number
+  })
+}).isRequired;
 /* eslint-enable */

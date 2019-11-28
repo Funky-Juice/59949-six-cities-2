@@ -1,4 +1,4 @@
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {activeCityPropTypes, offerPropTypes} from '../../prop-types/prop-types';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import withMap from '../../hocs/with-map/with-map';
 
@@ -35,14 +35,7 @@ const MainScreen = (props) => {
 MainScreen.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes).isRequired,
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
-  activeCity: PropTypes.shape({
-    name: PropTypes.string,
-    location: PropTypes.shape({
-      latitude: PropTypes.number,
-      longitude: PropTypes.number,
-      zoom: PropTypes.number
-    })
-  }).isRequired
+  activeCity: activeCityPropTypes
 };
 
 export default MainScreen;
