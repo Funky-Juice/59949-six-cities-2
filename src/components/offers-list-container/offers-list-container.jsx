@@ -17,6 +17,7 @@ const OffersListContainer = (props) => {
           activeOffers={activeOffers}
         />
         <OffersListSortWrapped
+          activeCity={activeCity}
           activeOffers={activeOffers}
         />
         <OffersList/>

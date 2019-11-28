@@ -1,5 +1,5 @@
 const withActiveItem = (Component) => {
-  return class WithActiveItem extends React.PureComponent {
+  class WithActiveItem extends React.PureComponent {
     constructor(props) {
       super(props);
 
@@ -10,8 +10,18 @@ const withActiveItem = (Component) => {
       this._itemClickHandler = this._itemClickHandler.bind(this);
     }
 
+    componentDidUpdate(prevProps) {
+      if (prevProps.activeCity !== this.props.activeCity) {
+        this._resetActiveItem();
+      }
+    }
+
     _itemClickHandler(index) {
       this.setState({activeItem: index});
+    }
+
+    _resetActiveItem() {
+      this.setState({activeItem: -1});
     }
 
     render() {
@@ -21,7 +31,20 @@ const withActiveItem = (Component) => {
         activeItem={this.state.activeItem}
       />;
     }
+  }
+
+  WithActiveItem.propTypes = {
+    activeCity: PropTypes.shape({
+      name: PropTypes.string,
+      location: PropTypes.shape({
+        latitude: PropTypes.number,
+        longitude: PropTypes.number,
+        zoom: PropTypes.number
+      })
+    }).isRequired
   };
+
+  return WithActiveItem;
 };
 
 export default withActiveItem;
