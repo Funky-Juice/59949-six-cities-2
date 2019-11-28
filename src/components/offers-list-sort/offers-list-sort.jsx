@@ -1,3 +1,4 @@
+import {offerPropTypes} from '../../prop-types/prop-types';
 
 class OffersListSort extends React.PureComponent {
   constructor(props) {
@@ -8,6 +9,7 @@ class OffersListSort extends React.PureComponent {
     };
 
     this._sortByClickHandler = this._sortByClickHandler.bind(this);
+    this._sortTypeClickHandler = this._sortTypeClickHandler.bind(this);
 
     this.sortTypes = [
       `Popular`,
@@ -31,8 +33,20 @@ class OffersListSort extends React.PureComponent {
     }));
   }
 
-  _renderSortForm() {
+  _sortTypeClickHandler(index) {
     const {onItemClick} = this.props;
+
+    onItemClick(index);
+    this.setState({showSortList: false});
+    this._sortOffers();
+  }
+
+  _sortOffers() {
+    const {activeOffers} = this.props;
+    console.log(activeOffers);
+  }
+
+  _renderSortForm() {
 
     return <>
       <form className="places__sorting" action="#" method="get">
@@ -63,7 +77,7 @@ class OffersListSort extends React.PureComponent {
             <li
               key={i}
               className={`places__option ${i === this.activeItem && `places__option--active`}`}
-              onClick={() => onItemClick(i)}>{sort}
+              onClick={() => this._sortTypeClickHandler(i)}>{sort}
             </li>
           ))}
         </ul>
@@ -85,7 +99,8 @@ class OffersListSort extends React.PureComponent {
 
 OffersListSort.propTypes = {
   activeItem: PropTypes.number.isRequired,
-  onItemClick: PropTypes.func.isRequired
+  onItemClick: PropTypes.func.isRequired,
+  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
 };
 
 export default OffersListSort;
