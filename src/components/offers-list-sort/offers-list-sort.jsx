@@ -8,6 +8,21 @@ class OffersListSort extends React.PureComponent {
     };
 
     this._sortByClickHandler = this._sortByClickHandler.bind(this);
+
+    this.sortTypes = [
+      `Popular`,
+      `Price: low to high`,
+      `Price: high to low`,
+      `Top rated first`
+    ];
+  }
+
+  get activeItem() {
+    let {activeItem} = this.props;
+    if (!activeItem || activeItem < 0 || activeItem > this.sortTypes.length - 1) {
+      return 0;
+    }
+    return activeItem;
   }
 
   _sortByClickHandler() {
@@ -17,6 +32,8 @@ class OffersListSort extends React.PureComponent {
   }
 
   _renderSortForm() {
+    const {onItemClick} = this.props;
+
     return <>
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by</span>
@@ -37,10 +54,18 @@ class OffersListSort extends React.PureComponent {
           className="places__options places__options--custom places__options--opened"
           style={{display: `${ this.state.showSortList ? `block` : `none`}`}}
         >
-          <li className="places__option places__option--active" tabIndex="0">Popular</li>
-          <li className="places__option" tabIndex="0">Price: low to high</li>
-          <li className="places__option" tabIndex="0">Price: high to low</li>
-          <li className="places__option" tabIndex="0">Top rated first</li>
+          {/* <li className="places__option places__option--active" tabIndex="0">Popular</li>*/}
+          {/* <li className="places__option" tabIndex="0">Price: low to high</li>*/}
+          {/* <li className="places__option" tabIndex="0">Price: high to low</li>*/}
+          {/* <li className="places__option" tabIndex="0">Top rated first</li>*/}
+
+          {this.sortTypes.map((sort, i) => (
+            <li
+              key={i}
+              className={`places__option ${i === this.activeItem && `places__option--active`}`}
+              onClick={() => onItemClick(i)}>{sort}
+            </li>
+          ))}
         </ul>
 
         <select className="places__sorting-type" id="places-sorting" style={{display: `none`}}>
@@ -57,5 +82,10 @@ class OffersListSort extends React.PureComponent {
     return this._renderSortForm();
   }
 }
+
+OffersListSort.propTypes = {
+  activeItem: PropTypes.number.isRequired,
+  onItemClick: PropTypes.func.isRequired
+};
 
 export default OffersListSort;

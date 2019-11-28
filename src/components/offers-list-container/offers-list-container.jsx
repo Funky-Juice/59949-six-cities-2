@@ -1,7 +1,10 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import OffersListTitle from '../offers-list-title/offers-list-title';
 import OffersListSort from '../offers-list-sort/offers-list-sort';
 import OffersList from '../offers-list';
+
+const OffersListSortWrapped = withActiveItem(OffersListSort);
 
 const OffersListContainer = (props) => {
   const {activeCity, activeOffers} = props;
@@ -13,7 +16,7 @@ const OffersListContainer = (props) => {
           activeCity={activeCity}
           activeOffers={activeOffers}
         />
-        <OffersListSort/>
+        <OffersListSortWrapped/>
         <OffersList/>
       </section>
     </>;
