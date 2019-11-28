@@ -1,15 +1,37 @@
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {offerPropTypes, userPropTypes} from '../../prop-types/prop-types';
 
+import AuthorizationScreen from '../authorization-screen/authorization-screen';
 import PageHeader from '../page-header/page-header';
 import OfferDetails from '../offer-details/offer-details';
 import MainScreen from '../main-screen';
+
+const getPageType = () => {
+  let path = location.pathname;
+
+  if (path.includes(`offer-`)) {
+    path = `/offer`;
+  }
+
+  switch (path) {
+    case `/`:
+      return `main`;
+    case `/sign-in`:
+      return `login`;
+    case `/offer`:
+      return `property`;
+    default:
+      return ``;
+  }
+};
 
 const getPageScreen = (props) => {
   const path = location.pathname;
   let offerId = null;
   let offer = {};
 
-  if (path.includes(`offer-`)) {
+  if (path === `/sign-in` && props.user.id) {
+    location.pathname = `/`;
+  } else if (path.includes(`offer-`)) {
     offerId = path.substring(7);
     offer = props.offers.find(({id}) => id === parseInt(offerId, 10));
   }
@@ -17,6 +39,8 @@ const getPageScreen = (props) => {
   switch (path) {
     case `/`:
       return <MainScreen offers={props.offers}/>;
+    case `/sign-in`:
+      return <AuthorizationScreen/>;
     case `/offer-${offerId}`:
       return <OfferDetails offer={offer}/>;
     default:
@@ -29,15 +53,20 @@ const getPageScreen = (props) => {
 
 const App = (props) => {
   return <>
-    <div className="page page--gray page--main">
-      <PageHeader/>
+    <div className={`page page--gray page--${getPageType()}`}>
+      <PageHeader user={props.user}/>
       {getPageScreen(props)}
     </div>
   </>;
 };
 
 getPageScreen.propTypes = {
+  user: userPropTypes,
   offers: PropTypes.arrayOf(offerPropTypes).isRequired
+};
+
+App.propTypes = {
+  user: userPropTypes
 };
 
 export default App;

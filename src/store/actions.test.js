@@ -51,19 +51,76 @@ describe(`Action creators work correctly`, () => {
     const dispatch = jest.fn();
     const api = createAPI();
     const apiMock = new MockAdapter(api);
-    const questionLoader = ActionCreator.getOffers();
+    const dataLoader = ActionCreator.getOffers();
 
     apiMock
       .onGet(`/hotels`)
       .reply(200, [{fake: true}]);
 
-    return questionLoader(dispatch, jest.fn(), api)
+    return dataLoader(dispatch, jest.fn(), api)
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: types.SET_OFFERS,
           payload: [{fake: true}],
         });
+      });
+  });
+
+  it(`Action creator for setting of require authorization returns correct action`, () => {
+    expect(ActionCreator.requireAuthorization(true)).toEqual({
+      type: types.REQUIRED_AUTHORIZATION,
+      payload: true
+    });
+
+    expect(ActionCreator.requireAuthorization(false)).toEqual({
+      type: types.REQUIRED_AUTHORIZATION,
+      payload: false
+    });
+  });
+
+  it(`Action creator for fetch User data returns correct action`, () => {
+    const dispatch = jest.fn();
+    const api = createAPI();
+    const apiMock = new MockAdapter(api);
+    const dataLoader = ActionCreator.getUser();
+
+    apiMock
+      .onGet(`/login`)
+      .reply(200, {fake: true});
+
+    return dataLoader(dispatch, jest.fn(), api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: types.SET_USER,
+          payload: {fake: true},
+        });
+      });
+  });
+
+  it(`Action creator for send User data returns correct actions`, () => {
+    const dispatch = jest.fn();
+    const api = createAPI();
+    const apiMock = new MockAdapter(api);
+    const dataLoader = ActionCreator.authUser();
+
+    apiMock
+      .onPost(`/login`)
+      .reply(200, {fake: true});
+
+    return dataLoader(dispatch, jest.fn(), api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: types.SET_USER,
+          payload: {fake: true},
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: types.REQUIRED_AUTHORIZATION,
+          payload: false,
+        });
+        expect(location.pathname).toEqual(`/`);
       });
   });
 });

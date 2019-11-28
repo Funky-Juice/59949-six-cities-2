@@ -29,4 +29,12 @@ export const offerPropTypes = PropTypes.shape({
     longitude: PropTypes.number.isRequired
   }).isRequired
 }).isRequired;
+
+export const userPropTypes = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  email: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  avatar_url: PropTypes.string.isRequired,
+  is_pro: PropTypes.bool.isRequired
+}).isRequired;
 /* eslint-enable */
