@@ -1,4 +1,3 @@
-import {activeCityPropTypes} from '../../prop-types/prop-types';
 
 const withActiveItem = (Component) => {
   class WithActiveItem extends React.PureComponent {
@@ -36,7 +35,14 @@ const withActiveItem = (Component) => {
   }
 
   WithActiveItem.propTypes = {
-    activeCity: activeCityPropTypes
+    activeCity: PropTypes.shape({
+      name: PropTypes.string,
+      location: PropTypes.shape({
+        latitude: PropTypes.number,
+        longitude: PropTypes.number,
+        zoom: PropTypes.number
+      })
+    })
   };
 
   return WithActiveItem;
