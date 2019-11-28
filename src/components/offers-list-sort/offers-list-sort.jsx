@@ -4,10 +4,6 @@ class OffersListSort extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      showSortList: false
-    };
-
     this.activeOffers = this.props.activeOffers;
     this.setActiveOffers = this.props.setActiveOffers;
     this._sortByClickHandler = this._sortByClickHandler.bind(this);
@@ -29,17 +25,20 @@ class OffersListSort extends React.PureComponent {
     return activeItem;
   }
 
+  get isVisible() {
+    return this.props.isVisible;
+  }
+
   _sortByClickHandler() {
-    this.setState((prevState) => ({
-      showSortList: !prevState.showSortList
-    }));
+    const {onVisibleChange} = this.props;
+    onVisibleChange(!this.isVisible);
   }
 
   _sortTypeClickHandler(index) {
-    const {onItemClick} = this.props;
+    const {onItemClick, onVisibleChange} = this.props;
 
     onItemClick(index);
-    this.setState({showSortList: false});
+    onVisibleChange(false);
     this._sortOffers(index);
   }
 
@@ -104,7 +103,7 @@ class OffersListSort extends React.PureComponent {
           {this.sortTypes[this.activeItem]}
           <svg
             className="places__sorting-arrow"
-            style={{transform: `rotateX(${ this.state.showSortList ? `180` : `0`}deg)`}}
+            style={{transform: `rotateX(${ this.isVisible ? `180` : `0`}deg)`}}
             width="7"
             height="4"
           >
@@ -114,7 +113,7 @@ class OffersListSort extends React.PureComponent {
 
         <ul
           className="places__options places__options--custom places__options--opened"
-          style={{display: `${ this.state.showSortList ? `block` : `none`}`}}
+          style={{display: `${ this.isVisible ? `block` : `none`}`}}
         >
           {this.sortTypes.map((sort, i) => (
             <li
@@ -134,9 +133,11 @@ class OffersListSort extends React.PureComponent {
 }
 
 OffersListSort.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
   activeItem: PropTypes.number.isRequired,
   onItemClick: PropTypes.func.isRequired,
   setActiveOffers: PropTypes.func.isRequired,
+  onVisibleChange: PropTypes.func.isRequired,
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
 };
 
