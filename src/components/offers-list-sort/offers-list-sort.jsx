@@ -1,4 +1,4 @@
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {activeCityPropTypes, offerPropTypes} from '../../prop-types/prop-types';
 
 class OffersListSort extends React.PureComponent {
   constructor(props) {
@@ -27,6 +27,12 @@ class OffersListSort extends React.PureComponent {
 
   get isVisible() {
     return this.props.isVisible;
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.activeCity !== this.props.activeCity) {
+      this.activeOffers = this.props.activeOffers;
+    }
   }
 
   _sortByClickHandler() {
@@ -133,6 +139,7 @@ class OffersListSort extends React.PureComponent {
 }
 
 OffersListSort.propTypes = {
+  activeCity: activeCityPropTypes,
   isVisible: PropTypes.bool.isRequired,
   activeItem: PropTypes.number.isRequired,
   onItemClick: PropTypes.func.isRequired,
