@@ -1,3 +1,4 @@
+import {activeCityPropTypes} from '../../prop-types/prop-types';
 
 const withVisibleState = (Component) => {
   class WithVisibleState extends React.PureComponent {
@@ -11,8 +12,18 @@ const withVisibleState = (Component) => {
       this._visibleChangeHandler = this._visibleChangeHandler.bind(this);
     }
 
+    componentDidUpdate(prevProps) {
+      if (prevProps.activeCity !== this.props.activeCity) {
+        this._resetActiveItem();
+      }
+    }
+
     _visibleChangeHandler(bool) {
       this.setState({isVisible: bool});
+    }
+
+    _resetActiveItem() {
+      this.setState({isVisible: false});
     }
 
     render() {
@@ -23,6 +34,10 @@ const withVisibleState = (Component) => {
       />;
     }
   }
+
+  WithVisibleState.propTypes = {
+    activeCity: activeCityPropTypes
+  };
 
   return WithVisibleState;
 };
