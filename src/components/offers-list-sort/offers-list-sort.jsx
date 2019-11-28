@@ -8,6 +8,7 @@ class OffersListSort extends React.PureComponent {
       showSortList: false
     };
 
+    this.activeOffers = this.props.activeOffers;
     this._sortByClickHandler = this._sortByClickHandler.bind(this);
     this._sortTypeClickHandler = this._sortTypeClickHandler.bind(this);
 
@@ -38,16 +39,49 @@ class OffersListSort extends React.PureComponent {
 
     onItemClick(index);
     this.setState({showSortList: false});
-    this._sortOffers();
+    this._sortOffers(index);
   }
 
-  _sortOffers() {
+  _sortOffers(i) {
     const {activeOffers} = this.props;
-    console.log(activeOffers);
+
+    switch (this.sortTypes[i]) {
+      case `Popular`:
+        return this._sortByPopular();
+      case `Price: low to high`:
+        return this._sortByPriceLowToHigh(activeOffers);
+      case `Price: high to low`:
+        return this._sortByPriceHighToLow(activeOffers);
+      case `Top rated first`:
+        return this._sortByTopRated(activeOffers);
+      default:
+        return this.activeOffers;
+    }
+  }
+
+  _sortByPopular() {
+    return this.activeOffers;
+  }
+
+  _sortByPriceLowToHigh(offers) {
+    offers.sort((a, b) => {
+      return a.price - b.price;
+    });
+  }
+
+  _sortByPriceHighToLow(offers) {
+    offers.sort((a, b) => {
+      return b.price - a.price;
+    });
+  }
+
+  _sortByTopRated(offers) {
+    offers.sort((a, b) => {
+      return b.rating - a.rating;
+    });
   }
 
   _renderSortForm() {
-
     return <>
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by</span>
