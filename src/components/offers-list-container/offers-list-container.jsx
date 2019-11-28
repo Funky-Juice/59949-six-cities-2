@@ -1,5 +1,6 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
 import OffersListTitle from '../offers-list-title/offers-list-title';
+import OffersListSort from '../offers-list-sort/offers-list-sort';
 import OffersList from '../offers-list';
 
 const OffersListContainer = (props) => {
@@ -12,6 +13,7 @@ const OffersListContainer = (props) => {
           activeCity={activeCity}
           activeOffers={activeOffers}
         />
+        <OffersListSort/>
         <OffersList/>
       </section>
     </>;
