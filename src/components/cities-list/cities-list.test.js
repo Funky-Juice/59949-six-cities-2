@@ -5,14 +5,15 @@ import CitiesList from './cities-list';
 const mockOffers = [offerTestObj];
 
 it(`CitiesList correctly renders`, () => {
+  const answerCB = jest.fn();
   const tree = renderer
     .create(<CitiesList
       offers={mockOffers}
       activeItem={0}
-      onItemClick={() => {}}
-      setActiveCity={() => {}}
-      setActiveOffers={() => {}}
-      setActiveOfferId={() => {}}
+      onItemClick={answerCB}
+      setActiveCity={answerCB}
+      setActiveOffers={answerCB}
+      setActiveOfferId={answerCB}
     />)
     .toJSON();
 
