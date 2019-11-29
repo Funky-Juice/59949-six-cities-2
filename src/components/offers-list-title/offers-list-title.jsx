@@ -1,4 +1,4 @@
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {activeCityPropTypes, offerPropTypes} from '../../prop-types/prop-types';
 import {getPlural} from '../../utils/utils';
 
 const OffersListTitle = (props) => {
@@ -16,14 +16,7 @@ const OffersListTitle = (props) => {
 
 OffersListTitle.propTypes = {
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
-  activeCity: PropTypes.shape({
-    name: PropTypes.string,
-    location: PropTypes.shape({
-      latitude: PropTypes.number,
-      longitude: PropTypes.number,
-      zoom: PropTypes.number
-    })
-  }).isRequired
+  activeCity: activeCityPropTypes
 };
 
 export default OffersListTitle;

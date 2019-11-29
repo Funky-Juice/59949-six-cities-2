@@ -1,5 +1,6 @@
 import {shallow} from 'enzyme';
 import withActiveItem from './with-active-item';
+import offerTestObj from '../../mocks/test-offer';
 
 describe(`HOC withActiveItem should work correctly`, () => {
   let wrapper;
@@ -7,7 +8,9 @@ describe(`HOC withActiveItem should work correctly`, () => {
   const MockComponentWrapped = withActiveItem(MockComponent);
 
   beforeEach(() => {
-    wrapper = shallow(<MockComponentWrapped/>);
+    wrapper = shallow(<MockComponentWrapped
+      activeCity={offerTestObj.city}
+    />);
   });
 
   it(`ActiveItem ID should be "-1" on default`, () => {
@@ -22,6 +25,17 @@ describe(`HOC withActiveItem should work correctly`, () => {
     expect(wrapper.state().activeItem).toBe(2);
 
     wrapper.instance()._itemClickHandler(-1);
+    expect(wrapper.state().activeItem).toBe(-1);
+  });
+
+  it(`Should reset activeItem ID on active city change`, () => {
+    expect(wrapper.state().activeItem).toBe(-1);
+    expect(wrapper.props().activeCity).toBe(offerTestObj.city);
+
+    wrapper.instance()._itemClickHandler(2);
+    expect(wrapper.state().activeItem).toBe(2);
+
+    wrapper.setProps({activeCity: {id: 2}});
     expect(wrapper.state().activeItem).toBe(-1);
   });
 });
