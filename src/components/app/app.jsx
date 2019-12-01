@@ -1,28 +1,9 @@
 import {offerPropTypes, userPropTypes} from '../../prop-types/prop-types';
 
 import AuthorizationScreen from '../authorization-screen/authorization-screen';
-import PageHeader from '../page-header/page-header';
 import OfferDetails from '../offer-details/offer-details';
 import MainScreen from '../main-screen';
-
-const getPageType = () => {
-  let path = location.pathname;
-
-  if (path.includes(`offer-`)) {
-    path = `/offer`;
-  }
-
-  switch (path) {
-    case `/`:
-      return `main`;
-    case `/sign-in`:
-      return `login`;
-    case `/offer`:
-      return `property`;
-    default:
-      return ``;
-  }
-};
+import Layout from '../layout/layout';
 
 const getPageScreen = (props) => {
   const path = location.pathname;
@@ -53,10 +34,9 @@ const getPageScreen = (props) => {
 
 const App = (props) => {
   return <>
-    <div className={`page page--gray page--${getPageType()}`}>
-      <PageHeader user={props.user}/>
+    <Layout user={props.user}>
       {getPageScreen(props)}
-    </div>
+    </Layout>
   </>;
 };
 
