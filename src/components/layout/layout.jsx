@@ -1,5 +1,4 @@
-import {userPropTypes} from '../../prop-types/prop-types';
-import PageHeader from '../page-header/page-header';
+import PageHeader from '../page-header';
 
 const getPageType = () => {
   let path = location.pathname;
@@ -23,14 +22,13 @@ const getPageType = () => {
 const Layout = (props) => {
   return <>
     <div className={`page page--gray page--${getPageType()}`}>
-      <PageHeader user={props.user}/>
+      <PageHeader/>
       {props.children}
     </div>
   </>;
 };
 
 Layout.propTypes = {
-  user: userPropTypes,
   children: PropTypes.object.isRequired
 };
 

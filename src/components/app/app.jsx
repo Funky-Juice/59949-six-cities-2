@@ -33,11 +33,9 @@ const getPageScreen = (props) => {
 };
 
 const App = (props) => {
-  return <>
-    <Layout user={props.user}>
-      {getPageScreen(props)}
-    </Layout>
-  </>;
+  return <Layout>
+    {getPageScreen(props)}
+  </Layout>;
 };
 
 getPageScreen.propTypes = {
