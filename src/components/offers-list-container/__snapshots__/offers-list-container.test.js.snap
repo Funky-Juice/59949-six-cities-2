@@ -169,10 +169,10 @@ exports[`OffersListContainer correctly renders 1`] = `
         </div>
         <h2
           className="place-card__name"
-          onClick={[Function]}
         >
           <a
-            href="#"
+            href="/offer/2"
+            onClick={[Function]}
           >
             Wood and stone place
           </a>

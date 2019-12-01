@@ -1,4 +1,3 @@
-import {userPropTypes} from '../../prop-types/prop-types';
 import {Route, Switch, Redirect, Link} from 'react-router-dom';
 
 import AuthorizationScreen from '../authorization-screen/authorization-screen';
@@ -36,7 +35,6 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  user: userPropTypes,
   isAuthorizationRequired: PropTypes.bool.isRequired
 };
 

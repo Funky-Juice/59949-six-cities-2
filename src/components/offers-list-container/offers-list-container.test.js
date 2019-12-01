@@ -1,3 +1,4 @@
+import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import OffersListContainer from './offers-list-container';
 import offerTestObj from '../../mocks/test-offer';
@@ -14,10 +15,12 @@ const store = createStore(() => ({
 it(`OffersListContainer correctly renders`, () => {
   const tree = renderer
     .create(<Provider store={store}>
-      <OffersListContainer
-        activeCity={mockOffers[0].city}
-        activeOffers={mockOffers}
-      />
+      <Router>
+        <OffersListContainer
+          activeCity={mockOffers[0].city}
+          activeOffers={mockOffers}
+        />
+      </Router>
     </Provider>)
     .toJSON();
 
