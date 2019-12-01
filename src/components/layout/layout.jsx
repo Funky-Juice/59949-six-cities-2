@@ -19,11 +19,11 @@ const getPageType = () => {
   }
 };
 
-const Layout = (props) => {
+const Layout = ({children}) => {
   return <>
     <div className={`page page--gray page--${getPageType()}`}>
       <PageHeader/>
-      {props.children}
+      {children}
     </div>
   </>;
 };

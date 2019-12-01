@@ -2,7 +2,8 @@ import {offerPropTypes} from '../../prop-types/prop-types';
 import {calcRatingPercent, getPlural} from '../../utils/utils';
 
 const OfferDetails = (props) => {
-  const {offer} = props;
+  const {offers, match} = props;
+  const offer = offers.find(({id}) => id === parseInt(match.params.id, 10));
 
   if (!offer) {
     return <></>;
@@ -94,7 +95,8 @@ const OfferDetails = (props) => {
 };
 
 OfferDetails.propTypes = {
-  offer: offerPropTypes
+  match: PropTypes.object.isRequired,
+  offers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
 export default OfferDetails;

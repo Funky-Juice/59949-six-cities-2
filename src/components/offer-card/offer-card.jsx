@@ -1,8 +1,9 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
 import {calcRatingPercent} from '../../utils/utils';
+import {Link} from 'react-router-dom';
 
 const OfferCard = (props) => {
-  const {offer, showOffer, getOfferDetails} = props;
+  const {offer, showOffer} = props;
 
   return <>
     <article
@@ -46,10 +47,8 @@ const OfferCard = (props) => {
           </div>
         </div>
 
-        <h2 className="place-card__name"
-          onClick={() => getOfferDetails(offer.id)}
-        >
-          <a href="#">{offer.title}</a>
+        <h2 className="place-card__name">
+          <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
         </h2>
 
         <p className="place-card__type">{offer.type}</p>
@@ -59,9 +58,8 @@ const OfferCard = (props) => {
 };
 
 OfferCard.propTypes = {
-  showOffer: PropTypes.func.isRequired,
-  getOfferDetails: PropTypes.func.isRequired,
-  offer: offerPropTypes
+  offer: offerPropTypes,
+  showOffer: PropTypes.func.isRequired
 };
 
 export default OfferCard;
