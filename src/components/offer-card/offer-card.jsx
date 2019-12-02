@@ -1,8 +1,10 @@
+import withVisibleState from '../../hocs/with-visible-state/with-visible-state';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import {calcRatingPercent} from '../../utils/utils';
 import {Link} from 'react-router-dom';
-
 import BookmarkBtn from '../bookmark-btn';
+
+const BookmarkBtnWrapped = withVisibleState(BookmarkBtn);
 
 const OfferCard = (props) => {
   const {offer, showOffer} = props;
@@ -31,7 +33,11 @@ const OfferCard = (props) => {
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
 
-          <BookmarkBtn offer={offer} btnClass={`place-card`}/>
+          <BookmarkBtnWrapped
+            offer={offer}
+            btnClass={`place-card`}
+            activeCity={{}}
+          />
         </div>
 
         <div className="place-card__rating rating">

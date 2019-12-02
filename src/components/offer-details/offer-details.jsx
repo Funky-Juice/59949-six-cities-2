@@ -1,7 +1,9 @@
+import withVisibleState from '../../hocs/with-visible-state/with-visible-state';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import {calcRatingPercent, getPlural} from '../../utils/utils';
-
 import BookmarkBtn from '../bookmark-btn';
+
+const BookmarkBtnWrapped = withVisibleState(BookmarkBtn);
 
 const OfferDetails = (props) => {
   const {offers, match} = props;
@@ -34,7 +36,11 @@ const OfferDetails = (props) => {
             {offer.title}
           </h1>
 
-          <BookmarkBtn offer={offer} btnClass={`property`}/>
+          <BookmarkBtnWrapped
+            offer={offer}
+            btnClass={`property`}
+            activeCity={{}}
+          />
         </div>
 
         <div className="property__rating rating">
