@@ -1,6 +1,8 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
 import {calcRatingPercent, getPlural} from '../../utils/utils';
 
+import BookmarkBtn from '../bookmark-btn/bookmark-btn';
+
 const OfferDetails = (props) => {
   const {offers, match} = props;
   const offer = offers.find(({id}) => id === parseInt(match.params.id, 10));
@@ -31,13 +33,10 @@ const OfferDetails = (props) => {
           <h1 className="property__name">
             {offer.title}
           </h1>
-          <button className={`property__bookmark-button ${offer.is_favorite ? `property__bookmark-button--active` : ``} button`} type="button">
-            <svg className="property__bookmark-icon" width="31" height="33">
-              <use xlinkHref="#icon-bookmark"></use>
-            </svg>
-            <span className="visually-hidden">{offer.is_favorite ? `In bookmarks` : `To bookmarks`}</span>
-          </button>
+
+          <BookmarkBtn offer={offer} btnClass={`property`}/>
         </div>
+
         <div className="property__rating rating">
           <div className="property__stars rating__stars">
             <span style={{width: `${calcRatingPercent(offer.rating)}%`}}></span>

@@ -2,6 +2,8 @@ import {offerPropTypes} from '../../prop-types/prop-types';
 import {calcRatingPercent} from '../../utils/utils';
 import {Link} from 'react-router-dom';
 
+import BookmarkBtn from '../bookmark-btn/bookmark-btn';
+
 const OfferCard = (props) => {
   const {offer, showOffer} = props;
 
@@ -29,15 +31,7 @@ const OfferCard = (props) => {
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
 
-          <button
-            className={`place-card__bookmark-button ${offer.is_favorite ? `place-card__bookmark-button--active` : ``} button`}
-            type="button"
-          >
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark"></use>
-            </svg>
-            <span className="visually-hidden">{offer.is_favorite ? `In bookmarks` : `To bookmarks`}</span>
-          </button>
+          <BookmarkBtn offer={offer} btnClass={`place-card`}/>
         </div>
 
         <div className="place-card__rating rating">
