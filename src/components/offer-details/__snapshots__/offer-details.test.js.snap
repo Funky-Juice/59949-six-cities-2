@@ -193,7 +193,7 @@ exports[`OfferDetails correctly renders 1`] = `
               alt="Host avatar"
               className="property__avatar user__avatar"
               height="74"
-              src="img/avatar.svg"
+              src="/img/avatar.svg"
               width="74"
             />
           </div>
