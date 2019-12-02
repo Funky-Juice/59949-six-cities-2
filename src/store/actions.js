@@ -59,6 +59,11 @@ const ActionCreator = {
       payload,
     };
   },
+
+  setBookmark: (data) => (dispatch, _getState, api) => {
+    return api.post(`/favorite/${data.id}/${data.status}`)
+      .then((response) => response.data);
+  },
 };
 
 export default ActionCreator;

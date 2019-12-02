@@ -1,7 +1,7 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
 import {calcRatingPercent, getPlural} from '../../utils/utils';
 
-import BookmarkBtn from '../bookmark-btn/bookmark-btn';
+import BookmarkBtn from '../bookmark-btn';
 
 const OfferDetails = (props) => {
   const {offers, match} = props;

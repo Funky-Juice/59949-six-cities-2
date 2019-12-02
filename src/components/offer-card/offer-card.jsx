@@ -2,7 +2,7 @@ import {offerPropTypes} from '../../prop-types/prop-types';
 import {calcRatingPercent} from '../../utils/utils';
 import {Link} from 'react-router-dom';
 
-import BookmarkBtn from '../bookmark-btn/bookmark-btn';
+import BookmarkBtn from '../bookmark-btn';
 
 const OfferCard = (props) => {
   const {offer, showOffer} = props;
