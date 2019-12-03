@@ -12,6 +12,8 @@ const getPageType = () => {
       return `main`;
     case `/sign-in`:
       return `login`;
+    case `/favorites`:
+      return `favorites`;
     case `/offer`:
       return `property`;
     default:
