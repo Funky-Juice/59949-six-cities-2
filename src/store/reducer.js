@@ -34,6 +34,19 @@ const reducer = (state = initialState, action) => {
     case types.REQUIRED_AUTHORIZATION: return Object.assign({}, state, {
       isAuthorizationRequired: action.payload,
     });
+
+    case types.SET_OFFER_BOOKMARK:
+      return Object.assign({}, state, {
+        offers: state.offers.map((offer) => {
+          if (offer.id === action.payload.id) {
+            return Object.assign({}, offer, {
+              // eslint-disable-next-line camelcase
+              is_favorite: action.payload.is_favorite
+            });
+          }
+          return offer;
+        })
+      });
   }
 
   return state;
