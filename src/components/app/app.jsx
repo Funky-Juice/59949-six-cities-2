@@ -1,72 +1,41 @@
-import {offerPropTypes, userPropTypes} from '../../prop-types/prop-types';
+import {Route, Switch, Redirect, Link} from 'react-router-dom';
 
 import AuthorizationScreen from '../authorization-screen/authorization-screen';
-import PageHeader from '../page-header/page-header';
+import withLayout from '../../hocs/with-layout/with-layout';
 import OfferDetails from '../offer-details/offer-details';
 import MainScreen from '../main-screen';
 
-const getPageType = () => {
-  let path = location.pathname;
-
-  if (path.includes(`offer-`)) {
-    path = `/offer`;
-  }
-
-  switch (path) {
-    case `/`:
-      return `main`;
-    case `/sign-in`:
-      return `login`;
-    case `/offer`:
-      return `property`;
-    default:
-      return ``;
-  }
-};
-
-const getPageScreen = (props) => {
-  const path = location.pathname;
-  let offerId = null;
-  let offer = {};
-
-  if (path === `/sign-in` && props.user.id) {
-    location.pathname = `/`;
-  } else if (path.includes(`offer-`)) {
-    offerId = path.substring(7);
-    offer = props.offers.find(({id}) => id === parseInt(offerId, 10));
-  }
-
-  switch (path) {
-    case `/`:
-      return <MainScreen offers={props.offers}/>;
-    case `/sign-in`:
-      return <AuthorizationScreen/>;
-    case `/offer-${offerId}`:
-      return <OfferDetails offer={offer}/>;
-    default:
-      return <div style={{textAlign: `center`}}>
-        <h1>404</h1>
-        <h1>Page not found</h1>
-      </div>;
-  }
-};
+const MainScreenWrapped = withLayout(MainScreen);
+const OfferDetailsWrapped = withLayout(OfferDetails);
+const AuthorizationScreenWrapped = withLayout(AuthorizationScreen);
 
 const App = (props) => {
-  return <>
-    <div className={`page page--gray page--${getPageType()}`}>
-      <PageHeader user={props.user}/>
-      {getPageScreen(props)}
-    </div>
-  </>;
-};
+  const {isAuthorizationRequired} = props;
 
-getPageScreen.propTypes = {
-  user: userPropTypes,
-  offers: PropTypes.arrayOf(offerPropTypes).isRequired
+  return (
+    <Switch>
+      <Route path="/" exact component={MainScreenWrapped}/>
+      <Route path="/sign-in" exact render={() =>
+        isAuthorizationRequired ? <AuthorizationScreenWrapped/> : <Redirect to="/"/>
+      }/>
+      <Route path="/offer/:id" exact render={(rest) =>
+        <OfferDetailsWrapped {...props} {...rest}/>
+      }/>
+      <Route
+        render={() => (
+          <div style={{textAlign: `center`}}>
+            <h1>404</h1>
+            <h1>Page not found</h1>
+            <Link to="/">Back to Main Page</Link>
+          </div>
+        )}
+      />
+    </Switch>
+  );
 };
 
 App.propTypes = {
-  user: userPropTypes
+  isAuthorizationRequired: PropTypes.bool.isRequired
 };
 
 export default App;

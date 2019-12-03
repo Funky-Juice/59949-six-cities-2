@@ -123,4 +123,25 @@ describe(`Action creators work correctly`, () => {
         expect(location.pathname).toEqual(`/`);
       });
   });
+
+  it(`Action creator for setBookmark returns correct actions`, () => {
+    const dispatch = jest.fn();
+    const api = createAPI();
+    const apiMock = new MockAdapter(api);
+    const data = {id: 1, status: 1};
+    const dataLoader = ActionCreator.setBookmark(data);
+
+    apiMock
+      .onPost(`/favorite/${data.id}/${data.status}`)
+      .reply(200, {fake: true});
+
+    return dataLoader(dispatch, jest.fn(), api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: types.SET_OFFER_BOOKMARK,
+          payload: {fake: true},
+        });
+      });
+  });
 });

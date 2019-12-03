@@ -45,7 +45,12 @@ exports[`OffersList correctly renders 1`] = `
           </span>
         </div>
         <button
-          className="place-card__bookmark-button place-card__bookmark-button--active button"
+          className="
+          button
+          place-card__bookmark-button
+          place-card__bookmark-button--active
+        "
+          onClick={[Function]}
           type="button"
         >
           <svg
@@ -88,10 +93,9 @@ exports[`OffersList correctly renders 1`] = `
       </div>
       <h2
         className="place-card__name"
-        onClick={[Function]}
       >
         <a
-          href="#"
+          href="/offer/2"
         >
           Wood and stone place
         </a>

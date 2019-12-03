@@ -4,7 +4,8 @@ import App from './app';
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
     user: state.user,
-    offers: state.offers
+    offers: state.offers,
+    isAuthorizationRequired: state.isAuthorizationRequired
   });
 };
 

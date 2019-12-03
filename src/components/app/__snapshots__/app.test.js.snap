@@ -24,7 +24,7 @@ exports[`App correctly renders 1`] = `
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -40,7 +40,8 @@ exports[`App correctly renders 1`] = `
             >
               <a
                 className="header__nav-link header__nav-link--profile"
-                href="#"
+                href="/favorites"
+                onClick={[Function]}
               >
                 <div
                   className="header__avatar-wrapper user__avatar-wrapper"
@@ -216,7 +217,12 @@ exports[`App correctly renders 1`] = `
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button place-card__bookmark-button--active button"
+                    className="
+          button
+          place-card__bookmark-button
+          place-card__bookmark-button--active
+        "
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -259,10 +265,9 @@ exports[`App correctly renders 1`] = `
                 </div>
                 <h2
                   className="place-card__name"
-                  onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/2"
                   >
                     Wood and stone place
                   </a>

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BookmarkBtn correctly renders 1`] = `
+<button
+  className="
+          button
+          someClassName__bookmark-button
+          someClassName__bookmark-button--active
+        "
+  onClick={[Function]}
+  type="button"
+>
+  <svg
+    className="someClassName__bookmark-icon"
+    height="19"
+    width="18"
+  >
+    <use
+      xlinkHref="#icon-bookmark"
+    />
+  </svg>
+  <span
+    className="visually-hidden"
+  >
+    In bookmarks
+  </span>
+</button>
+`;

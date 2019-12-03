@@ -13,10 +13,6 @@ class OffersList extends React.PureComponent {
     this.setActiveOfferId(id);
   }
 
-  _showOfferDetails(id) {
-    location.pathname = `offer-${id}`;
-  }
-
   _renderOffers(offers) {
     return <>
       <div className="cities__places-list places__list tabs__content">
@@ -25,7 +21,6 @@ class OffersList extends React.PureComponent {
             key={`offer-${offer.id}`}
             offer={offer}
             showOffer={this._setActiveOfferId}
-            getOfferDetails={this._showOfferDetails}
           />
         )}
       </div>

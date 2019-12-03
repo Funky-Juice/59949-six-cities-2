@@ -230,4 +230,29 @@ describe(`Reducer works correctly`, () => {
       isAuthorizationRequired: true
     });
   });
+
+  it(`Reducer should set offer field is_favorite in offers array`, () => {
+    const modifedOffer = Object.assign({}, testOffer);
+    // eslint-disable-next-line camelcase
+    modifedOffer.is_favorite = !testOffer.is_favorite;
+
+    expect(reducer({
+      user: {},
+      offers: [testOffer],
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null,
+      isAuthorizationRequired: false
+    }, {
+      type: types.SET_OFFER_BOOKMARK,
+      payload: modifedOffer
+    })).toEqual({
+      user: {},
+      offers: [modifedOffer],
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null,
+      isAuthorizationRequired: false
+    });
+  });
 });

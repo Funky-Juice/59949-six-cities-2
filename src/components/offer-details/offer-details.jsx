@@ -1,8 +1,13 @@
+import withVisibleState from '../../hocs/with-visible-state/with-visible-state';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import {calcRatingPercent, getPlural} from '../../utils/utils';
+import BookmarkBtn from '../bookmark-btn';
+
+const BookmarkBtnWrapped = withVisibleState(BookmarkBtn);
 
 const OfferDetails = (props) => {
-  const {offer} = props;
+  const {offers, match} = props;
+  const offer = offers.find(({id}) => id === parseInt(match.params.id, 10));
 
   if (!offer) {
     return <></>;
@@ -30,13 +35,13 @@ const OfferDetails = (props) => {
           <h1 className="property__name">
             {offer.title}
           </h1>
-          <button className={`property__bookmark-button ${offer.is_favorite ? `property__bookmark-button--active` : ``} button`} type="button">
-            <svg className="property__bookmark-icon" width="31" height="33">
-              <use xlinkHref="#icon-bookmark"></use>
-            </svg>
-            <span className="visually-hidden">{offer.is_favorite ? `In bookmarks` : `To bookmarks`}</span>
-          </button>
+
+          <BookmarkBtnWrapped
+            offer={offer}
+            btnClass={`property`}
+          />
         </div>
+
         <div className="property__rating rating">
           <div className="property__stars rating__stars">
             <span style={{width: `${calcRatingPercent(offer.rating)}%`}}></span>
@@ -74,7 +79,7 @@ const OfferDetails = (props) => {
           <h2 className="property__host-title">Meet the host</h2>
           <div className="property__host-user user">
             <div className={`property__avatar-wrapper ${offer.host.status === `Pro` ? `property__avatar-wrapper--pro` : ``} user__avatar-wrapper`}>
-              <img className="property__avatar user__avatar" src={`${offer.host.avatar_url ? offer.host.avatar_url : `img/avatar.svg`}`}
+              <img className="property__avatar user__avatar" src={`/${offer.host.avatar_url ? offer.host.avatar_url : `img/avatar.svg`}`}
                 width="74"
                 height="74"
                 alt="Host avatar"></img>
@@ -94,7 +99,8 @@ const OfferDetails = (props) => {
 };
 
 OfferDetails.propTypes = {
-  offer: offerPropTypes
+  match: PropTypes.object.isRequired,
+  offers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
 export default OfferDetails;

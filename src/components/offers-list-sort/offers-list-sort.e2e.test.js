@@ -5,11 +5,13 @@ import offerTestObj from '../../mocks/test-offer';
 describe(`OffersListSort works correctly`, () => {
   let wrapper;
   let onItemClickCB;
+  let onVisibleResetCB;
   let onVisibleChangeCB;
   let setActiveOffersCB;
 
   beforeEach(() => {
     onItemClickCB = jest.fn();
+    onVisibleResetCB = jest.fn();
     onVisibleChangeCB = jest.fn();
     setActiveOffersCB = jest.fn();
 
@@ -19,6 +21,7 @@ describe(`OffersListSort works correctly`, () => {
       activeCity={offerTestObj.city}
       activeOffers={[offerTestObj]}
       onItemClick={onItemClickCB}
+      onVisibleReset={onVisibleResetCB}
       onVisibleChange={onVisibleChangeCB}
       setActiveOffers={setActiveOffersCB}
     />);

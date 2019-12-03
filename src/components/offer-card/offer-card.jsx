@@ -1,8 +1,12 @@
+import withVisibleState from '../../hocs/with-visible-state/with-visible-state';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import {calcRatingPercent} from '../../utils/utils';
+import BookmarkBtn from '../bookmark-btn';
+
+const BookmarkBtnWrapped = withVisibleState(BookmarkBtn);
 
 const OfferCard = (props) => {
-  const {offer, showOffer, getOfferDetails} = props;
+  const {offer, showOffer} = props;
 
   return <>
     <article
@@ -28,15 +32,10 @@ const OfferCard = (props) => {
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
 
-          <button
-            className={`place-card__bookmark-button ${offer.is_favorite ? `place-card__bookmark-button--active` : ``} button`}
-            type="button"
-          >
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use xlinkHref="#icon-bookmark"></use>
-            </svg>
-            <span className="visually-hidden">{offer.is_favorite ? `In bookmarks` : `To bookmarks`}</span>
-          </button>
+          <BookmarkBtnWrapped
+            offer={offer}
+            btnClass={`place-card`}
+          />
         </div>
 
         <div className="place-card__rating rating">
@@ -46,10 +45,8 @@ const OfferCard = (props) => {
           </div>
         </div>
 
-        <h2 className="place-card__name"
-          onClick={() => getOfferDetails(offer.id)}
-        >
-          <a href="#">{offer.title}</a>
+        <h2 className="place-card__name">
+          <a href={`/offer/${offer.id}`}>{offer.title}</a>
         </h2>
 
         <p className="place-card__type">{offer.type}</p>
@@ -59,9 +56,8 @@ const OfferCard = (props) => {
 };
 
 OfferCard.propTypes = {
-  showOffer: PropTypes.func.isRequired,
-  getOfferDetails: PropTypes.func.isRequired,
-  offer: offerPropTypes
+  offer: offerPropTypes,
+  showOffer: PropTypes.func.isRequired
 };
 
 export default OfferCard;
