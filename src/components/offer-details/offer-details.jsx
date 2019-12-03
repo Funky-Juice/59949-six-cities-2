@@ -39,7 +39,6 @@ const OfferDetails = (props) => {
           <BookmarkBtnWrapped
             offer={offer}
             btnClass={`property`}
-            activeCity={{}}
           />
         </div>
 

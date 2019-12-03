@@ -31,8 +31,13 @@ class OffersListSort extends React.PureComponent {
 
   componentDidUpdate(prevProps) {
     if (prevProps.activeCity !== this.props.activeCity) {
-      this.activeOffers = this.props.activeOffers;
+      this._resetState();
     }
+  }
+
+  _resetState() {
+    this.props.onVisibleReset();
+    this.activeOffers = this.props.activeOffers;
   }
 
   _sortByClickHandler() {
@@ -143,6 +148,7 @@ OffersListSort.propTypes = {
   isVisible: PropTypes.bool.isRequired,
   activeItem: PropTypes.number.isRequired,
   onItemClick: PropTypes.func.isRequired,
+  onVisibleReset: PropTypes.func.isRequired,
   setActiveOffers: PropTypes.func.isRequired,
   onVisibleChange: PropTypes.func.isRequired,
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,

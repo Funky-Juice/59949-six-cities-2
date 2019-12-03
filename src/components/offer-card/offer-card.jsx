@@ -36,7 +36,6 @@ const OfferCard = (props) => {
           <BookmarkBtnWrapped
             offer={offer}
             btnClass={`place-card`}
-            activeCity={{}}
           />
         </div>
 
