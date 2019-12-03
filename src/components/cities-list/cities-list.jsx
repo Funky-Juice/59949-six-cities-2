@@ -6,7 +6,6 @@ class CitiesList extends React.PureComponent {
 
     this.filteredCitiesList = [];
 
-    this.offers = this.props.offers;
     this.setActiveCity = this.props.setActiveCity;
     this.setActiveOffers = this.props.setActiveOffers;
     this.setActiveOfferId = this.props.setActiveOfferId;
@@ -28,8 +27,10 @@ class CitiesList extends React.PureComponent {
     this._putDataToStore();
   }
 
-  componentDidUpdate() {
-    this._putDataToStore();
+  componentDidUpdate(prevProps) {
+    if (prevProps.activeItem !== this.props.activeItem) {
+      this._putDataToStore();
+    }
   }
 
   _putDataToStore() {
@@ -38,14 +39,15 @@ class CitiesList extends React.PureComponent {
     this._setActiveOffers(this.activeCity);
   }
 
-  _filterCities() {
+  _filterCities(offers) {
     const tempCitiesArr = [];
-    this.offers.map((offer) => tempCitiesArr.push(offer.city));
+
+    offers.map((offer) => tempCitiesArr.push(offer.city));
     this.filteredCitiesList = [...new Set(tempCitiesArr.map(JSON.stringify))].map(JSON.parse);
   }
 
   _setActiveOffers(city) {
-    const cityOffers = this.offers.filter((it) => (it.city.name === city.name));
+    const cityOffers = this.props.offers.filter((it) => (it.city.name === city.name));
     this.setActiveOffers(cityOffers);
   }
 
@@ -74,7 +76,9 @@ class CitiesList extends React.PureComponent {
   }
 
   render() {
-    this._filterCities();
+    const {offers} = this.props;
+
+    this._filterCities(offers);
     return this._renderCities(this.filteredCitiesList);
   }
 }
