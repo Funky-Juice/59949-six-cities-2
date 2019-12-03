@@ -11,6 +11,7 @@ it(`OffersListSort correctly renders`, () => {
       activeItem={-1}
       activeOffers={[offerTestObj]}
       onItemClick={answerCB}
+      onVisibleReset={answerCB}
       onVisibleChange={answerCB}
       setActiveOffers={answerCB}
     />)

@@ -1,7 +1,6 @@
 import withVisibleState from '../../hocs/with-visible-state/with-visible-state';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import {calcRatingPercent} from '../../utils/utils';
-import {Link} from 'react-router-dom';
 import BookmarkBtn from '../bookmark-btn';
 
 const BookmarkBtnWrapped = withVisibleState(BookmarkBtn);

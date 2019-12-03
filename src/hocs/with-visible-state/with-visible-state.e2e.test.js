@@ -1,6 +1,5 @@
 import {shallow} from 'enzyme';
 import withVisibleState from './with-visible-state';
-import offerTestObj from '../../mocks/test-offer';
 
 describe(`HOC withVisibleState should work correctly`, () => {
   let wrapper;
@@ -8,9 +7,7 @@ describe(`HOC withVisibleState should work correctly`, () => {
   const MockComponentWrapped = withVisibleState(MockComponent);
 
   beforeEach(() => {
-    wrapper = shallow(<MockComponentWrapped
-      activeCity={offerTestObj.city}
-    />);
+    wrapper = shallow(<MockComponentWrapped/>);
   });
 
   it(`Visible state should be "false" on default`, () => {
@@ -25,14 +22,13 @@ describe(`HOC withVisibleState should work correctly`, () => {
     expect(wrapper.state().isVisible).toBe(true);
   });
 
-  it(`Should reset visible state on active city change`, () => {
+  it(`Should reset visible state on visible reset handler`, () => {
     expect(wrapper.state().isVisible).toBe(false);
-    expect(wrapper.props().activeCity).toBe(offerTestObj.city);
 
     wrapper.instance()._visibleChangeHandler(true);
     expect(wrapper.state().isVisible).toBe(true);
 
-    wrapper.setProps({activeCity: {id: 2}});
+    wrapper.instance()._visibleResetHandler();
     expect(wrapper.state().isVisible).toBe(false);
   });
 });
