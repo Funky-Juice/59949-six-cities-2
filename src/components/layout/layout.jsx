@@ -4,7 +4,7 @@ import PageFooter from '../page-footer/page-footer';
 const getPageType = () => {
   let path = location.pathname;
 
-  if (path.includes(`offer-`)) {
+  if (path.includes(`/offer/`)) {
     path = `/offer`;
   }
 
