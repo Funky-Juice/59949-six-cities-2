@@ -1,4 +1,15 @@
-const FavoritesList = () => {
+import {sortOffersByCity, groupOffersByCity} from '../../utils/utils';
+import {offerPropTypes} from '../../prop-types/prop-types';
+
+const FavoritesList = (props) => {
+  const {favoriteOffers} = props;
+  let offersGroup = null;
+
+  sortOffersByCity(favoriteOffers);
+  offersGroup = groupOffersByCity(favoriteOffers);
+
+  console.log(offersGroup);
+
   return <>
     <ul className="favorites__list">
       <li className="favorites__locations-items">
@@ -127,6 +138,10 @@ const FavoritesList = () => {
       </li>
     </ul>
   </>;
+};
+
+FavoritesList.propTypes = {
+  favoriteOffers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
 export default FavoritesList;
