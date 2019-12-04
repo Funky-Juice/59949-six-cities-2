@@ -1,9 +1,9 @@
 import {Route, Switch, Redirect, Link} from 'react-router-dom';
 
 import AuthorizationScreen from '../authorization-screen/authorization-screen';
-import FavoritesScreen from '../favorites-screen/favorites-screen';
 import withLayout from '../../hocs/with-layout/with-layout';
 import OfferDetails from '../offer-details/offer-details';
+import FavoritesScreen from '../favorites-screen';
 import MainScreen from '../main-screen';
 
 const MainScreenWrapped = withLayout(MainScreen);

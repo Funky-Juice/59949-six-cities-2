@@ -9,7 +9,11 @@ import App from './components/app';
 const init = () => {
   store.dispatch(ActionCreator.getUser())
     .then(() => {
-      store.dispatch(ActionCreator.getOffers());
+      if (location.pathname === `/favorites`) {
+        store.dispatch(ActionCreator.getFavoriteOffers());
+      } else {
+        store.dispatch(ActionCreator.getOffers());
+      }
     });
 
   setTimeout(() => {

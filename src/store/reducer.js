@@ -5,6 +5,7 @@ const initialState = {
   offers: [],
   activeCity: {},
   activeOffers: [],
+  favoriteOffers: [],
   activeOfferId: null,
   isAuthorizationRequired: false
 };
@@ -33,6 +34,10 @@ const reducer = (state = initialState, action) => {
 
     case types.REQUIRED_AUTHORIZATION: return Object.assign({}, state, {
       isAuthorizationRequired: action.payload,
+    });
+
+    case types.SET_FAVORITE_OFFERS: return Object.assign({}, state, {
+      favoriteOffers: action.payload,
     });
 
     case types.SET_OFFER_BOOKMARK:

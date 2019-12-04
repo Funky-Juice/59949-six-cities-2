@@ -73,6 +73,21 @@ const ActionCreator = {
       type: types.SET_OFFER_BOOKMARK,
       payload,
     };
+  },
+
+  getFavoriteOffers: () => (dispatch, _getState, api) => {
+    return api.get(`/favorite`)
+      .then((response) => {
+        dispatch(ActionCreator.setFavoriteOffers(response.data));
+        return response.data;
+      });
+  },
+
+  setFavoriteOffers: (payload = {}) => {
+    return {
+      type: types.SET_FAVORITE_OFFERS,
+      payload,
+    };
   }
 };
 
