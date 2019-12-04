@@ -1,4 +1,5 @@
 import PageHeader from '../page-header';
+import PageFooter from '../page-footer/page-footer';
 
 const getPageType = () => {
   let path = location.pathname;
@@ -22,6 +23,16 @@ const getPageType = () => {
 };
 
 const Layout = ({children}) => {
+  if (getPageType() === `favorites`) {
+    return <>
+      <div className="page">
+        <PageHeader/>
+        {children}
+        <PageFooter/>
+      </div>
+    </>;
+  }
+
   return <>
     <div className={`page page--gray page--${getPageType()}`}>
       <PageHeader/>
