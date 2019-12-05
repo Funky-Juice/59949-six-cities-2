@@ -1,5 +1,6 @@
 import PageHeader from '../page-header';
 import PageFooter from '../page-footer/page-footer';
+import {offerPropTypes} from '../../prop-types/prop-types';
 
 const getPageType = () => {
   let path = location.pathname;
@@ -22,10 +23,14 @@ const getPageType = () => {
   }
 };
 
-const Layout = ({children}) => {
+const Layout = (props) => {
+  const {children, favoriteOffers} = props;
+
   if (getPageType() === `favorites`) {
     return <>
-      <div className="page">
+      <div
+        className={`page page--favorites ${!favoriteOffers.length ? `page--favorites-empty` : ``}`}
+      >
         <PageHeader/>
         {children}
         <PageFooter/>
@@ -42,7 +47,8 @@ const Layout = ({children}) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.object.isRequired
+  children: PropTypes.object.isRequired,
+  favoriteOffers: PropTypes.arrayOf(offerPropTypes)
 };
 
 export default Layout;

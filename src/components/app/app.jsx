@@ -20,7 +20,9 @@ const App = (props) => {
       <Route path="/sign-in" exact render={() =>
         isAuthorizationRequired ? <AuthorizationScreenWrapped/> : <Redirect to="/"/>
       }/>
-      <Route path="/favorites" exact component={FavoritesScreenWrapped}/>
+      <Route path="/favorites" exact render={() =>
+        <FavoritesScreenWrapped {...props}/>
+      }/>
       <Route path="/offer/:id" exact render={(rest) =>
         <OfferDetailsWrapped {...props} {...rest}/>
       }/>
