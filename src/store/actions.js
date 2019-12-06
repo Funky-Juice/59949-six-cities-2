@@ -41,6 +41,15 @@ const ActionCreator = {
     return api.get(`/login`)
       .then((response) => {
         dispatch(ActionCreator.setUser(response.data));
+      })
+      .catch((err) => {
+        const unauthorized = err.message === `unauthorized`;
+        if (unauthorized && location.pathname === `/favorites`) {
+          history.pushState({}, null, `/sign-in`);
+          location.reload();
+        } else {
+          dispatch(ActionCreator.getOffers());
+        }
       });
   },
 
@@ -49,7 +58,6 @@ const ActionCreator = {
       .then((response) => {
         dispatch(ActionCreator.setUser(response.data));
         dispatch(ActionCreator.requireAuthorization(false));
-        location.pathname = `/`;
       });
   },
 
@@ -65,6 +73,12 @@ const ActionCreator = {
       .then((response) => {
         dispatch(ActionCreator.setOfferBookmark(response.data));
         return response.data;
+      })
+      .catch((err) => {
+        if (err.message === `unauthorized`) {
+          history.pushState({}, null, `/sign-in`);
+          location.reload();
+        }
       });
   },
 
