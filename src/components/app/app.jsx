@@ -5,6 +5,7 @@ import withLayout from '../../hocs/with-layout/with-layout';
 import OfferDetails from '../offer-details/offer-details';
 import FavoritesScreen from '../favorites-screen';
 import MainScreen from '../main-screen';
+import withAuth from '../../hocs/with-auth';
 
 const MainScreenWrapped = withLayout(MainScreen);
 const OfferDetailsWrapped = withLayout(OfferDetails);
@@ -20,9 +21,7 @@ const App = (props) => {
       <Route path="/sign-in" exact render={() =>
         isAuthorizationRequired ? <AuthorizationScreenWrapped/> : <Redirect to="/"/>
       }/>
-      <Route path="/favorites" exact render={() =>
-        <FavoritesScreenWrapped {...props}/>
-      }/>
+      <Route path="/favorites" exact component={withAuth(FavoritesScreenWrapped)}/>
       <Route path="/offer/:id" exact render={(rest) =>
         <OfferDetailsWrapped {...props} {...rest}/>
       }/>

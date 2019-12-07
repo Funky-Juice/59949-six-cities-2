@@ -45,8 +45,7 @@ const ActionCreator = {
       .catch((err) => {
         const unauthorized = err.message === `unauthorized`;
         if (unauthorized && location.pathname === `/favorites`) {
-          history.pushState({}, null, `/sign-in`);
-          location.reload();
+          return;
         } else {
           dispatch(ActionCreator.getOffers());
         }
