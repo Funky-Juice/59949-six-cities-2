@@ -4,10 +4,9 @@ import FavoriteOfferCard from '../favorite-offer-card/favorite-offer-card';
 
 const FavoritesList = (props) => {
   const {favoriteOffers} = props;
-  let offersGroups = null;
 
   sortOffersByCity(favoriteOffers);
-  offersGroups = groupOffersByCity(favoriteOffers);
+  const offersGroups = groupOffersByCity(favoriteOffers);
 
   return <>
     <ul className="favorites__list">

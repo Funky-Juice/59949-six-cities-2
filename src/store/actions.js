@@ -101,6 +101,13 @@ const ActionCreator = {
       type: types.SET_FAVORITE_OFFERS,
       payload,
     };
+  },
+
+  deleteOffer: (payload) => {
+    return {
+      type: types.REMOVE_FAVORITE_OFFER,
+      payload,
+    };
   }
 };
 

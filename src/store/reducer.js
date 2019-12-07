@@ -40,6 +40,10 @@ const reducer = (state = initialState, action) => {
       favoriteOffers: action.payload,
     });
 
+    case types.REMOVE_FAVORITE_OFFER: return Object.assign({}, state, {
+      favoriteOffers: state.favoriteOffers.filter((offer) => offer.id !== action.payload),
+    });
+
     case types.SET_OFFER_BOOKMARK:
       return Object.assign({}, state, {
         offers: state.offers.map((offer) => {

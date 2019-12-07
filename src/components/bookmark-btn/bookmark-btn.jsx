@@ -17,14 +17,18 @@ class BookmarkBtn extends React.PureComponent {
   }
 
   _setBookmarkHandler(id) {
-    const {setBookmark, onVisibleChange} = this.props;
+    const {setBookmark, onVisibleChange, deleteOffer} = this.props;
 
     setBookmark({
       id,
       status: this.isVisible ? 0 : 1
     })
       .then((res) => {
-        onVisibleChange(res.is_favorite);
+        if (location.pathname === `/favorites`) {
+          deleteOffer(res.id);
+        } else {
+          onVisibleChange(res.is_favorite);
+        }
       });
   }
 
@@ -60,6 +64,7 @@ class BookmarkBtn extends React.PureComponent {
 
 BookmarkBtn.propTypes = {
   offer: offerPropTypes,
+  deleteOffer: PropTypes.func,
   btnClass: PropTypes.string.isRequired,
   isVisible: PropTypes.bool.isRequired,
   setBookmark: PropTypes.func.isRequired,
