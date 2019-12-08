@@ -12,8 +12,18 @@ class BookmarkBtn extends React.PureComponent {
   }
 
   componentDidMount() {
-    const {onVisibleChange} = this.props;
-    onVisibleChange(this.props.offer.is_favorite);
+    this._setVisibleState();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.offer.is_favorite !== this.props.offer.is_favorite) {
+      this._setVisibleState();
+    }
+  }
+
+  _setVisibleState() {
+    const {offer, onVisibleChange} = this.props;
+    onVisibleChange(offer.is_favorite);
   }
 
   _setBookmarkHandler(id) {
