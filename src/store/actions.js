@@ -108,6 +108,13 @@ const ActionCreator = {
       type: types.REMOVE_FAVORITE_OFFER,
       payload,
     };
+  },
+
+  clearOffers: (payload = []) => {
+    return {
+      type: types.REMOVE_OFFERS,
+      payload,
+    };
   }
 };
 

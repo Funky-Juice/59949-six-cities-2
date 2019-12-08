@@ -11,7 +11,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  getOffers: () => dispatch(ActionCreator.getOffers())
+  getOffers: () => dispatch(ActionCreator.getOffers()),
+  clearOffers: () => dispatch(ActionCreator.clearOffers())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);

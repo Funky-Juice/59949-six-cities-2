@@ -14,6 +14,11 @@ class MainScreen extends React.PureComponent {
     super(props);
   }
 
+  componentDidMount() {
+    const {clearOffers} = this.props;
+    clearOffers();
+  }
+
   _renderScreen() {
     const {offers, activeCity, activeOffers} = this.props;
 
@@ -49,6 +54,7 @@ class MainScreen extends React.PureComponent {
 
 MainScreen.propTypes = {
   getOffers: PropTypes.func.isRequired,
+  clearOffers: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(offerPropTypes).isRequired,
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
   activeCity: activeCityPropTypes

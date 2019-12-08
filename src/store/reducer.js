@@ -20,6 +20,10 @@ const reducer = (state = initialState, action) => {
       offers: action.payload
     });
 
+    case types.REMOVE_OFFERS: return Object.assign({}, state, {
+      offers: action.payload
+    });
+
     case types.SET_ACTIVE_CITY: return Object.assign({}, state, {
       activeCity: action.payload
     });
