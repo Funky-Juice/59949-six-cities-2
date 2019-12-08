@@ -11,8 +11,6 @@ const init = () => {
     .then(() => {
       if (location.pathname === `/favorites`) {
         store.dispatch(ActionCreator.getFavoriteOffers());
-      } else {
-        store.dispatch(ActionCreator.getOffers());
       }
     });
 

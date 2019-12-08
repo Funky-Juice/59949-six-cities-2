@@ -47,7 +47,7 @@ const ActionCreator = {
         if (unauthorized && location.pathname === `/favorites`) {
           return;
         } else {
-          dispatch(ActionCreator.getOffers());
+          // dispatch(ActionCreator.getOffers());
         }
       });
   },

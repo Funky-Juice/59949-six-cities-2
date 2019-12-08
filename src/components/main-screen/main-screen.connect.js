@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import MainScreen from './main-screen';
+import ActionCreator from '../../store/actions';
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
@@ -9,4 +10,8 @@ const mapStateToProps = (state, ownProps) => {
   });
 };
 
-export default connect(mapStateToProps)(MainScreen);
+const mapDispatchToProps = (dispatch) => ({
+  getOffers: () => dispatch(ActionCreator.getOffers())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);

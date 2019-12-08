@@ -9,30 +9,46 @@ import Map from '../map';
 const MapWrapped = withMap(Map);
 const CitiesListWrapped = withActiveItem(CitiesList);
 
-const MainScreen = (props) => {
-  const {offers, activeCity, activeOffers} = props;
+class MainScreen extends React.PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-  return <>
-    <main className={`page__main page__main--index ${!activeOffers.length ? `page__main--index-empty` : ``}`}>
-      {offers.length > 0 && <CitiesListWrapped offers={offers}/>}
+  _renderScreen() {
+    const {offers, activeCity, activeOffers} = this.props;
 
-      <div className="cities">
-        <div className={`cities__places-container container ${!activeOffers.length ? `cities__places-container--empty` : ``}`}>
-          <OffersListContainer
-            activeOffers={activeOffers}
-            activeCity={activeCity}
-          />
+    return <>
+      <main className={`page__main page__main--index ${!activeOffers.length ? `page__main--index-empty` : ``}`}>
+        {offers.length > 0 && <CitiesListWrapped offers={offers}/>}
 
-          <div className="cities__right-section">
-            {activeOffers.length > 0 && <MapWrapped/>}
+        <div className="cities">
+          <div className={`cities__places-container container ${!activeOffers.length ? `cities__places-container--empty` : ``}`}>
+            <OffersListContainer
+              activeOffers={activeOffers}
+              activeCity={activeCity}
+            />
+
+            <div className="cities__right-section">
+              {activeOffers.length > 0 && <MapWrapped/>}
+            </div>
           </div>
         </div>
-      </div>
-    </main>
-  </>;
-};
+      </main>
+    </>;
+  }
+
+  render() {
+    const {offers, getOffers} = this.props;
+
+    if (!offers || offers.length < 1) {
+      getOffers();
+    }
+    return this._renderScreen();
+  }
+}
 
 MainScreen.propTypes = {
+  getOffers: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(offerPropTypes).isRequired,
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
   activeCity: activeCityPropTypes
