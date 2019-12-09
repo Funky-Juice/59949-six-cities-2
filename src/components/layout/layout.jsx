@@ -24,12 +24,12 @@ const getPageType = () => {
 };
 
 const Layout = (props) => {
-  const {children, favoriteOffers} = props;
+  const {children} = props;
 
   if (getPageType() === `favorites`) {
     return <>
       <div
-        className={`page page--favorites ${!favoriteOffers.length ? `page--favorites-empty` : ``}`}
+        className="page page--favorites"
       >
         <PageHeader/>
         {children}

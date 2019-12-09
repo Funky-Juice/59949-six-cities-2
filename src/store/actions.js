@@ -41,14 +41,6 @@ const ActionCreator = {
     return api.get(`/login`)
       .then((response) => {
         dispatch(ActionCreator.setUser(response.data));
-      })
-      .catch((err) => {
-        const unauthorized = err.message === `unauthorized`;
-        if (unauthorized && location.pathname === `/favorites`) {
-          return;
-        } else {
-          // dispatch(ActionCreator.getOffers());
-        }
       });
   },
 
@@ -96,7 +88,7 @@ const ActionCreator = {
       });
   },
 
-  setFavoriteOffers: (payload = {}) => {
+  setFavoriteOffers: (payload = []) => {
     return {
       type: types.SET_FAVORITE_OFFERS,
       payload,

@@ -7,12 +7,7 @@ import store from './store/store';
 import App from './components/app';
 
 const init = () => {
-  store.dispatch(ActionCreator.getUser())
-    .then(() => {
-      if (location.pathname === `/favorites`) {
-        store.dispatch(ActionCreator.getFavoriteOffers());
-      }
-    });
+  store.dispatch(ActionCreator.getUser());
 
   setTimeout(() => {
     ReactDOM.render(<Provider store={store}>

@@ -5,7 +5,7 @@ const initialState = {
   offers: null,
   activeCity: {},
   activeOffers: [],
-  favoriteOffers: [],
+  favoriteOffers: null,
   activeOfferId: null,
   isAuthorizationRequired: false
 };
