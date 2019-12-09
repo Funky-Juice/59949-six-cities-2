@@ -2,7 +2,7 @@ import * as types from './action-types';
 
 const initialState = {
   user: {},
-  offers: [],
+  offers: null,
   activeCity: {},
   activeOffers: [],
   favoriteOffers: [],

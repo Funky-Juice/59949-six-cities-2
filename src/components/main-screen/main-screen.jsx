@@ -45,8 +45,9 @@ class MainScreen extends React.PureComponent {
   render() {
     const {offers, getOffers} = this.props;
 
-    if (!offers || offers.length < 1) {
+    if (!offers) {
       getOffers();
+      return <></>;
     }
     return this._renderScreen();
   }

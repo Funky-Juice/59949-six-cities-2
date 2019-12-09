@@ -110,7 +110,7 @@ const ActionCreator = {
     };
   },
 
-  clearOffers: (payload = []) => {
+  clearOffers: (payload = null) => {
     return {
       type: types.REMOVE_OFFERS,
       payload,
