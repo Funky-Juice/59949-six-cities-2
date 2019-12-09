@@ -2,7 +2,7 @@ import {Route, Switch, Redirect, Link} from 'react-router-dom';
 
 import AuthorizationScreen from '../authorization-screen/authorization-screen';
 import withLayout from '../../hocs/with-layout/with-layout';
-import OfferDetails from '../offer-details/offer-details';
+import OfferDetails from '../offer-details-screen';
 import FavoritesScreen from '../favorites-screen';
 import MainScreen from '../main-screen';
 import withAuth from '../../hocs/with-auth';
@@ -22,9 +22,7 @@ const App = (props) => {
         isAuthorizationRequired ? <AuthorizationScreenWrapped/> : <Redirect to="/"/>
       }/>
       <Route path="/favorites" exact component={withAuth(FavoritesScreenWrapped)}/>
-      <Route path="/offer/:id" exact render={(rest) =>
-        <OfferDetailsWrapped {...props} {...rest}/>
-      }/>
+      <Route path="/offer/:id" exact render={(rest) => <OfferDetailsWrapped {...rest}/>}/>
       <Route
         render={() => (
           <div style={{textAlign: `center`}}>

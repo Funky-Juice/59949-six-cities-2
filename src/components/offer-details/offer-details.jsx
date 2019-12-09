@@ -6,8 +6,7 @@ import BookmarkBtn from '../bookmark-btn';
 const BookmarkBtnWrapped = withVisibleState(BookmarkBtn);
 
 const OfferDetails = (props) => {
-  const {offers, match} = props;
-  const offer = offers.find(({id}) => id === parseInt(match.params.id, 10));
+  const {offer} = props;
 
   if (!offer) {
     return <></>;
@@ -99,8 +98,7 @@ const OfferDetails = (props) => {
 };
 
 OfferDetails.propTypes = {
-  match: PropTypes.object.isRequired,
-  offers: PropTypes.arrayOf(offerPropTypes).isRequired
+  offer: offerPropTypes.isRequired
 };
 
 export default OfferDetails;
