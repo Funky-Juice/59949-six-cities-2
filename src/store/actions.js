@@ -62,7 +62,6 @@ const ActionCreator = {
   setBookmark: (data) => (dispatch, _getState, api) => {
     return api.post(`/favorite/${data.id}/${data.status}`)
       .then((response) => {
-        dispatch(ActionCreator.setOfferBookmark(response.data));
         return response.data;
       })
       .catch((err) => {
@@ -71,13 +70,6 @@ const ActionCreator = {
           location.reload();
         }
       });
-  },
-
-  setOfferBookmark: (payload = {}) => {
-    return {
-      type: types.SET_OFFER_BOOKMARK,
-      payload,
-    };
   },
 
   getFavoriteOffers: () => (dispatch, _getState, api) => {
