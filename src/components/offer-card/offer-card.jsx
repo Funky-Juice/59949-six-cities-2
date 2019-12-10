@@ -20,7 +20,7 @@ const OfferCard = (props) => {
       </>}
 
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <a href={`/offer/${offer.id}`}>
           <img className="place-card__image" src={offer.preview_image} width="260" height="200" alt="Place image"></img>
         </a>
       </div>
