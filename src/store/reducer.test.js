@@ -8,6 +8,7 @@ describe(`Reducer works correctly`, () => {
     expect(reducer(undefined, {})).toEqual({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -20,6 +21,7 @@ describe(`Reducer works correctly`, () => {
     expect(reducer({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -31,6 +33,7 @@ describe(`Reducer works correctly`, () => {
     })).toEqual({
       user: {id: 1, email: `test@mail.ru`},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -43,6 +46,7 @@ describe(`Reducer works correctly`, () => {
     expect(reducer({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -54,6 +58,7 @@ describe(`Reducer works correctly`, () => {
     })).toEqual({
       user: {},
       offers: [{}, {}, {}],
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -66,6 +71,7 @@ describe(`Reducer works correctly`, () => {
     expect(reducer({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -77,6 +83,7 @@ describe(`Reducer works correctly`, () => {
     })).toEqual({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -87,6 +94,7 @@ describe(`Reducer works correctly`, () => {
     expect(reducer({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -105,6 +113,7 @@ describe(`Reducer works correctly`, () => {
     })).toEqual({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {
         name: `Amsterdam`,
         location: {
@@ -124,6 +133,7 @@ describe(`Reducer works correctly`, () => {
     expect(reducer({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -135,6 +145,7 @@ describe(`Reducer works correctly`, () => {
     })).toEqual({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -145,6 +156,7 @@ describe(`Reducer works correctly`, () => {
     expect(reducer({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -156,6 +168,7 @@ describe(`Reducer works correctly`, () => {
     })).toEqual({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [testOffer],
       activeOfferId: null,
@@ -168,6 +181,7 @@ describe(`Reducer works correctly`, () => {
     expect(reducer({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -179,6 +193,7 @@ describe(`Reducer works correctly`, () => {
     })).toEqual({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -189,6 +204,7 @@ describe(`Reducer works correctly`, () => {
     expect(reducer({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -200,6 +216,7 @@ describe(`Reducer works correctly`, () => {
     })).toEqual({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: 1,
@@ -212,6 +229,7 @@ describe(`Reducer works correctly`, () => {
     expect(reducer({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -223,6 +241,7 @@ describe(`Reducer works correctly`, () => {
     })).toEqual({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -233,6 +252,7 @@ describe(`Reducer works correctly`, () => {
     expect(reducer({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -244,6 +264,7 @@ describe(`Reducer works correctly`, () => {
     })).toEqual({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -256,6 +277,7 @@ describe(`Reducer works correctly`, () => {
     expect(reducer({
       user: {},
       offers: [testOffer],
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -267,6 +289,7 @@ describe(`Reducer works correctly`, () => {
     })).toEqual({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -279,6 +302,7 @@ describe(`Reducer works correctly`, () => {
     expect(reducer({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
@@ -290,6 +314,7 @@ describe(`Reducer works correctly`, () => {
     })).toEqual({
       user: {},
       offers: null,
+      reviews: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
