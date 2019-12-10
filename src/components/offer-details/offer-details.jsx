@@ -1,6 +1,7 @@
 import withVisibleState from '../../hocs/with-visible-state/with-visible-state';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import {calcRatingPercent, getPlural} from '../../utils/utils';
+import ReviewsList from '../reviews-list/reviews-list';
 import BookmarkBtn from '../bookmark-btn';
 
 const BookmarkBtnWrapped = withVisibleState(BookmarkBtn);
@@ -92,6 +93,8 @@ const OfferDetails = (props) => {
           </div>
           <div className="property__description">{offer.description}</div>
         </div>
+
+        <ReviewsList/>
       </div>
     </div>
   </section>;
