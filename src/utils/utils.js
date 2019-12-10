@@ -40,3 +40,9 @@ export const groupOffersByCity = (data) => {
     return r;
   }, Object.create(null));
 };
+
+export const sortReviewsByDate = (reviews) => {
+  return reviews.sort((a, b) => {
+    return Date.parse(b.date) - Date.parse(a.date);
+  });
+};

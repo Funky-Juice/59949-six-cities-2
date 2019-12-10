@@ -1,3 +1,4 @@
+import {sortReviewsByDate} from '../../utils/utils';
 import ReviewsItem from '../reviews-item/reviews-item';
 import {offerPropTypes} from '../../prop-types/prop-types';
 
@@ -11,7 +12,8 @@ const ReviewsList = (props) => {
   if (!reviews.length) {
     return <></>;
   }
-  reviews = reviews.slice(0, 10);
+
+  reviews = sortReviewsByDate(reviews).slice(0, 10);
 
   return <>
     <section className="property__reviews reviews">
