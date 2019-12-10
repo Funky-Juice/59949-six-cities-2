@@ -140,4 +140,42 @@ describe(`Action creators work correctly`, () => {
         expect(response).toEqual({fake: true});
       });
   });
+
+  it(`Action creator for getFavoriteOffers returns correct actions`, () => {
+    const dispatch = jest.fn();
+    const api = createAPI();
+    const apiMock = new MockAdapter(api);
+    const dataLoader = ActionCreator.getFavoriteOffers();
+
+    apiMock
+      .onGet(`/favorite`)
+      .reply(200, [{fake: true}]);
+
+    return dataLoader(dispatch, jest.fn(), api)
+      .then((response) => {
+        expect(response).toEqual([{fake: true}]);
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: types.SET_FAVORITE_OFFERS,
+          payload: [{fake: true}],
+        });
+      });
+  });
+
+  it(`Action creator for offer delete returns correct action`, () => {
+    const id = 1;
+
+    expect(ActionCreator.deleteOffer(id)).toEqual({
+      type: types.REMOVE_FAVORITE_OFFER,
+      payload: id
+    });
+  });
+
+  it(`Action creator for clear offers returns correct action`, () => {
+    expect(ActionCreator.clearOffers()).toEqual({
+      type: types.REMOVE_OFFERS,
+      payload: null
+    });
+  });
 });

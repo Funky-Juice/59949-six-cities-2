@@ -251,4 +251,50 @@ describe(`Reducer works correctly`, () => {
       isAuthorizationRequired: true
     });
   });
+
+  it(`Reducer should remove offers array`, () => {
+    expect(reducer({
+      user: {},
+      offers: [testOffer],
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null,
+      favoriteOffers: null,
+      isAuthorizationRequired: false
+    }, {
+      type: types.REMOVE_OFFERS,
+      payload: null
+    })).toEqual({
+      user: {},
+      offers: null,
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null,
+      favoriteOffers: null,
+      isAuthorizationRequired: false
+    });
+  });
+
+  it(`Reducer should set favorite offers array`, () => {
+    expect(reducer({
+      user: {},
+      offers: null,
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null,
+      favoriteOffers: null,
+      isAuthorizationRequired: false
+    }, {
+      type: types.SET_FAVORITE_OFFERS,
+      payload: [testOffer]
+    })).toEqual({
+      user: {},
+      offers: null,
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null,
+      favoriteOffers: [testOffer],
+      isAuthorizationRequired: false
+    });
+  });
 });
