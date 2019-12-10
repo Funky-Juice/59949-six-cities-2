@@ -56,7 +56,7 @@ class MainScreen extends React.PureComponent {
 MainScreen.propTypes = {
   getOffers: PropTypes.func.isRequired,
   clearOffers: PropTypes.func.isRequired,
-  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
+  offers: PropTypes.arrayOf(offerPropTypes),
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
   activeCity: activeCityPropTypes
 };

@@ -98,7 +98,7 @@ const OfferDetails = (props) => {
 };
 
 OfferDetails.propTypes = {
-  offer: offerPropTypes.isRequired
+  offer: offerPropTypes
 };
 
 export default OfferDetails;

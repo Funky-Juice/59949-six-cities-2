@@ -31,7 +31,7 @@ class OfferDetailsScreen extends React.PureComponent {
 OfferDetailsScreen.propTypes = {
   match: PropTypes.object.isRequired,
   getOffers: PropTypes.func.isRequired,
-  offers: PropTypes.arrayOf(offerPropTypes).isRequired
+  offers: PropTypes.arrayOf(offerPropTypes)
 };
 
 export default OfferDetailsScreen;

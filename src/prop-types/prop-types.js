@@ -31,11 +31,11 @@ export const offerPropTypes = PropTypes.shape({
 }).isRequired;
 
 export const userPropTypes = PropTypes.shape({
-  id: PropTypes.number.isRequired,
-  email: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  avatar_url: PropTypes.string.isRequired,
-  is_pro: PropTypes.bool.isRequired
+  id: PropTypes.number,
+  email: PropTypes.string,
+  name: PropTypes.string,
+  avatar_url: PropTypes.string,
+  is_pro: PropTypes.bool
 }).isRequired;
 
 export const activeCityPropTypes = PropTypes.shape({

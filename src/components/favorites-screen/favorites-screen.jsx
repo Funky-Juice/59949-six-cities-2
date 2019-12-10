@@ -54,7 +54,7 @@ class FavoritesScreen extends React.PureComponent {
 }
 
 FavoritesScreen.propTypes = {
-  favoriteOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
+  favoriteOffers: PropTypes.arrayOf(offerPropTypes),
   getFavoriteOffers: PropTypes.func.isRequired
 };
 
