@@ -1,6 +1,14 @@
 import ReviewsItem from '../reviews-item/reviews-item';
+import {offerPropTypes} from '../../prop-types/prop-types';
 
-const ReviewsList = () => {
+const ReviewsList = (props) => {
+  const {reviews, offer, getReviews} = props;
+
+  if (!reviews) {
+    getReviews(offer.id);
+    return <></>;
+  }
+
   return <>
     <section className="property__reviews reviews">
       <h2 className="reviews__title">
@@ -13,6 +21,12 @@ const ReviewsList = () => {
       </ul>
     </section>
   </>;
+};
+
+ReviewsList.propTypes = {
+  offer: offerPropTypes,
+  reviews: PropTypes.arrayOf({}),
+  getReviews: PropTypes.func.isRequired
 };
 
 export default ReviewsList;

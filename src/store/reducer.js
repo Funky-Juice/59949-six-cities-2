@@ -3,6 +3,7 @@ import * as types from './action-types';
 const initialState = {
   user: {},
   offers: null,
+  reviews: null,
   activeCity: {},
   activeOffers: [],
   favoriteOffers: null,
@@ -22,6 +23,10 @@ const reducer = (state = initialState, action) => {
 
     case types.REMOVE_OFFERS: return Object.assign({}, state, {
       offers: action.payload
+    });
+
+    case types.SET_REVIEWS: return Object.assign({}, state, {
+      reviews: action.payload
     });
 
     case types.SET_ACTIVE_CITY: return Object.assign({}, state, {
