@@ -178,4 +178,25 @@ describe(`Action creators work correctly`, () => {
       payload: null
     });
   });
+
+  it(`Action creator for getReviews returns correct actions`, () => {
+    const dispatch = jest.fn();
+    const api = createAPI();
+    const apiMock = new MockAdapter(api);
+    const id = 1;
+    const dataLoader = ActionCreator.getReviews(id);
+
+    apiMock
+      .onGet(`/comments/${id}`)
+      .reply(200, [{fake: true}]);
+
+    return dataLoader(dispatch, jest.fn(), api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: types.SET_REVIEWS,
+          payload: [{fake: true}],
+        });
+      });
+  });
 });

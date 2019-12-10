@@ -297,4 +297,29 @@ describe(`Reducer works correctly`, () => {
       isAuthorizationRequired: false
     });
   });
+
+  it(`Reducer should correctly set reviews data`, () => {
+    expect(reducer({
+      user: {},
+      offers: null,
+      reviews: null,
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null,
+      favoriteOffers: null,
+      isAuthorizationRequired: false
+    }, {
+      type: types.SET_REVIEWS,
+      payload: [{}, {}, {}]
+    })).toEqual({
+      user: {},
+      offers: null,
+      reviews: [{}, {}, {}],
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null,
+      favoriteOffers: null,
+      isAuthorizationRequired: false
+    });
+  });
 });
