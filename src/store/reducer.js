@@ -2,9 +2,10 @@ import * as types from './action-types';
 
 const initialState = {
   user: {},
-  offers: [],
+  offers: null,
   activeCity: {},
   activeOffers: [],
+  favoriteOffers: null,
   activeOfferId: null,
   isAuthorizationRequired: false
 };
@@ -16,6 +17,10 @@ const reducer = (state = initialState, action) => {
     });
 
     case types.SET_OFFERS: return Object.assign({}, state, {
+      offers: action.payload
+    });
+
+    case types.REMOVE_OFFERS: return Object.assign({}, state, {
       offers: action.payload
     });
 
@@ -35,18 +40,13 @@ const reducer = (state = initialState, action) => {
       isAuthorizationRequired: action.payload,
     });
 
-    case types.SET_OFFER_BOOKMARK:
-      return Object.assign({}, state, {
-        offers: state.offers.map((offer) => {
-          if (offer.id === action.payload.id) {
-            return Object.assign({}, offer, {
-              // eslint-disable-next-line camelcase
-              is_favorite: action.payload.is_favorite
-            });
-          }
-          return offer;
-        })
-      });
+    case types.SET_FAVORITE_OFFERS: return Object.assign({}, state, {
+      favoriteOffers: action.payload,
+    });
+
+    case types.REMOVE_FAVORITE_OFFER: return Object.assign({}, state, {
+      favoriteOffers: state.favoriteOffers.filter((offer) => offer.id !== action.payload),
+    });
   }
 
   return state;

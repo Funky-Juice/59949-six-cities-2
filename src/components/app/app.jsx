@@ -2,11 +2,14 @@ import {Route, Switch, Redirect, Link} from 'react-router-dom';
 
 import AuthorizationScreen from '../authorization-screen/authorization-screen';
 import withLayout from '../../hocs/with-layout/with-layout';
-import OfferDetails from '../offer-details/offer-details';
+import OfferDetails from '../offer-details-screen';
+import FavoritesScreen from '../favorites-screen';
 import MainScreen from '../main-screen';
+import withAuth from '../../hocs/with-auth';
 
 const MainScreenWrapped = withLayout(MainScreen);
 const OfferDetailsWrapped = withLayout(OfferDetails);
+const FavoritesScreenWrapped = withLayout(FavoritesScreen);
 const AuthorizationScreenWrapped = withLayout(AuthorizationScreen);
 
 const App = (props) => {
@@ -18,9 +21,8 @@ const App = (props) => {
       <Route path="/sign-in" exact render={() =>
         isAuthorizationRequired ? <AuthorizationScreenWrapped/> : <Redirect to="/"/>
       }/>
-      <Route path="/offer/:id" exact render={(rest) =>
-        <OfferDetailsWrapped {...props} {...rest}/>
-      }/>
+      <Route path="/favorites" exact component={withAuth(FavoritesScreenWrapped)}/>
+      <Route path="/offer/:id" exact render={(rest) => <OfferDetailsWrapped {...rest}/>}/>
       <Route
         render={() => (
           <div style={{textAlign: `center`}}>

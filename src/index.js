@@ -7,10 +7,7 @@ import store from './store/store';
 import App from './components/app';
 
 const init = () => {
-  store.dispatch(ActionCreator.getUser())
-    .then(() => {
-      store.dispatch(ActionCreator.getOffers());
-    });
+  store.dispatch(ActionCreator.getUser());
 
   setTimeout(() => {
     ReactDOM.render(<Provider store={store}>

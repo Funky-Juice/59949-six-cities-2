@@ -15,7 +15,7 @@ export const createAPI = (dispatch) => {
   const onFail = (err) => {
     if (err.response.status === 401 || err.response.status === 403) {
       dispatch(ActionCreator.requireAuthorization(true));
-      history.pushState({}, null, `/sign-in`);
+      throw new Error(`unauthorized`);
     }
     throw err;
   };

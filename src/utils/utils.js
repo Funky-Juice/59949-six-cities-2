@@ -20,3 +20,23 @@ export const calcRatingPercent = (rating) => {
 
   return Math.round(rating * maxRatingPercent / maxRating);
 };
+
+export const sortOffersByCity = (offers) => {
+  offers.sort((a, b) => {
+    if (a.city.name < b.city.name) {
+      return -1;
+    }
+    if (a.city.name > b.city.name) {
+      return 1;
+    }
+    return 0;
+  });
+};
+
+export const groupOffersByCity = (data) => {
+  return data.reduce((r, a) => {
+    r[a.city.name] = r[a.city.name] || [];
+    r[a.city.name].push(a);
+    return r;
+  }, Object.create(null));
+};

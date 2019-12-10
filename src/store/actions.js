@@ -49,7 +49,6 @@ const ActionCreator = {
       .then((response) => {
         dispatch(ActionCreator.setUser(response.data));
         dispatch(ActionCreator.requireAuthorization(false));
-        location.pathname = `/`;
       });
   },
 
@@ -63,14 +62,41 @@ const ActionCreator = {
   setBookmark: (data) => (dispatch, _getState, api) => {
     return api.post(`/favorite/${data.id}/${data.status}`)
       .then((response) => {
-        dispatch(ActionCreator.setOfferBookmark(response.data));
+        return response.data;
+      })
+      .catch((err) => {
+        if (err.message === `unauthorized`) {
+          history.pushState({}, null, `/sign-in`);
+          location.reload();
+        }
+      });
+  },
+
+  getFavoriteOffers: () => (dispatch, _getState, api) => {
+    return api.get(`/favorite`)
+      .then((response) => {
+        dispatch(ActionCreator.setFavoriteOffers(response.data));
         return response.data;
       });
   },
 
-  setOfferBookmark: (payload = {}) => {
+  setFavoriteOffers: (payload = []) => {
     return {
-      type: types.SET_OFFER_BOOKMARK,
+      type: types.SET_FAVORITE_OFFERS,
+      payload,
+    };
+  },
+
+  deleteOffer: (payload) => {
+    return {
+      type: types.REMOVE_FAVORITE_OFFER,
+      payload,
+    };
+  },
+
+  clearOffers: (payload = null) => {
+    return {
+      type: types.REMOVE_OFFERS,
       payload,
     };
   }

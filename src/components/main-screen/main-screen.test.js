@@ -1,12 +1,10 @@
-import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import offerTestObj from '../../mocks/test-offer';
-import MainScreen from './index';
+import MainScreen from './main-screen';
 
 const mockOffers = [offerTestObj];
-const createNodeMock = () => document.createElement(`div`);
 
 const store = createStore(() => ({
   offers: mockOffers,
@@ -15,13 +13,17 @@ const store = createStore(() => ({
 }));
 
 it(`MainScreen correctly renders`, () => {
-  const options = {createNodeMock};
+  const fn = jest.fn();
   const tree = renderer
     .create(<Provider store={store}>
-      <Router>
-        <MainScreen/>
-      </Router>
-    </Provider>, options)
+      <MainScreen
+        offers={mockOffers}
+        activeOffers={mockOffers}
+        activeCity={mockOffers[0].city}
+        getOffers={fn}
+        clearOffers={fn}
+      />
+    </Provider>)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

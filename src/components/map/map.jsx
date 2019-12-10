@@ -32,9 +32,14 @@ class Map extends React.PureComponent {
 
   componentDidMount() {
     setTimeout(() => {
-      this._mapInit(this.props.mapRef.current);
-      this._focusView(this.props.activeCity);
-      this._renderPoints(this.props.activeOffers);
+      const {mapRef, activeCity, activeOffers} = this.props;
+
+      if (!mapRef.current) {
+        return;
+      }
+      this._mapInit(mapRef.current);
+      this._focusView(activeCity);
+      this._renderPoints(activeOffers);
     }, 10);
   }
 
@@ -55,7 +60,9 @@ class Map extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    this.map.remove();
+    if (this.map) {
+      this.map.remove();
+    }
   }
 
   _mapInit(container) {
