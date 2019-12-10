@@ -7,11 +7,12 @@ import BookmarkBtn from '../bookmark-btn';
 const BookmarkBtnWrapped = withVisibleState(BookmarkBtn);
 
 const OfferDetails = (props) => {
-  const {offer} = props;
+  let {offer} = props;
 
   if (!offer) {
     return <></>;
   }
+  offer.rating = Math.round(offer.rating);
 
   return <section className="property">
     <div className="property__gallery-container container">
