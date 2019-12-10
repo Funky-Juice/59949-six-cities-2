@@ -2,7 +2,7 @@ import ReviewsItem from '../reviews-item/reviews-item';
 import {offerPropTypes} from '../../prop-types/prop-types';
 
 const ReviewsList = (props) => {
-  const {reviews, offer, getReviews} = props;
+  let {reviews, offer, getReviews} = props;
 
   if (!reviews) {
     getReviews(offer.id);
@@ -11,6 +11,7 @@ const ReviewsList = (props) => {
   if (!reviews.length) {
     return <></>;
   }
+  reviews = reviews.slice(0, 10);
 
   return <>
     <section className="property__reviews reviews">
