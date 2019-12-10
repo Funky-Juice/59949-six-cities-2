@@ -1,3 +1,4 @@
+import {reviewPropTypes} from '../../prop-types/prop-types';
 import {calcRatingPercent} from '../../utils/utils';
 
 const ReviewsItem = (props) => {
@@ -38,7 +39,7 @@ const ReviewsItem = (props) => {
 };
 
 ReviewsItem.propTypes = {
-  review: PropTypes.object.isRequired
+  review: reviewPropTypes
 };
 
 export default ReviewsItem;

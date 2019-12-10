@@ -1,6 +1,6 @@
+import {offerPropTypes, reviewPropTypes} from '../../prop-types/prop-types';
 import {sortReviewsByDate} from '../../utils/utils';
 import ReviewsItem from '../reviews-item/reviews-item';
-import {offerPropTypes} from '../../prop-types/prop-types';
 
 const ReviewsList = (props) => {
   let {reviews, offer, getReviews} = props;
@@ -36,7 +36,7 @@ const ReviewsList = (props) => {
 
 ReviewsList.propTypes = {
   offer: offerPropTypes,
-  reviews: PropTypes.array,
+  reviews: PropTypes.arrayOf(reviewPropTypes),
   getReviews: PropTypes.func.isRequired
 };
 
