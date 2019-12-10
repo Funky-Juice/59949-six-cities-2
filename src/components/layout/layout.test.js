@@ -1,4 +1,3 @@
-import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import Layout from './layout';
@@ -14,9 +13,7 @@ const mockNode = <div/>;
 it(`Layout correctly renders`, () => {
   const tree = renderer
     .create(<Provider store={store}>
-      <Router>
-        <Layout>{mockNode}</Layout>
-      </Router>
+      <Layout>{mockNode}</Layout>
     </Provider>)
     .toJSON();
 

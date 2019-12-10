@@ -136,12 +136,8 @@ describe(`Action creators work correctly`, () => {
       .reply(200, {fake: true});
 
     return dataLoader(dispatch, jest.fn(), api)
-      .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: types.SET_OFFER_BOOKMARK,
-          payload: {fake: true},
-        });
+      .then((response) => {
+        expect(response).toEqual({fake: true});
       });
   });
 });

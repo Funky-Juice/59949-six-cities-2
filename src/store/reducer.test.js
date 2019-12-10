@@ -7,10 +7,11 @@ describe(`Reducer works correctly`, () => {
   it(`Reducer without additional params should return initial state`, () => {
     expect(reducer(undefined, {})).toEqual({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     });
   });
@@ -18,20 +19,22 @@ describe(`Reducer works correctly`, () => {
   it(`Reducer should correctly set user data`, () => {
     expect(reducer({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
       type: types.SET_USER,
       payload: {id: 1, email: `test@mail.ru`}
     })).toEqual({
       user: {id: 1, email: `test@mail.ru`},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     });
   });
@@ -39,10 +42,11 @@ describe(`Reducer works correctly`, () => {
   it(`Reducer should correctly set offers data`, () => {
     expect(reducer({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
       type: types.SET_OFFERS,
@@ -53,6 +57,7 @@ describe(`Reducer works correctly`, () => {
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     });
   });
@@ -60,29 +65,32 @@ describe(`Reducer works correctly`, () => {
   it(`Reducer should return active city object`, () => {
     expect(reducer({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
       type: types.SET_ACTIVE_CITY,
       payload: {}
     })).toEqual({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     });
 
     expect(reducer({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
       type: types.SET_ACTIVE_CITY,
@@ -96,7 +104,7 @@ describe(`Reducer works correctly`, () => {
       }
     })).toEqual({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {
         name: `Amsterdam`,
         location: {
@@ -107,6 +115,7 @@ describe(`Reducer works correctly`, () => {
       },
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     });
   });
@@ -114,39 +123,43 @@ describe(`Reducer works correctly`, () => {
   it(`Reducer should return array of active offers`, () => {
     expect(reducer({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
       type: types.SET_ACTIVE_OFFERS,
       payload: []
     })).toEqual({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     });
 
     expect(reducer({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
       type: types.SET_ACTIVE_OFFERS,
       payload: [testOffer]
     })).toEqual({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [testOffer],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     });
   });
@@ -154,39 +167,43 @@ describe(`Reducer works correctly`, () => {
   it(`Reducer should return active offer ID`, () => {
     expect(reducer({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
       type: types.SET_ACTIVE_OFFER_ID,
       payload: null
     })).toEqual({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     });
 
     expect(reducer({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
       type: types.SET_ACTIVE_OFFER_ID,
       payload: 1
     })).toEqual({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: 1,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     });
   });
@@ -194,65 +211,44 @@ describe(`Reducer works correctly`, () => {
   it(`Reducer should set need of authorization`, () => {
     expect(reducer({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: true
     }, {
       type: types.REQUIRED_AUTHORIZATION,
       payload: false
     })).toEqual({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     });
 
     expect(reducer({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
       type: types.REQUIRED_AUTHORIZATION,
       payload: true
     })).toEqual({
       user: {},
-      offers: [],
+      offers: null,
       activeCity: {},
       activeOffers: [],
       activeOfferId: null,
+      favoriteOffers: null,
       isAuthorizationRequired: true
-    });
-  });
-
-  it(`Reducer should set offer field is_favorite in offers array`, () => {
-    const modifedOffer = Object.assign({}, testOffer);
-    // eslint-disable-next-line camelcase
-    modifedOffer.is_favorite = !testOffer.is_favorite;
-
-    expect(reducer({
-      user: {},
-      offers: [testOffer],
-      activeCity: {},
-      activeOffers: [],
-      activeOfferId: null,
-      isAuthorizationRequired: false
-    }, {
-      type: types.SET_OFFER_BOOKMARK,
-      payload: modifedOffer
-    })).toEqual({
-      user: {},
-      offers: [modifedOffer],
-      activeCity: {},
-      activeOffers: [],
-      activeOfferId: null,
-      isAuthorizationRequired: false
     });
   });
 });

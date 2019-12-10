@@ -127,7 +127,7 @@ exports[`MainScreen correctly renders 1`] = `
               className="cities__image-wrapper place-card__image-wrapper"
             >
               <a
-                href="#"
+                href="/offer/2"
               >
                 <img
                   alt="Place image"
