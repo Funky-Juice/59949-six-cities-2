@@ -3,6 +3,10 @@ import {calcRatingPercent} from '../../utils/utils';
 const ReviewsItem = (props) => {
   const {review} = props;
 
+  const reviewDate = new Date(review.date);
+  const reviewYear = reviewDate.getFullYear();
+  const reviewMonth = reviewDate.toLocaleString(`en`, {month: `long`});
+
   return <>
     <li className="reviews__item">
       <div className="reviews__user user">
@@ -27,7 +31,7 @@ const ReviewsItem = (props) => {
 
         <p className="reviews__text">{review.comment}</p>
 
-        <time className="reviews__time" dateTime="2019-04-24">{review.date}</time>
+        <time className="reviews__time" dateTime="2019-04-24">{reviewMonth} {reviewYear}</time>
       </div>
     </li>
   </>;
