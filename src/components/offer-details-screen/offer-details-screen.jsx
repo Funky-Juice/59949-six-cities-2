@@ -38,7 +38,7 @@ class OfferDetailsScreen extends React.PureComponent {
         <OfferDetails offer={offer}/>
 
         <div className="container">
-          <OffersListNearby/>
+          <OffersListNearby activeOffer={offer}/>
         </div>
       </main>
     </>;
