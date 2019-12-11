@@ -1,5 +1,6 @@
 import OfferDetails from '../offer-details/offer-details';
 import {offerPropTypes} from '../../prop-types/prop-types';
+import {shuffleOffers} from '../../utils/utils';
 
 class OfferDetailsScreen extends React.PureComponent {
   constructor(props) {
@@ -13,11 +14,13 @@ class OfferDetailsScreen extends React.PureComponent {
   _setActiveOffers(offer) {
     const {offers} = this.props;
 
-    const cityOffers = offers.filter((it) => {
+    let cityOffers = offers.filter((it) => {
       return it.id !== offer.id && it.city.name === offer.city.name;
-    }).slice(0, 3);
+    });
 
+    cityOffers = shuffleOffers(cityOffers).slice(0, 3);
     cityOffers.push(offer);
+
     this.setActiveOffers(cityOffers);
   }
 
