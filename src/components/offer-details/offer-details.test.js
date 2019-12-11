@@ -9,7 +9,9 @@ const mockReviews = [reviewTestObj];
 const mockOffer = offerTestObj;
 
 const store = createStore(() => ({
-  reviews: mockReviews
+  reviews: mockReviews,
+  activeCity: mockOffer.city,
+  activeOffers: [mockOffer]
 }));
 
 it(`OfferDetails correctly renders`, () => {

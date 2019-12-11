@@ -299,6 +299,33 @@ exports[`OfferDetailsScreen correctly renders 1`] = `
         </section>
       </div>
     </div>
+    <section
+      className="property__map map"
+    >
+      <div
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      />
+    </section>
   </section>
+  <div
+    className="container"
+  >
+    <section
+      className="near-places places"
+    >
+      <h2
+        className="near-places__title"
+      >
+        Other places in the neighbourhood
+      </h2>
+      <div
+        className="near-places__list places__list"
+      />
+    </section>
+  </div>
 </main>
 `;

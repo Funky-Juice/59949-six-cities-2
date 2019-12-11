@@ -20,12 +20,16 @@ const match = {
 };
 
 it(`OfferDetailsScreen correctly renders`, () => {
+  const cb = jest.fn();
   const tree = renderer
     .create(<Provider store={store}>
       <OfferDetailsScreen
         offers={mockOffers}
         getOffers={() => {}}
         match={match}
+        setActiveCity={cb}
+        setActiveOfferId={cb}
+        setActiveOffers={cb}
       />
     </Provider>)
     .toJSON();
