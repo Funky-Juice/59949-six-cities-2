@@ -1,5 +1,5 @@
 const withMap = (Component) => {
-  return class WithMap extends React.PureComponent {
+  class WithMap extends React.PureComponent {
     constructor(props) {
       super(props);
 
@@ -7,15 +7,23 @@ const withMap = (Component) => {
     }
 
     render() {
+      const {mapClass} = this.props;
+
       return <>
-        <section className="cities__map map">
+        <section className={`${mapClass}__map map`}>
           <div ref={this._mapRef} style={{height: `100%`}}>
             <Component mapRef={this._mapRef}/>
           </div>
         </section>
       </>;
     }
+  }
+
+  WithMap.propTypes = {
+    mapClass: PropTypes.string.isRequired
   };
+
+  return WithMap;
 };
 
 export default withMap;

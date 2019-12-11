@@ -1,9 +1,12 @@
 import withVisibleState from '../../hocs/with-visible-state/with-visible-state';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import {calcRatingPercent, getPlural} from '../../utils/utils';
+import withMap from '../../hocs/with-map/with-map';
 import ReviewsList from '../reviews-list';
 import BookmarkBtn from '../bookmark-btn';
+import Map from '../map';
 
+const MapWrapped = withMap(Map);
 const BookmarkBtnWrapped = withVisibleState(BookmarkBtn);
 
 const OfferDetails = (props) => {
@@ -98,6 +101,8 @@ const OfferDetails = (props) => {
         <ReviewsList offer={offer}/>
       </div>
     </div>
+
+    <MapWrapped mapClass={`property`}/>
   </section>;
 };
 

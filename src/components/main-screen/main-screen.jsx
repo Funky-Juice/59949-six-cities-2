@@ -34,7 +34,7 @@ class MainScreen extends React.PureComponent {
             />
 
             <div className="cities__right-section">
-              {activeOffers.length > 0 && <MapWrapped/>}
+              {activeOffers.length > 0 && <MapWrapped mapClass={`cities`}/>}
             </div>
           </div>
         </div>
