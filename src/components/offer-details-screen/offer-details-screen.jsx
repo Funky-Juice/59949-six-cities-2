@@ -10,9 +10,14 @@ class OfferDetailsScreen extends React.PureComponent {
     this.setActiveOfferId = this.props.setActiveOfferId;
   }
 
-  _setActiveOffers(city) {
+  _setActiveOffers(offer) {
     const {offers} = this.props;
-    const cityOffers = offers.filter((it) => (it.city.name === city.name));
+
+    const cityOffers = offers.filter((it) => {
+      return it.id !== offer.id && it.city.name === offer.city.name;
+    }).slice(0, 3);
+
+    cityOffers.push(offer);
     this.setActiveOffers(cityOffers);
   }
 
@@ -22,7 +27,7 @@ class OfferDetailsScreen extends React.PureComponent {
 
     this.setActiveCity(offer.city);
     this.setActiveOfferId(offer.id);
-    this._setActiveOffers(offer.city);
+    this._setActiveOffers(offer);
 
     return <>
       <main className="page__main page__main--property">
