@@ -9,8 +9,8 @@ class Map extends React.PureComponent {
 
     this.city = [52.38333, 4.9];
     this.zoom = 12;
-    this.iconUrl = `img/pin.svg`;
-    this.activeIconUrl = `img/pin-active.svg`;
+    this.iconUrl = `/img/pin.svg`;
+    this.activeIconUrl = `/img/pin-active.svg`;
     this.iconSize = [30, 30];
     this.markers = leaflet.layerGroup();
     this.activeMarker = leaflet.layerGroup();
@@ -32,7 +32,7 @@ class Map extends React.PureComponent {
 
   componentDidMount() {
     setTimeout(() => {
-      const {mapRef, activeCity, activeOffers} = this.props;
+      const {mapRef, activeCity, activeOffers, activeOfferId} = this.props;
 
       if (!mapRef.current) {
         return;
@@ -40,6 +40,10 @@ class Map extends React.PureComponent {
       this._mapInit(mapRef.current);
       this._focusView(activeCity);
       this._renderPoints(activeOffers);
+
+      if (activeOfferId) {
+        this._highlightActiveOffer(activeOfferId);
+      }
     }, 10);
   }
 

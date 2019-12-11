@@ -30,6 +30,20 @@ const ActionCreator = {
     };
   },
 
+  getReviews: (id) => (dispatch, _getState, api) => {
+    return api.get(`/comments/${id}`)
+      .then((response) => {
+        dispatch(ActionCreator.setReviews(response.data));
+      });
+  },
+
+  setReviews: (payload = []) => {
+    return {
+      type: types.SET_REVIEWS,
+      payload,
+    };
+  },
+
   requireAuthorization: (status) => {
     return {
       type: types.REQUIRED_AUTHORIZATION,

@@ -46,4 +46,17 @@ export const activeCityPropTypes = PropTypes.shape({
     zoom: PropTypes.number
   })
 }).isRequired;
+
+export const reviewPropTypes = PropTypes.shape({
+  id: PropTypes.number,
+  date: PropTypes.string,
+  rating: PropTypes.number,
+  comment: PropTypes.string,
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    is_pro: PropTypes.bool,
+    avatar_url: PropTypes.string
+  }).isRequired
+}).isRequired;
 /* eslint-enable */

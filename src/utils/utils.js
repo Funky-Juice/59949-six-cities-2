@@ -40,3 +40,25 @@ export const groupOffersByCity = (data) => {
     return r;
   }, Object.create(null));
 };
+
+export const sortReviewsByDate = (reviews) => {
+  return reviews.sort((a, b) => {
+    return Date.parse(b.date) - Date.parse(a.date);
+  });
+};
+
+export const shuffleOffers = (offers) => {
+  let currentIndex = offers.length;
+  let temporaryValue;
+  let randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    temporaryValue = offers[currentIndex];
+    offers[currentIndex] = offers[randomIndex];
+    offers[randomIndex] = temporaryValue;
+  }
+  return offers;
+};

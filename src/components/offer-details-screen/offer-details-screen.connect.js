@@ -9,7 +9,10 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  getOffers: () => dispatch(ActionCreator.getOffers())
+  getOffers: () => dispatch(ActionCreator.getOffers()),
+  setActiveCity: (city) => dispatch(ActionCreator.setActiveCity(city)),
+  setActiveOfferId: (id) => dispatch(ActionCreator.setActiveOfferId(id)),
+  setActiveOffers: (offers) => dispatch(ActionCreator.setActiveOffers(offers))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OfferDetailsScreen);
