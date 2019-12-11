@@ -4,11 +4,25 @@ import {offerPropTypes} from '../../prop-types/prop-types';
 class OfferDetailsScreen extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    this.setActiveCity = this.props.setActiveCity;
+    this.setActiveOffers = this.props.setActiveOffers;
+    this.setActiveOfferId = this.props.setActiveOfferId;
+  }
+
+  _setActiveOffers(city) {
+    const {offers} = this.props;
+    const cityOffers = offers.filter((it) => (it.city.name === city.name));
+    this.setActiveOffers(cityOffers);
   }
 
   _renderScreen() {
     const {offers, match} = this.props;
     const offer = offers.find(({id}) => id === parseInt(match.params.id, 10));
+
+    this.setActiveCity(offer.city);
+    this.setActiveOfferId(offer.id);
+    this._setActiveOffers(offer.city);
 
     return <>
       <main className="page__main page__main--property">
@@ -30,8 +44,11 @@ class OfferDetailsScreen extends React.PureComponent {
 
 OfferDetailsScreen.propTypes = {
   match: PropTypes.object.isRequired,
+  offers: PropTypes.arrayOf(offerPropTypes),
   getOffers: PropTypes.func.isRequired,
-  offers: PropTypes.arrayOf(offerPropTypes)
+  setActiveCity: PropTypes.func.isRequired,
+  setActiveOffers: PropTypes.func.isRequired,
+  setActiveOfferId: PropTypes.func.isRequired
 };
 
 export default OfferDetailsScreen;
