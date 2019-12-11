@@ -1,6 +1,7 @@
 import {offerPropTypes, reviewPropTypes} from '../../prop-types/prop-types';
 import {sortReviewsByDate} from '../../utils/utils';
 import ReviewsItem from '../reviews-item/reviews-item';
+import ReviewsForm from '../reviews-form/reviews-form';
 
 const ReviewsList = (props) => {
   let {reviews, offer, getReviews} = props;
@@ -30,6 +31,8 @@ const ReviewsList = (props) => {
           />
         )}
       </ul>
+
+      <ReviewsForm/>
     </section>
   </>;
 };
