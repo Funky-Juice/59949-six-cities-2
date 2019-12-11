@@ -1,3 +1,4 @@
+import OffersListNearby from '../offers-list-nearby/offers-list-nearby';
 import OfferDetails from '../offer-details/offer-details';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import {shuffleOffers} from '../../utils/utils';
@@ -35,6 +36,10 @@ class OfferDetailsScreen extends React.PureComponent {
     return <>
       <main className="page__main page__main--property">
         <OfferDetails offer={offer}/>
+
+        <div className="container">
+          <OffersListNearby/>
+        </div>
       </main>
     </>;
   }
