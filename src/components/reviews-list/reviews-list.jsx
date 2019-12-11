@@ -10,17 +10,14 @@ const ReviewsList = (props) => {
     getReviews(offer.id);
     return <></>;
   }
-  if (!reviews.length) {
-    return <></>;
-  }
 
   reviews = sortReviewsByDate(reviews).slice(0, 10);
 
   return <>
     <section className="property__reviews reviews">
       <h2 className="reviews__title">
-        Reviews &middot;
-        <span className="reviews__amount">{reviews.length}</span>
+        Reviews
+        {reviews.length > 0 && <span className="reviews__amount"> &middot;{reviews.length}</span>}
       </h2>
 
       <ul className="reviews__list">
