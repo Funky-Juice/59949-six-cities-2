@@ -1,7 +1,10 @@
 import {offerPropTypes, reviewPropTypes} from '../../prop-types/prop-types';
 import {sortReviewsByDate} from '../../utils/utils';
+import withForm from '../../hocs/with-form';
+import ReviewsForm from '../reviews-form/reviews-form';
 import ReviewsItem from '../reviews-item/reviews-item';
-import ReviewsForm from '../reviews-form';
+
+const ReviewsFormWrapped = withForm(ReviewsForm);
 
 const ReviewsList = (props) => {
   let {reviews, offer, getReviews, isAuthorizationRequired} = props;
@@ -29,7 +32,7 @@ const ReviewsList = (props) => {
         )}
       </ul>
 
-      {!isAuthorizationRequired && <ReviewsForm offer={offer}/>}
+      {!isAuthorizationRequired && <ReviewsFormWrapped offer={offer}/>}
     </section>
   </>;
 };
