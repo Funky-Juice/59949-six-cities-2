@@ -29,7 +29,7 @@ const ReviewsList = (props) => {
         )}
       </ul>
 
-      <ReviewsForm/>
+      <ReviewsForm offer={offer}/>
     </section>
   </>;
 };

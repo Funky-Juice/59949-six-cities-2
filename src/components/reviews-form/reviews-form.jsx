@@ -1,4 +1,5 @@
 import {Fragment} from 'react';
+import {offerPropTypes} from '../../prop-types/prop-types';
 
 class ReviewsForm extends React.PureComponent {
   constructor(props) {
@@ -10,6 +11,7 @@ class ReviewsForm extends React.PureComponent {
       rating: 0
     };
 
+    this._handleFormSubmit = this._handleFormSubmit.bind(this);
     this._handleTextChange = this._handleTextChange.bind(this);
     this._handleRatingChange = this._handleRatingChange.bind(this);
 
@@ -44,9 +46,30 @@ class ReviewsForm extends React.PureComponent {
     this.setState({isLocked: !isValid});
   }
 
+  _handleFormSubmit(evt) {
+    const {isLocked, rating, reviewText} = this.state;
+    const {offer} = this.props;
+
+    evt.preventDefault();
+    if (isLocked) {
+      return;
+    }
+
+    this.props.sendReview({
+      rating,
+      reviewText,
+      id: offer.id
+    });
+  }
+
   _renderForm() {
     return <>
-      <form className="reviews__form form" action="#" method="post">
+      <form
+        className="reviews__form form"
+        action="#"
+        method="post"
+        onSubmit={this._handleFormSubmit}
+      >
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
 
         <div className="reviews__rating-form form__rating">
@@ -102,5 +125,10 @@ class ReviewsForm extends React.PureComponent {
     return this._renderForm();
   }
 }
+
+ReviewsForm.propTypes = {
+  offer: offerPropTypes,
+  sendReview: PropTypes.func.isRequired
+};
 
 export default ReviewsForm;
