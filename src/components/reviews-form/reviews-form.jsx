@@ -6,10 +6,12 @@ class ReviewsForm extends React.PureComponent {
 
     this.state = {
       isLocked: true,
-      reviewText: ``
+      reviewText: ``,
+      rating: 0
     };
 
     this._handleTextChange = this._handleTextChange.bind(this);
+    this._handleRatingChange = this._handleRatingChange.bind(this);
 
     this.ratingInputs = [
       {id: 5, value: `perfect`},
@@ -21,11 +23,15 @@ class ReviewsForm extends React.PureComponent {
   }
 
   componentDidUpdate() {
-    console.log(this.state.reviewText);
+    console.log(this.state);
   }
 
   _handleTextChange(evt) {
     this.setState({reviewText: evt.target.value});
+  }
+
+  _handleRatingChange(evt) {
+    this.setState({rating: evt.target.value});
   }
 
   _renderForm() {
@@ -42,6 +48,7 @@ class ReviewsForm extends React.PureComponent {
                 value={it.id}
                 id={`${it.id}-stars`}
                 type="radio"
+                onChange={this._handleRatingChange}
               ></input>
               <label
                 htmlFor={`${it.id}-stars`}
