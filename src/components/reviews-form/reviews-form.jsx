@@ -23,7 +23,7 @@ class ReviewsForm extends React.PureComponent {
   }
 
   componentDidUpdate() {
-    console.log(this.state);
+    this._validateFields(this.state);
   }
 
   _handleTextChange(evt) {
@@ -31,7 +31,17 @@ class ReviewsForm extends React.PureComponent {
   }
 
   _handleRatingChange(evt) {
-    this.setState({rating: evt.target.value});
+    this.setState({rating: Number(evt.target.value)});
+  }
+
+  _validateFields(state) {
+    const {rating, reviewText} = state;
+    const minСharacters = 50;
+    const maxСharacters = 300;
+
+    const isValid = rating > 0 && reviewText.length >= minСharacters && reviewText.length <= maxСharacters;
+
+    this.setState({isLocked: !isValid});
   }
 
   _renderForm() {
