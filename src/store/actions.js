@@ -126,6 +126,7 @@ const ActionCreator = {
           history.pushState({}, null, `/sign-in`);
           location.reload();
         }
+        throw new Error(err.response.data.error);
       });
   }
 };

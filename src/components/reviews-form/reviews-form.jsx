@@ -8,7 +8,8 @@ class ReviewsForm extends React.PureComponent {
     this.state = {
       isLocked: true,
       reviewText: ``,
-      rating: 0
+      rating: 0,
+      message: null
     };
 
     this._handleFormSubmit = this._handleFormSubmit.bind(this);
@@ -65,15 +66,24 @@ class ReviewsForm extends React.PureComponent {
       return;
     }
 
-    this.setState({isLocked: true});
+    this.setState(() => ({
+      isLocked: true,
+      message: null
+    }));
 
     this.props.sendReview({
       rating,
       reviewText,
       id: offer.id
-    }).then(() => this._clearFormFields())
+    })
+      .then(() => {
+        this._clearFormFields();
+      })
       .catch((err) => {
-        this.setState({isLocked: false});
+        this.setState(() => ({
+          isLocked: false,
+          message: err.message
+        }));
       });
   }
 
@@ -133,6 +143,12 @@ class ReviewsForm extends React.PureComponent {
             disabled={this.state.isLocked}
           >Submit
           </button>
+        </div>
+
+        <div style={{position: `relative`, fontSize: `14px`, color: `red`}}>
+          <p style={{position: `absolute`}}>
+            {this.state.message}
+          </p>
         </div>
       </form>
     </>;
