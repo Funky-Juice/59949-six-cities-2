@@ -24,8 +24,10 @@ class ReviewsForm extends React.PureComponent {
     ];
   }
 
-  componentDidUpdate() {
-    this._validateFields(this.state);
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.reviewText !== this.state.reviewText || prevState.rating !== this.state.rating) {
+      this._validateFields(this.state);
+    }
   }
 
   _handleTextChange(evt) {
@@ -63,11 +65,16 @@ class ReviewsForm extends React.PureComponent {
       return;
     }
 
+    this.setState({isLocked: true});
+
     this.props.sendReview({
       rating,
       reviewText,
       id: offer.id
-    }).then(() => this._clearFormFields());
+    }).then(() => this._clearFormFields())
+      .catch((err) => {
+        this.setState({isLocked: false});
+      });
   }
 
   _renderForm() {
