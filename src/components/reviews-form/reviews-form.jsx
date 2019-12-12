@@ -5,8 +5,11 @@ class ReviewsForm extends React.PureComponent {
     super(props);
 
     this.state = {
-      isLocked: true
+      isLocked: true,
+      reviewText: ``
     };
+
+    this._handleTextChange = this._handleTextChange.bind(this);
 
     this.ratingInputs = [
       {id: 5, value: `perfect`},
@@ -15,6 +18,14 @@ class ReviewsForm extends React.PureComponent {
       {id: 2, value: `badly`},
       {id: 1, value: `terribly`}
     ];
+  }
+
+  componentDidUpdate() {
+    console.log(this.state.reviewText);
+  }
+
+  _handleTextChange(evt) {
+    this.setState({reviewText: evt.target.value});
   }
 
   _renderForm() {
@@ -50,6 +61,7 @@ class ReviewsForm extends React.PureComponent {
           id="review"
           name="review"
           placeholder="Tell how was your stay, what you like and what can be improved"
+          onChange={this._handleTextChange}
         ></textarea>
 
         <div className="reviews__button-wrapper">
