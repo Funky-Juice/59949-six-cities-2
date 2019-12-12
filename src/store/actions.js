@@ -118,6 +118,7 @@ const ActionCreator = {
   sendReview: (data) => (dispatch, _getState, api) => {
     return api.post(`/comments/${data.id}`, {rating: data.rating, comment: data.reviewText})
       .then((response) => {
+        dispatch(ActionCreator.getReviews(data.id));
         return response.data;
       })
       .catch((err) => {
