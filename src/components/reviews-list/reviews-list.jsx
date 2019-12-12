@@ -4,7 +4,7 @@ import ReviewsItem from '../reviews-item/reviews-item';
 import ReviewsForm from '../reviews-form';
 
 const ReviewsList = (props) => {
-  let {reviews, offer, getReviews} = props;
+  let {reviews, offer, getReviews, isAuthorizationRequired} = props;
 
   if (!reviews) {
     getReviews(offer.id);
@@ -29,7 +29,7 @@ const ReviewsList = (props) => {
         )}
       </ul>
 
-      <ReviewsForm offer={offer}/>
+      {!isAuthorizationRequired && <ReviewsForm offer={offer}/>}
     </section>
   </>;
 };
@@ -37,7 +37,8 @@ const ReviewsList = (props) => {
 ReviewsList.propTypes = {
   offer: offerPropTypes,
   reviews: PropTypes.arrayOf(reviewPropTypes),
-  getReviews: PropTypes.func.isRequired
+  getReviews: PropTypes.func.isRequired,
+  isAuthorizationRequired: PropTypes.bool.isRequired
 };
 
 export default ReviewsList;

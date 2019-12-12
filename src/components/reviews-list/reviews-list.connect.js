@@ -4,7 +4,8 @@ import ActionCreator from '../../store/actions';
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
-    reviews: state.reviews
+    reviews: state.reviews,
+    isAuthorizationRequired: state.isAuthorizationRequired
   });
 };
 
