@@ -46,6 +46,14 @@ class ReviewsForm extends React.PureComponent {
     this.setState({isLocked: !isValid});
   }
 
+  _clearFormFields() {
+    this.setState(() => ({
+      rating: 0,
+      reviewText: ``,
+      isLocked: true
+    }));
+  }
+
   _handleFormSubmit(evt) {
     const {isLocked, rating, reviewText} = this.state;
     const {offer} = this.props;
@@ -59,7 +67,7 @@ class ReviewsForm extends React.PureComponent {
       rating,
       reviewText,
       id: offer.id
-    });
+    }).then(() => this._clearFormFields());
   }
 
   _renderForm() {
@@ -78,6 +86,7 @@ class ReviewsForm extends React.PureComponent {
               <input
                 className="form__rating-input visually-hidden"
                 name="rating"
+                checked={this.state.rating === it.id}
                 value={it.id}
                 id={`${it.id}-stars`}
                 type="radio"
@@ -101,6 +110,7 @@ class ReviewsForm extends React.PureComponent {
           id="review"
           name="review"
           placeholder="Tell how was your stay, what you like and what can be improved"
+          value={this.state.reviewText}
           onChange={this._handleTextChange}
         ></textarea>
 
