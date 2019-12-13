@@ -183,6 +183,7 @@ exports[`ReviewsForm correctly renders 1`] = `
     }
   >
     <p
+      className="reviews__error-message"
       style={
         Object {
           "position": "absolute",
