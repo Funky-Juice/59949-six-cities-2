@@ -199,4 +199,22 @@ describe(`Action creators work correctly`, () => {
         });
       });
   });
+
+  it(`Action creator for sendReview returns correct actions`, () => {
+    const dispatch = jest.fn();
+    const api = createAPI();
+    const apiMock = new MockAdapter(api);
+    const data = {id: 1, rating: 3, comment: `review text`};
+    const dataLoader = ActionCreator.sendReview(data);
+
+    apiMock
+      .onPost(`/comments/${data.id}`)
+      .reply(200, [{fake: true}]);
+
+    return dataLoader(dispatch, jest.fn(), api)
+      .then((response) => {
+        expect(response).toEqual([{fake: true}]);
+        expect(dispatch).toHaveBeenCalledTimes(1);
+      });
+  });
 });

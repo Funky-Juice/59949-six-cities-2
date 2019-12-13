@@ -75,7 +75,7 @@ class ReviewsForm extends React.PureComponent {
         </div>
 
         <div style={{position: `relative`, fontSize: `14px`, color: `red`}}>
-          <p style={{position: `absolute`}}>
+          <p className="reviews__error-message" style={{position: `absolute`}}>
             {message}
           </p>
         </div>
