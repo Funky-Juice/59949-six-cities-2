@@ -11,7 +11,8 @@ const mockOffer = offerTestObj;
 const store = createStore(() => ({
   reviews: mockReviews,
   activeCity: mockOffer.city,
-  activeOffers: [mockOffer]
+  activeOffers: [mockOffer],
+  isAuthorizationRequired: false
 }));
 
 it(`OfferDetails correctly renders`, () => {

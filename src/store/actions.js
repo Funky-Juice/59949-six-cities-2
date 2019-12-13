@@ -113,6 +113,21 @@ const ActionCreator = {
       type: types.REMOVE_OFFERS,
       payload,
     };
+  },
+
+  sendReview: (data) => (dispatch, _getState, api) => {
+    return api.post(`/comments/${data.id}`, {rating: data.rating, comment: data.reviewText})
+      .then((response) => {
+        dispatch(ActionCreator.getReviews(data.id));
+        return response.data;
+      })
+      .catch((err) => {
+        if (err.message === `unauthorized`) {
+          history.pushState({}, null, `/sign-in`);
+          location.reload();
+        }
+        throw new Error(err.response.data.error);
+      });
   }
 };
 

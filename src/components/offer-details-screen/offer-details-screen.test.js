@@ -12,7 +12,8 @@ const store = createStore(() => ({
   offers: mockOffers,
   reviews: mockReviews,
   activeOffers: mockOffers,
-  activeCity: mockOffers[0].city
+  activeCity: mockOffers[0].city,
+  isAuthorizationRequired: false
 }));
 
 const match = {

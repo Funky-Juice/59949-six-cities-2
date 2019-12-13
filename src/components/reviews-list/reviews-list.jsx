@@ -1,15 +1,16 @@
 import {offerPropTypes, reviewPropTypes} from '../../prop-types/prop-types';
 import {sortReviewsByDate} from '../../utils/utils';
+import withForm from '../../hocs/with-form';
+import ReviewsForm from '../reviews-form/reviews-form';
 import ReviewsItem from '../reviews-item/reviews-item';
 
+const ReviewsFormWrapped = withForm(ReviewsForm);
+
 const ReviewsList = (props) => {
-  let {reviews, offer, getReviews} = props;
+  let {reviews, offer, getReviews, isAuthorizationRequired} = props;
 
   if (!reviews) {
     getReviews(offer.id);
-    return <></>;
-  }
-  if (!reviews.length) {
     return <></>;
   }
 
@@ -18,8 +19,8 @@ const ReviewsList = (props) => {
   return <>
     <section className="property__reviews reviews">
       <h2 className="reviews__title">
-        Reviews &middot;
-        <span className="reviews__amount">{reviews.length}</span>
+        Reviews
+        {reviews.length > 0 && <span className="reviews__amount"> &middot;{reviews.length}</span>}
       </h2>
 
       <ul className="reviews__list">
@@ -30,6 +31,8 @@ const ReviewsList = (props) => {
           />
         )}
       </ul>
+
+      {!isAuthorizationRequired && <ReviewsFormWrapped offer={offer}/>}
     </section>
   </>;
 };
@@ -37,7 +40,8 @@ const ReviewsList = (props) => {
 ReviewsList.propTypes = {
   offer: offerPropTypes,
   reviews: PropTypes.arrayOf(reviewPropTypes),
-  getReviews: PropTypes.func.isRequired
+  getReviews: PropTypes.func.isRequired,
+  isAuthorizationRequired: PropTypes.bool.isRequired
 };
 
 export default ReviewsList;

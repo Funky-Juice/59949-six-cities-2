@@ -39,7 +39,7 @@ const Layout = (props) => {
   }
 
   return <>
-    <div className={`page page--gray page--${getPageType()}`}>
+    <div className={`page ${getPageType() === `main` ? `page--gray` : ``} page--${getPageType()}`}>
       <PageHeader/>
       {children}
     </div>
