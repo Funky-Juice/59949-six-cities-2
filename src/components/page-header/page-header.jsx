@@ -19,7 +19,7 @@ const PageHeader = (props) => {
                   <span className="header__user-name user__name">{props.user.email}</span>
                 </a>
                 :
-                <Link to="/sign-in" className="header__nav-link header__nav-link--profile">
+                <Link to="/login" className="header__nav-link header__nav-link--profile">
                   <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                   <span className="header__user-name user__name">Sign in</span>
                 </Link>

@@ -91,7 +91,7 @@ const ActionCreator = {
       })
       .catch((err) => {
         if (err.message === `unauthorized`) {
-          history.pushState({}, null, `/sign-in`);
+          history.pushState({}, null, `/login`);
           location.reload();
         }
       });
@@ -134,7 +134,7 @@ const ActionCreator = {
       })
       .catch((err) => {
         if (err.message === `unauthorized`) {
-          history.pushState({}, null, `/sign-in`);
+          history.pushState({}, null, `/login`);
           location.reload();
         }
         throw new Error(err.response.data.error);

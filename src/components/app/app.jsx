@@ -23,7 +23,7 @@ const App = (props) => {
   return (
     <Switch>
       <Route path="/" exact component={MainScreenWrapped}/>
-      <Route path="/sign-in" exact render={() =>
+      <Route path="/login" exact render={() =>
         isAuthorizationRequired ? <AuthorizationScreenWrapped/> : <Redirect to="/"/>
       }/>
       <Route path="/favorites" exact component={withAuth(FavoritesScreenWrapped)}/>

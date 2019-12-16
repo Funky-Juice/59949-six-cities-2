@@ -10,7 +10,7 @@ const withAuth = (Component) => {
       const {isAuthorizationRequired} = this.props;
 
       if (isAuthorizationRequired) {
-        return <Redirect to='/sign-in'/>;
+        return <Redirect to='/login'/>;
       }
       return <Component {...this.props}/>;
     }

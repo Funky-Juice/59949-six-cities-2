@@ -12,7 +12,7 @@ const getPageType = () => {
   switch (path) {
     case `/`:
       return `main`;
-    case `/sign-in`:
+    case `/login`:
       return `login`;
     case `/favorites`:
       return `favorites`;
