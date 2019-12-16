@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import {sortOffersByCity, groupOffersByCity} from '../../utils/utils';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import FavoriteOfferCard from '../favorite-offer-card/favorite-offer-card';
@@ -14,9 +15,9 @@ const FavoritesList = (props) => {
         <li className="favorites__locations-items" key={i}>
           <div className="favorites__locations locations locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="#">
+              <Link className="locations__item-link" to="#">
                 <span>{offersGroup[0]}</span>
-              </a>
+              </Link>
             </div>
           </div>
 

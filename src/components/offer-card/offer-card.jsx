@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import withVisibleState from '../../hocs/with-visible-state/with-visible-state';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import {calcRatingPercent} from '../../utils/utils';
@@ -20,9 +21,9 @@ const OfferCard = (props) => {
       </>}
 
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href={`/offer/${offer.id}`}>
+        <Link to={`/offer/${offer.id}`}>
           <img className="place-card__image" src={offer.preview_image} width="260" height="200" alt="Place image"></img>
-        </a>
+        </Link>
       </div>
 
       <div className="place-card__info">
@@ -46,7 +47,7 @@ const OfferCard = (props) => {
         </div>
 
         <h2 className="place-card__name">
-          <a href={`/offer/${offer.id}`}>{offer.title}</a>
+          <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
         </h2>
 
         <p className="place-card__type">{offer.type}</p>
