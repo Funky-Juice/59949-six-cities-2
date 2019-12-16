@@ -1,9 +1,10 @@
 import {connect} from 'react-redux';
+import {compose} from 'recompose';
+import withAuthForm from './with-auth-form';
 import ActionCreator from '../../store/actions';
-import AuthorizationScreenForm from './authorization-screen-form';
 
 const mapDispatchToProps = (dispatch) => ({
   onAuth: (authData) => dispatch(ActionCreator.authUser(authData))
 });
 
-export default connect(null, mapDispatchToProps)(AuthorizationScreenForm);
+export default compose(connect(null, mapDispatchToProps), withAuthForm);

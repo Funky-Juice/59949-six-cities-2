@@ -64,6 +64,9 @@ const ActionCreator = {
       .then((response) => {
         dispatch(ActionCreator.setUser(response.data));
         dispatch(ActionCreator.requireAuthorization(false));
+      })
+      .catch((err) => {
+        throw new Error(err.response.data.error);
       });
   },
 

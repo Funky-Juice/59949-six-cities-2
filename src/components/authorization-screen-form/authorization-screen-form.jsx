@@ -2,41 +2,18 @@
 class AuthorizationScreenForm extends React.PureComponent {
   constructor(props) {
     super(props);
-
-    this._form = React.createRef();
-    this._formSubmitHandler = this._formSubmitHandler.bind(this);
-  }
-
-  _getInputsValues() {
-    const formInputsArray = [...this._form.current.elements];
-    const authData = {};
-
-    formInputsArray.forEach((it) => {
-      if (it.name === `email`) {
-        authData.email = it.value;
-      } else if (it.name === `password`) {
-        authData.password = it.value;
-      }
-    });
-    return authData;
-  }
-
-  _formSubmitHandler(evt) {
-    const {onAuth} = this.props;
-
-    evt.preventDefault();
-    onAuth(this._getInputsValues());
   }
 
   _renderAuthForm() {
+    const {message, isLocked, onFormSubmit} = this.props;
+
     return <>
       <section className="login">
         <h1 className="login__title">Sign in</h1>
 
         <form
-          ref={this._form}
           className="login__form form"
-          onSubmit={this._formSubmitHandler}
+          onSubmit={onFormSubmit}
         >
           <div className="login__input-wrapper form__input-wrapper">
             <label className="visually-hidden">E-mail</label>
@@ -63,9 +40,16 @@ class AuthorizationScreenForm extends React.PureComponent {
           <button
             className="login__submit form__submit button"
             type="submit"
+            disabled={isLocked}
           >
             Sign in
           </button>
+
+          {message && <div style={{position: `relative`, fontSize: `14px`, color: `red`}}>
+            <p className="login__error-message" style={{position: `absolute`}}>
+              {message}
+            </p>
+          </div>}
         </form>
       </section>
     </>;
@@ -77,7 +61,9 @@ class AuthorizationScreenForm extends React.PureComponent {
 }
 
 AuthorizationScreenForm.propTypes = {
-  onAuth: PropTypes.func.isRequired
+  message: PropTypes.string,
+  isLocked: PropTypes.bool.isRequired,
+  onFormSubmit: PropTypes.func.isRequired
 };
 
 export default AuthorizationScreenForm;
