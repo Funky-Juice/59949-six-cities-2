@@ -1,7 +1,7 @@
 export const SET_USER = `SET_USER`;
 
 export const SET_OFFERS = `SET_OFFERS`;
-export const REMOVE_OFFERS = `REMOVE_OFFERS`;
+export const REMOVE_ALL_OFFERS = `REMOVE_ALL_OFFERS`;
 
 export const SET_ERROR = `SET_ERROR`;
 

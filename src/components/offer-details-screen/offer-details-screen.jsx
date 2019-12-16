@@ -13,6 +13,12 @@ class OfferDetailsScreen extends React.PureComponent {
     this.setActiveOfferId = this.props.setActiveOfferId;
   }
 
+  componentDidMount() {
+    const {getOffers, clearAllOffers} = this.props;
+    clearAllOffers();
+    getOffers();
+  }
+
   _setActiveOffers(offer) {
     const {offers} = this.props;
 
@@ -50,10 +56,9 @@ class OfferDetailsScreen extends React.PureComponent {
   }
 
   render() {
-    const {offers, getOffers} = this.props;
+    const {offers} = this.props;
 
     if (!offers) {
-      getOffers();
       return <></>;
     }
     return this._renderScreen();
@@ -65,6 +70,7 @@ OfferDetailsScreen.propTypes = {
   offers: PropTypes.arrayOf(offerPropTypes),
   getOffers: PropTypes.func.isRequired,
   setActiveCity: PropTypes.func.isRequired,
+  clearAllOffers: PropTypes.func.isRequired,
   setActiveOffers: PropTypes.func.isRequired,
   setActiveOfferId: PropTypes.func.isRequired
 };

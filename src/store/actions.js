@@ -30,6 +30,12 @@ const ActionCreator = {
     };
   },
 
+  clearAllOffers: () => {
+    return {
+      type: types.REMOVE_ALL_OFFERS
+    };
+  },
+
   getReviews: (id) => (dispatch, _getState, api) => {
     return api.get(`/comments/${id}`)
       .then((response) => {
@@ -115,13 +121,6 @@ const ActionCreator = {
   deleteOffer: (payload) => {
     return {
       type: types.REMOVE_FAVORITE_OFFER,
-      payload,
-    };
-  },
-
-  clearOffers: (payload = null) => {
-    return {
-      type: types.REMOVE_OFFERS,
       payload,
     };
   },

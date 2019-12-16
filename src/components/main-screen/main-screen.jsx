@@ -15,8 +15,9 @@ class MainScreen extends React.PureComponent {
   }
 
   componentDidMount() {
-    const {clearOffers} = this.props;
-    clearOffers();
+    const {getOffers, clearAllOffers} = this.props;
+    clearAllOffers();
+    getOffers();
   }
 
   _renderScreen() {
@@ -43,10 +44,9 @@ class MainScreen extends React.PureComponent {
   }
 
   render() {
-    const {offers, getOffers} = this.props;
+    const {offers} = this.props;
 
     if (!offers) {
-      getOffers();
       return <></>;
     }
     return this._renderScreen();
@@ -54,11 +54,11 @@ class MainScreen extends React.PureComponent {
 }
 
 MainScreen.propTypes = {
-  getOffers: PropTypes.func.isRequired,
-  clearOffers: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(offerPropTypes),
+  getOffers: PropTypes.func.isRequired,
+  activeCity: activeCityPropTypes,
   activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
-  activeCity: activeCityPropTypes
+  clearAllOffers: PropTypes.func.isRequired
 };
 
 export default MainScreen;
