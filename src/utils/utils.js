@@ -15,10 +15,10 @@ export const getPlural = (number, one, two, five) => {
 };
 
 export const calcRatingPercent = (rating) => {
-  const maxRating = 5;
-  const maxRatingPercent = 100;
+  const MAX_RATING = 5;
+  const MAX_RATING_PERCENT = 100;
 
-  return Math.round(rating * maxRatingPercent / maxRating);
+  return Math.round(rating * MAX_RATING_PERCENT / MAX_RATING);
 };
 
 export const sortOffersByCity = (offers) => {

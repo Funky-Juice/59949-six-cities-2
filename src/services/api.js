@@ -1,11 +1,11 @@
 import axios from 'axios';
 import ActionCreator from '../store/actions';
 
-const apiURL = `https://htmlacademy-react-2.appspot.com/six-cities`;
+const API_URL = `https://htmlacademy-react-2.appspot.com/six-cities`;
 
 export const createAPI = (dispatch) => {
   const api = axios.create({
-    baseURL: apiURL,
+    baseURL: API_URL,
     timeout: 5000,
     withCredentials: true
   });

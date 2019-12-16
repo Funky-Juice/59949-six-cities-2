@@ -33,10 +33,10 @@ const withForm = (Component) => {
 
     _validateFields(state) {
       const {rating, reviewText} = state;
-      const minСharacters = 50;
-      const maxСharacters = 300;
+      const MIN_CHARACTERS = 50;
+      const MAX_CHARACTERS = 300;
 
-      const isValid = rating > 0 && reviewText.length >= minСharacters && reviewText.length <= maxСharacters;
+      const isValid = rating > 0 && reviewText.length >= MIN_CHARACTERS && reviewText.length <= MAX_CHARACTERS;
 
       this.setState({isLocked: !isValid});
     }
