@@ -1,3 +1,4 @@
+import {Redirect} from 'react-router-dom';
 import {offerPropTypes} from '../../prop-types/prop-types';
 import OfferDetails from '../offer-details/offer-details';
 import OffersListNearby from '../offers-list-nearby';
@@ -28,6 +29,10 @@ class OfferDetailsScreen extends React.PureComponent {
   _renderScreen() {
     const {offers, match} = this.props;
     const offer = offers.find(({id}) => id === parseInt(match.params.id, 10));
+
+    if (!offer) {
+      return <Redirect to="/"/>;
+    }
 
     this.setActiveCity(offer.city);
     this.setActiveOfferId(offer.id);
