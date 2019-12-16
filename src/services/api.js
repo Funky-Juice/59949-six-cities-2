@@ -13,6 +13,10 @@ export const createAPI = (dispatch) => {
   const onSuccess = (res) => res;
 
   const onFail = (err) => {
+    if (!err.response) {
+      dispatch(ActionCreator.setError(err.message));
+      throw err;
+    }
     if (err.response.status === 401 || err.response.status === 403) {
       dispatch(ActionCreator.requireAuthorization(true));
       throw new Error(`unauthorized`);

@@ -55,6 +55,7 @@ const ActionCreator = {
     return api.get(`/login`)
       .then((response) => {
         dispatch(ActionCreator.setUser(response.data));
+        dispatch(ActionCreator.requireAuthorization(false));
       });
   },
 
@@ -69,6 +70,13 @@ const ActionCreator = {
   setUser: (payload = {}) => {
     return {
       type: types.SET_USER,
+      payload,
+    };
+  },
+
+  setError: (payload = null) => {
+    return {
+      type: types.SET_ERROR,
       payload,
     };
   },

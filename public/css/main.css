@@ -660,6 +660,10 @@ img {
   background-repeat: no-repeat
 }
 
+.cities__status-wrapper--error {
+  background-image: url(../img/error-icon.jpg);
+}
+
 .cities__status {
   display: block;
   margin-bottom: 5px;

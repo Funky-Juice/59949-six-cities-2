@@ -2,6 +2,7 @@ import {Route, Switch, Redirect, Link} from 'react-router-dom';
 
 import AuthorizationScreen from '../authorization-screen/authorization-screen';
 import withLayout from '../../hocs/with-layout/with-layout';
+import ErrorScreen from '../error-screen/error-screen';
 import OfferDetails from '../offer-details-screen';
 import FavoritesScreen from '../favorites-screen';
 import MainScreen from '../main-screen';
@@ -13,7 +14,11 @@ const FavoritesScreenWrapped = withLayout(FavoritesScreen);
 const AuthorizationScreenWrapped = withLayout(AuthorizationScreen);
 
 const App = (props) => {
-  const {isAuthorizationRequired} = props;
+  const {errorMessage, isAuthorizationRequired} = props;
+
+  if (errorMessage) {
+    return <ErrorScreen errorMessage={errorMessage}/>;
+  }
 
   return (
     <Switch>
@@ -37,6 +42,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
+  errorMessage: PropTypes.string,
   isAuthorizationRequired: PropTypes.bool.isRequired
 };
 

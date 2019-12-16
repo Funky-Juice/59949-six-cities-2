@@ -3,6 +3,8 @@ export const SET_USER = `SET_USER`;
 export const SET_OFFERS = `SET_OFFERS`;
 export const REMOVE_OFFERS = `REMOVE_OFFERS`;
 
+export const SET_ERROR = `SET_ERROR`;
+
 export const SET_REVIEWS = `SET_REVIEWS`;
 
 export const SET_ACTIVE_CITY = `SET_ACTIVE_CITY`;

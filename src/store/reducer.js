@@ -6,9 +6,10 @@ const initialState = {
   reviews: null,
   activeCity: {},
   activeOffers: [],
-  favoriteOffers: null,
+  errorMessage: null,
   activeOfferId: null,
-  isAuthorizationRequired: false
+  favoriteOffers: null,
+  isAuthorizationRequired: true
 };
 
 const reducer = (state = initialState, action) => {
@@ -27,6 +28,10 @@ const reducer = (state = initialState, action) => {
 
     case types.SET_REVIEWS: return Object.assign({}, state, {
       reviews: action.payload
+    });
+
+    case types.SET_ERROR: return Object.assign({}, state, {
+      errorMessage: action.payload
     });
 
     case types.SET_ACTIVE_CITY: return Object.assign({}, state, {
