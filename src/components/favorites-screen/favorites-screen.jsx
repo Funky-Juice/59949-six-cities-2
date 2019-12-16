@@ -40,10 +40,11 @@ class FavoritesScreen extends React.PureComponent {
   }
 
   render() {
-    const {favoriteOffers, getFavoriteOffers} = this.props;
+    const {getUser, favoriteOffers, getFavoriteOffers} = this.props;
 
     if (!favoriteOffers) {
       getFavoriteOffers();
+      getUser();
       return <></>;
     }
     if (!favoriteOffers.length) {
@@ -54,6 +55,7 @@ class FavoritesScreen extends React.PureComponent {
 }
 
 FavoritesScreen.propTypes = {
+  getUser: PropTypes.func.isRequired,
   favoriteOffers: PropTypes.arrayOf(offerPropTypes),
   getFavoriteOffers: PropTypes.func.isRequired
 };

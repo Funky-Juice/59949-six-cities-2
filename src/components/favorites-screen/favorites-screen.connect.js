@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  getUser: () => dispatch(ActionCreator.getUser()),
   getFavoriteOffers: () => dispatch(ActionCreator.getFavoriteOffers())
 });
 

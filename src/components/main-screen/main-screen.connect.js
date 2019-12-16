@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  getUser: () => dispatch(ActionCreator.getUser()),
   getOffers: () => dispatch(ActionCreator.getOffers()),
   clearAllOffers: () => dispatch(ActionCreator.clearAllOffers())
 });

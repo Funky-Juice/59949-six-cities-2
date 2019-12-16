@@ -14,9 +14,10 @@ class OfferDetailsScreen extends React.PureComponent {
   }
 
   componentDidMount() {
-    const {getOffers, clearAllOffers} = this.props;
+    const {getUser, getOffers, clearAllOffers} = this.props;
     clearAllOffers();
     getOffers();
+    getUser();
   }
 
   _setActiveOffers(offer) {
@@ -68,6 +69,7 @@ class OfferDetailsScreen extends React.PureComponent {
 OfferDetailsScreen.propTypes = {
   match: PropTypes.object.isRequired,
   offers: PropTypes.arrayOf(offerPropTypes),
+  getUser: PropTypes.func.isRequired,
   getOffers: PropTypes.func.isRequired,
   setActiveCity: PropTypes.func.isRequired,
   clearAllOffers: PropTypes.func.isRequired,
