@@ -4,6 +4,9 @@ import OfferDetails from '../offer-details/offer-details';
 import OffersListNearby from '../offers-list-nearby';
 import {shuffleOffers} from '../../utils/utils';
 
+const FIRST_OFFER_ITEM = 0;
+const LAST_OFFER_ITEM = 10;
+
 class OfferDetailsScreen extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -27,7 +30,7 @@ class OfferDetailsScreen extends React.PureComponent {
       return it.id !== offer.id && it.city.name === offer.city.name;
     });
 
-    cityOffers = shuffleOffers(cityOffers).slice(0, 3);
+    cityOffers = shuffleOffers(cityOffers).slice(FIRST_OFFER_ITEM, LAST_OFFER_ITEM);
     cityOffers.push(offer);
 
     this.setActiveOffers(cityOffers);

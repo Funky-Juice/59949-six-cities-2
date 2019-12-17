@@ -5,6 +5,8 @@ import ReviewsForm from '../reviews-form/reviews-form';
 import ReviewsItem from '../reviews-item/reviews-item';
 
 const ReviewsFormWrapped = withReviewForm(ReviewsForm);
+const FIRST_REVIEW_ITEM = 0;
+const LAST_REVIEW_ITEM = 10;
 
 const ReviewsList = (props) => {
   let {reviews, offer, getReviews, isAuthorizationRequired} = props;
@@ -14,7 +16,7 @@ const ReviewsList = (props) => {
     return <></>;
   }
 
-  reviews = sortReviewsByDate(reviews).slice(0, 10);
+  reviews = sortReviewsByDate(reviews).slice(FIRST_REVIEW_ITEM, LAST_REVIEW_ITEM);
 
   return <>
     <section className="property__reviews reviews">
