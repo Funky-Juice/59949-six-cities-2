@@ -11,9 +11,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     });
   });
 
@@ -24,9 +25,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     }, {
       type: ActionType.SET_USER,
       payload: {id: 1, email: `test@mail.ru`}
@@ -36,9 +38,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     });
   });
 
@@ -49,9 +52,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     }, {
       type: ActionType.SET_OFFERS,
       payload: [{}, {}, {}]
@@ -61,9 +65,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     });
   });
 
@@ -74,9 +79,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     }, {
       type: ActionType.SET_ACTIVE_CITY,
       payload: {}
@@ -86,9 +92,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     });
 
     expect(reducer({
@@ -97,9 +104,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     }, {
       type: ActionType.SET_ACTIVE_CITY,
       payload: {
@@ -123,9 +131,10 @@ describe(`Reducer works correctly`, () => {
         }
       },
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     });
   });
 
@@ -136,9 +145,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     }, {
       type: ActionType.SET_ACTIVE_OFFERS,
       payload: []
@@ -148,9 +158,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     });
 
     expect(reducer({
@@ -159,9 +170,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     }, {
       type: ActionType.SET_ACTIVE_OFFERS,
       payload: [testOffer]
@@ -171,9 +183,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [testOffer],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     });
   });
 
@@ -184,9 +197,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     }, {
       type: ActionType.SET_ACTIVE_OFFER_ID,
       payload: null
@@ -196,9 +210,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     });
 
     expect(reducer({
@@ -207,9 +222,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     }, {
       type: ActionType.SET_ACTIVE_OFFER_ID,
       payload: 1
@@ -219,9 +235,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: 1,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     });
   });
 
@@ -232,6 +249,7 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
       isAuthorizationRequired: true
@@ -244,6 +262,7 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
       isAuthorizationRequired: false
@@ -255,9 +274,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     }, {
       type: ActionType.REQUIRED_AUTHORIZATION,
       payload: true
@@ -267,34 +287,36 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
       isAuthorizationRequired: true
     });
   });
 
-  it(`Reducer should remove offers array`, () => {
+  it(`Reducer should reset all offers to default`, () => {
     expect(reducer({
       user: {},
       offers: [testOffer],
       reviews: null,
       activeCity: {},
-      activeOffers: [],
+      activeOffers: [testOffer],
+      errorMessage: null,
       activeOfferId: null,
-      favoriteOffers: null,
-      isAuthorizationRequired: false
+      favoriteOffers: [testOffer],
+      isAuthorizationRequired: true
     }, {
-      type: ActionType.REMOVE_OFFERS,
-      payload: null
+      type: ActionType.REMOVE_ALL_OFFERS
     })).toEqual({
       user: {},
       offers: null,
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     });
   });
 
@@ -305,9 +327,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     }, {
       type: ActionType.SET_FAVORITE_OFFERS,
       payload: [testOffer]
@@ -317,9 +340,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: [testOffer],
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     });
   });
 
@@ -330,9 +354,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: [{id: 1}, {id: 2}, {id: 3}],
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     }, {
       type: ActionType.REMOVE_FAVORITE_OFFER,
       payload: testOffer.id
@@ -342,9 +367,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: [{id: 1}, {id: 3}],
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     });
   });
 
@@ -355,9 +381,10 @@ describe(`Reducer works correctly`, () => {
       reviews: null,
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     }, {
       type: ActionType.SET_REVIEWS,
       payload: [{}, {}, {}]
@@ -367,9 +394,10 @@ describe(`Reducer works correctly`, () => {
       reviews: [{}, {}, {}],
       activeCity: {},
       activeOffers: [],
+      errorMessage: null,
       activeOfferId: null,
       favoriteOffers: null,
-      isAuthorizationRequired: false
+      isAuthorizationRequired: true
     });
   });
 

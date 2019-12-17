@@ -15,7 +15,8 @@ exports[`FavoritesList correctly renders 1`] = `
       >
         <a
           className="locations__item-link"
-          href="#"
+          href="/"
+          onClick={[Function]}
         >
           <span>
             Amsterdam
@@ -34,6 +35,7 @@ exports[`FavoritesList correctly renders 1`] = `
         >
           <a
             href="/offer/2"
+            onClick={[Function]}
           >
             <img
               alt="Place image"
@@ -117,6 +119,7 @@ exports[`FavoritesList correctly renders 1`] = `
           >
             <a
               href="/offer/2"
+              onClick={[Function]}
             >
               Wood and stone place
             </a>

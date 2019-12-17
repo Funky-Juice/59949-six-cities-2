@@ -1,3 +1,4 @@
+import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import offerTestObj from '../../mocks/test-offer';
 import OfferCard from './offer-card';
@@ -10,11 +11,13 @@ const store = createStore(() => ({}));
 it(`OfferCard correctly renders`, () => {
   const tree = renderer
     .create(<Provider store={store}>
-      <OfferCard
-        offer={mockOffer}
-        showOffer={() => {}}
-        getOfferDetails={() => {}}
-      />
+      <Router>
+        <OfferCard
+          offer={mockOffer}
+          showOffer={() => {}}
+          getOfferDetails={() => {}}
+        />
+      </Router>
     </Provider>)
     .toJSON();
 

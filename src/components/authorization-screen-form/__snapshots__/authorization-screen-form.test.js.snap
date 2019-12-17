@@ -47,10 +47,31 @@ exports[`AuthorizationScreenForm correctly renders 1`] = `
     </div>
     <button
       className="login__submit form__submit button"
+      disabled={false}
       type="submit"
     >
       Sign in
     </button>
+    <div
+      style={
+        Object {
+          "color": "red",
+          "fontSize": "14px",
+          "position": "relative",
+        }
+      }
+    >
+      <p
+        className="login__error-message"
+        style={
+          Object {
+            "position": "absolute",
+          }
+        }
+      >
+        test
+      </p>
+    </div>
   </form>
 </section>
 `;

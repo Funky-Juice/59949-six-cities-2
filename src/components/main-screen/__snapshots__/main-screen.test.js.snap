@@ -128,6 +128,7 @@ exports[`MainScreen correctly renders 1`] = `
             >
               <a
                 href="/offer/2"
+                onClick={[Function]}
               >
                 <img
                   alt="Place image"
@@ -211,6 +212,7 @@ exports[`MainScreen correctly renders 1`] = `
               >
                 <a
                   href="/offer/2"
+                  onClick={[Function]}
                 >
                   Wood and stone place
                 </a>

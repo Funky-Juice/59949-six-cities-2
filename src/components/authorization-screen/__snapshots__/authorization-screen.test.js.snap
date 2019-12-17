@@ -53,6 +53,7 @@ exports[`AuthorizationScreenForm correctly renders 1`] = `
         </div>
         <button
           className="login__submit form__submit button"
+          disabled={false}
           type="submit"
         >
           Sign in
@@ -67,7 +68,8 @@ exports[`AuthorizationScreenForm correctly renders 1`] = `
       >
         <a
           className="locations__item-link"
-          href="#"
+          href="/"
+          onClick={[Function]}
         >
           <span>
             Amsterdam

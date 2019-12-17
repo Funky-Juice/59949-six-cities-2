@@ -1,3 +1,4 @@
+import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
@@ -11,7 +12,9 @@ const store = createStore(() => ({
 it(`AuthorizationScreenForm correctly renders`, () => {
   const tree = renderer
     .create(<Provider store={store}>
-      <AuthorizationScreenForm/>
+      <Router>
+        <AuthorizationScreenForm/>
+      </Router>
     </Provider>)
     .toJSON();
 

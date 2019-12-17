@@ -91,7 +91,7 @@ describe(`Action creators work correctly`, () => {
 
     return dataLoader(dispatch, jest.fn(), api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalled();
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.SET_USER,
           payload: {fake: true},
@@ -172,10 +172,9 @@ describe(`Action creators work correctly`, () => {
     });
   });
 
-  it(`Action creator for clear offers returns correct action`, () => {
-    expect(ActionCreator.clearOffers()).toEqual({
-      type: ActionType.REMOVE_OFFERS,
-      payload: null
+  it(`Action creator for clear all offers returns correct action`, () => {
+    expect(ActionCreator.clearAllOffers()).toEqual({
+      type: ActionType.REMOVE_ALL_OFFERS
     });
   });
 

@@ -31,6 +31,8 @@ it(`OfferDetailsScreen correctly renders`, () => {
         setActiveCity={cb}
         setActiveOfferId={cb}
         setActiveOffers={cb}
+        clearAllOffers={cb}
+        getUser={cb}
       />
     </Provider>)
     .toJSON();

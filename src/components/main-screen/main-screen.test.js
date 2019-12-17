@@ -1,3 +1,4 @@
+import {BrowserRouter as Router} from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
@@ -16,13 +17,16 @@ it(`MainScreen correctly renders`, () => {
   const fn = jest.fn();
   const tree = renderer
     .create(<Provider store={store}>
-      <MainScreen
-        offers={mockOffers}
-        activeOffers={mockOffers}
-        activeCity={mockOffers[0].city}
-        getOffers={fn}
-        clearOffers={fn}
-      />
+      <Router>
+        <MainScreen
+          offers={mockOffers}
+          activeOffers={mockOffers}
+          activeCity={mockOffers[0].city}
+          getUser={fn}
+          getOffers={fn}
+          clearAllOffers={fn}
+        />
+      </Router>
     </Provider>)
     .toJSON();
 
