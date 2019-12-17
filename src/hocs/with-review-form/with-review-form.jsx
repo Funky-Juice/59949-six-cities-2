@@ -1,7 +1,7 @@
 import {offerPropTypes} from '../../prop-types/prop-types';
 
-const withForm = (Component) => {
-  class WithForm extends React.PureComponent {
+const withReviewForm = (Component) => {
+  class WithReviewForm extends React.PureComponent {
     constructor(props) {
       super(props);
 
@@ -93,12 +93,12 @@ const withForm = (Component) => {
     }
   }
 
-  WithForm.propTypes = {
+  WithReviewForm.propTypes = {
     offer: offerPropTypes,
     sendReview: PropTypes.func.isRequired
   };
 
-  return WithForm;
+  return WithReviewForm;
 };
 
-export default withForm;
+export default withReviewForm;

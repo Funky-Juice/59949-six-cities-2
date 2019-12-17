@@ -1,10 +1,10 @@
 import {offerPropTypes, reviewPropTypes} from '../../prop-types/prop-types';
 import {sortReviewsByDate} from '../../utils/utils';
-import withForm from '../../hocs/with-form';
+import withReviewForm from '../../hocs/with-review-form';
 import ReviewsForm from '../reviews-form/reviews-form';
 import ReviewsItem from '../reviews-item/reviews-item';
 
-const ReviewsFormWrapped = withForm(ReviewsForm);
+const ReviewsFormWrapped = withReviewForm(ReviewsForm);
 
 const ReviewsList = (props) => {
   let {reviews, offer, getReviews, isAuthorizationRequired} = props;

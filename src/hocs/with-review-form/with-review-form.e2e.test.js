@@ -1,11 +1,11 @@
 import {shallow} from 'enzyme';
-import withForm from './with-form';
+import withReviewForm from './with-review-form';
 import offerTestObj from '../../mocks/test-offer';
 
-describe(`HOC withForm should work correctly`, () => {
+describe(`HOC withReviewForm should work correctly`, () => {
   let wrapper;
   const MockComponent = () => <form/>;
-  const MockComponentWrapped = withForm(MockComponent);
+  const MockComponentWrapped = withReviewForm(MockComponent);
   const promise = Promise.resolve();
   const sendReviewCB = jest.fn(() => promise);
 
