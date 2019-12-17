@@ -5,7 +5,7 @@ import OffersListNearby from '../offers-list-nearby';
 import {shuffleOffers} from '../../utils/utils';
 
 const FIRST_OFFER_ITEM = 0;
-const LAST_OFFER_ITEM = 10;
+const LAST_OFFER_ITEM = 3;
 
 class OfferDetailsScreen extends React.PureComponent {
   constructor(props) {
