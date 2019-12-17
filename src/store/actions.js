@@ -1,4 +1,7 @@
+import {createBrowserHistory} from 'history';
 import * as types from './action-types';
+
+const history = createBrowserHistory();
 
 const ActionCreator = {
   setActiveCity: (payload = {}) => ({
@@ -100,7 +103,7 @@ const ActionCreator = {
       })
       .catch((err) => {
         if (err.message === `unauthorized`) {
-          history.pushState({}, null, `/login`);
+          history.push(`/login`);
           location.reload();
         }
       });
@@ -136,7 +139,7 @@ const ActionCreator = {
       })
       .catch((err) => {
         if (err.message === `unauthorized`) {
-          history.pushState({}, null, `/login`);
+          history.push(`/login`);
           location.reload();
         }
         throw new Error(err.response.data.error);
