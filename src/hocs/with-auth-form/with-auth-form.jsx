@@ -1,5 +1,5 @@
 const withAuthForm = (Component) => {
-  class WithForm extends React.PureComponent {
+  class WithAuthForm extends React.PureComponent {
     constructor(props) {
       super(props);
 
@@ -73,11 +73,11 @@ const withAuthForm = (Component) => {
     }
   }
 
-  WithForm.propTypes = {
+  WithAuthForm.propTypes = {
     onAuth: PropTypes.func.isRequired
   };
 
-  return WithForm;
+  return WithAuthForm;
 };
 
 export default withAuthForm;

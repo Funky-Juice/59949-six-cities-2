@@ -217,4 +217,19 @@ describe(`Action creators work correctly`, () => {
         expect(dispatch).toHaveBeenCalledTimes(1);
       });
   });
+
+  it(`Action creator for setting error message returns correct action`, () => {
+    const errorText = `Error text message`;
+
+    expect(ActionCreator.setError(errorText)).toEqual({
+      type: types.SET_ERROR,
+      payload: errorText
+    });
+
+    expect(ActionCreator.setError()).toEqual({
+      type: types.SET_ERROR,
+      payload: null
+    });
+  });
+
 });

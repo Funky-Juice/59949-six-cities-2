@@ -323,6 +323,31 @@ describe(`Reducer works correctly`, () => {
     });
   });
 
+  it(`Reducer should delete offer by ID from favorite offers array`, () => {
+    expect(reducer({
+      user: {},
+      offers: null,
+      reviews: null,
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null,
+      favoriteOffers: [{id: 1}, {id: 2}, {id: 3}],
+      isAuthorizationRequired: false
+    }, {
+      type: types.REMOVE_FAVORITE_OFFER,
+      payload: testOffer.id
+    })).toEqual({
+      user: {},
+      offers: null,
+      reviews: null,
+      activeCity: {},
+      activeOffers: [],
+      activeOfferId: null,
+      favoriteOffers: [{id: 1}, {id: 3}],
+      isAuthorizationRequired: false
+    });
+  });
+
   it(`Reducer should correctly set reviews data`, () => {
     expect(reducer({
       user: {},
@@ -345,6 +370,33 @@ describe(`Reducer works correctly`, () => {
       activeOfferId: null,
       favoriteOffers: null,
       isAuthorizationRequired: false
+    });
+  });
+
+  it(`Reducer should correctly set error message`, () => {
+    expect(reducer({
+      user: {},
+      offers: null,
+      reviews: null,
+      activeCity: {},
+      activeOffers: [],
+      errorMessage: null,
+      activeOfferId: null,
+      favoriteOffers: null,
+      isAuthorizationRequired: true
+    }, {
+      type: types.SET_ERROR,
+      payload: `Error message text`
+    })).toEqual({
+      user: {},
+      offers: null,
+      reviews: null,
+      activeCity: {},
+      activeOffers: [],
+      errorMessage: `Error message text`,
+      activeOfferId: null,
+      favoriteOffers: null,
+      isAuthorizationRequired: true
     });
   });
 });
