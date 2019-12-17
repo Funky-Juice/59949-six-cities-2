@@ -1,21 +1,21 @@
 import {createBrowserHistory} from 'history';
-import * as types from './action-types';
+import ActionType from './action-types';
 
 const history = createBrowserHistory();
 
 const ActionCreator = {
   setActiveCity: (payload = {}) => ({
-    type: types.SET_ACTIVE_CITY,
+    type: ActionType.SET_ACTIVE_CITY,
     payload
   }),
 
   setActiveOffers: (payload = []) => ({
-    type: types.SET_ACTIVE_OFFERS,
+    type: ActionType.SET_ACTIVE_OFFERS,
     payload
   }),
 
   setActiveOfferId: (payload = null) => ({
-    type: types.SET_ACTIVE_OFFER_ID,
+    type: ActionType.SET_ACTIVE_OFFER_ID,
     payload
   }),
 
@@ -28,14 +28,14 @@ const ActionCreator = {
 
   setOffers: (payload = []) => {
     return {
-      type: types.SET_OFFERS,
+      type: ActionType.SET_OFFERS,
       payload,
     };
   },
 
   clearAllOffers: () => {
     return {
-      type: types.REMOVE_ALL_OFFERS
+      type: ActionType.REMOVE_ALL_OFFERS
     };
   },
 
@@ -48,14 +48,14 @@ const ActionCreator = {
 
   setReviews: (payload = []) => {
     return {
-      type: types.SET_REVIEWS,
+      type: ActionType.SET_REVIEWS,
       payload,
     };
   },
 
   requireAuthorization: (status) => {
     return {
-      type: types.REQUIRED_AUTHORIZATION,
+      type: ActionType.REQUIRED_AUTHORIZATION,
       payload: status,
     };
   },
@@ -84,14 +84,14 @@ const ActionCreator = {
 
   setUser: (payload = {}) => {
     return {
-      type: types.SET_USER,
+      type: ActionType.SET_USER,
       payload,
     };
   },
 
   setError: (payload = null) => {
     return {
-      type: types.SET_ERROR,
+      type: ActionType.SET_ERROR,
       payload,
     };
   },
@@ -119,14 +119,14 @@ const ActionCreator = {
 
   setFavoriteOffers: (payload = []) => {
     return {
-      type: types.SET_FAVORITE_OFFERS,
+      type: ActionType.SET_FAVORITE_OFFERS,
       payload,
     };
   },
 
   deleteOffer: (payload) => {
     return {
-      type: types.REMOVE_FAVORITE_OFFER,
+      type: ActionType.REMOVE_FAVORITE_OFFER,
       payload,
     };
   },

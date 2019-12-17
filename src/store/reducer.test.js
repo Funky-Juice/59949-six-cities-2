@@ -1,4 +1,4 @@
-import * as types from './action-types';
+import ActionType from './action-types';
 import reducer from './reducer';
 import testOffer from '../mocks/test-offer';
 
@@ -28,7 +28,7 @@ describe(`Reducer works correctly`, () => {
       favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
-      type: types.SET_USER,
+      type: ActionType.SET_USER,
       payload: {id: 1, email: `test@mail.ru`}
     })).toEqual({
       user: {id: 1, email: `test@mail.ru`},
@@ -53,7 +53,7 @@ describe(`Reducer works correctly`, () => {
       favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
-      type: types.SET_OFFERS,
+      type: ActionType.SET_OFFERS,
       payload: [{}, {}, {}]
     })).toEqual({
       user: {},
@@ -78,7 +78,7 @@ describe(`Reducer works correctly`, () => {
       favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
-      type: types.SET_ACTIVE_CITY,
+      type: ActionType.SET_ACTIVE_CITY,
       payload: {}
     })).toEqual({
       user: {},
@@ -101,7 +101,7 @@ describe(`Reducer works correctly`, () => {
       favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
-      type: types.SET_ACTIVE_CITY,
+      type: ActionType.SET_ACTIVE_CITY,
       payload: {
         name: `Amsterdam`,
         location: {
@@ -140,7 +140,7 @@ describe(`Reducer works correctly`, () => {
       favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
-      type: types.SET_ACTIVE_OFFERS,
+      type: ActionType.SET_ACTIVE_OFFERS,
       payload: []
     })).toEqual({
       user: {},
@@ -163,7 +163,7 @@ describe(`Reducer works correctly`, () => {
       favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
-      type: types.SET_ACTIVE_OFFERS,
+      type: ActionType.SET_ACTIVE_OFFERS,
       payload: [testOffer]
     })).toEqual({
       user: {},
@@ -188,7 +188,7 @@ describe(`Reducer works correctly`, () => {
       favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
-      type: types.SET_ACTIVE_OFFER_ID,
+      type: ActionType.SET_ACTIVE_OFFER_ID,
       payload: null
     })).toEqual({
       user: {},
@@ -211,7 +211,7 @@ describe(`Reducer works correctly`, () => {
       favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
-      type: types.SET_ACTIVE_OFFER_ID,
+      type: ActionType.SET_ACTIVE_OFFER_ID,
       payload: 1
     })).toEqual({
       user: {},
@@ -236,7 +236,7 @@ describe(`Reducer works correctly`, () => {
       favoriteOffers: null,
       isAuthorizationRequired: true
     }, {
-      type: types.REQUIRED_AUTHORIZATION,
+      type: ActionType.REQUIRED_AUTHORIZATION,
       payload: false
     })).toEqual({
       user: {},
@@ -259,7 +259,7 @@ describe(`Reducer works correctly`, () => {
       favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
-      type: types.REQUIRED_AUTHORIZATION,
+      type: ActionType.REQUIRED_AUTHORIZATION,
       payload: true
     })).toEqual({
       user: {},
@@ -284,7 +284,7 @@ describe(`Reducer works correctly`, () => {
       favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
-      type: types.REMOVE_OFFERS,
+      type: ActionType.REMOVE_OFFERS,
       payload: null
     })).toEqual({
       user: {},
@@ -309,7 +309,7 @@ describe(`Reducer works correctly`, () => {
       favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
-      type: types.SET_FAVORITE_OFFERS,
+      type: ActionType.SET_FAVORITE_OFFERS,
       payload: [testOffer]
     })).toEqual({
       user: {},
@@ -334,7 +334,7 @@ describe(`Reducer works correctly`, () => {
       favoriteOffers: [{id: 1}, {id: 2}, {id: 3}],
       isAuthorizationRequired: false
     }, {
-      type: types.REMOVE_FAVORITE_OFFER,
+      type: ActionType.REMOVE_FAVORITE_OFFER,
       payload: testOffer.id
     })).toEqual({
       user: {},
@@ -359,7 +359,7 @@ describe(`Reducer works correctly`, () => {
       favoriteOffers: null,
       isAuthorizationRequired: false
     }, {
-      type: types.SET_REVIEWS,
+      type: ActionType.SET_REVIEWS,
       payload: [{}, {}, {}]
     })).toEqual({
       user: {},
@@ -385,7 +385,7 @@ describe(`Reducer works correctly`, () => {
       favoriteOffers: null,
       isAuthorizationRequired: true
     }, {
-      type: types.SET_ERROR,
+      type: ActionType.SET_ERROR,
       payload: `Error message text`
     })).toEqual({
       user: {},

@@ -1,6 +1,6 @@
 import MockAdapter from 'axios-mock-adapter';
 import {createAPI} from '../services/api';
-import * as types from './action-types';
+import ActionType from './action-types';
 import ActionCreator from './actions';
 
 describe(`Action creators work correctly`, () => {
@@ -9,12 +9,12 @@ describe(`Action creators work correctly`, () => {
     const city = {};
 
     expect(ActionCreator.setActiveCity(city)).toEqual({
-      type: types.SET_ACTIVE_CITY,
+      type: ActionType.SET_ACTIVE_CITY,
       payload: city
     });
 
     expect(ActionCreator.setActiveCity()).toEqual({
-      type: types.SET_ACTIVE_CITY,
+      type: ActionType.SET_ACTIVE_CITY,
       payload: {}
     });
   });
@@ -23,12 +23,12 @@ describe(`Action creators work correctly`, () => {
     const offers = [];
 
     expect(ActionCreator.setActiveOffers(offers)).toEqual({
-      type: types.SET_ACTIVE_OFFERS,
+      type: ActionType.SET_ACTIVE_OFFERS,
       payload: offers
     });
 
     expect(ActionCreator.setActiveOffers()).toEqual({
-      type: types.SET_ACTIVE_OFFERS,
+      type: ActionType.SET_ACTIVE_OFFERS,
       payload: []
     });
   });
@@ -37,12 +37,12 @@ describe(`Action creators work correctly`, () => {
     const id = 1;
 
     expect(ActionCreator.setActiveOfferId(id)).toEqual({
-      type: types.SET_ACTIVE_OFFER_ID,
+      type: ActionType.SET_ACTIVE_OFFER_ID,
       payload: id
     });
 
     expect(ActionCreator.setActiveOfferId()).toEqual({
-      type: types.SET_ACTIVE_OFFER_ID,
+      type: ActionType.SET_ACTIVE_OFFER_ID,
       payload: null
     });
   });
@@ -61,7 +61,7 @@ describe(`Action creators work correctly`, () => {
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: types.SET_OFFERS,
+          type: ActionType.SET_OFFERS,
           payload: [{fake: true}],
         });
       });
@@ -69,12 +69,12 @@ describe(`Action creators work correctly`, () => {
 
   it(`Action creator for setting of require authorization returns correct action`, () => {
     expect(ActionCreator.requireAuthorization(true)).toEqual({
-      type: types.REQUIRED_AUTHORIZATION,
+      type: ActionType.REQUIRED_AUTHORIZATION,
       payload: true
     });
 
     expect(ActionCreator.requireAuthorization(false)).toEqual({
-      type: types.REQUIRED_AUTHORIZATION,
+      type: ActionType.REQUIRED_AUTHORIZATION,
       payload: false
     });
   });
@@ -93,7 +93,7 @@ describe(`Action creators work correctly`, () => {
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: types.SET_USER,
+          type: ActionType.SET_USER,
           payload: {fake: true},
         });
       });
@@ -113,11 +113,11 @@ describe(`Action creators work correctly`, () => {
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: types.SET_USER,
+          type: ActionType.SET_USER,
           payload: {fake: true},
         });
         expect(dispatch).toHaveBeenNthCalledWith(2, {
-          type: types.REQUIRED_AUTHORIZATION,
+          type: ActionType.REQUIRED_AUTHORIZATION,
           payload: false,
         });
         expect(location.pathname).toEqual(`/`);
@@ -157,7 +157,7 @@ describe(`Action creators work correctly`, () => {
 
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: types.SET_FAVORITE_OFFERS,
+          type: ActionType.SET_FAVORITE_OFFERS,
           payload: [{fake: true}],
         });
       });
@@ -167,14 +167,14 @@ describe(`Action creators work correctly`, () => {
     const id = 1;
 
     expect(ActionCreator.deleteOffer(id)).toEqual({
-      type: types.REMOVE_FAVORITE_OFFER,
+      type: ActionType.REMOVE_FAVORITE_OFFER,
       payload: id
     });
   });
 
   it(`Action creator for clear offers returns correct action`, () => {
     expect(ActionCreator.clearOffers()).toEqual({
-      type: types.REMOVE_OFFERS,
+      type: ActionType.REMOVE_OFFERS,
       payload: null
     });
   });
@@ -194,7 +194,7 @@ describe(`Action creators work correctly`, () => {
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: types.SET_REVIEWS,
+          type: ActionType.SET_REVIEWS,
           payload: [{fake: true}],
         });
       });
@@ -222,12 +222,12 @@ describe(`Action creators work correctly`, () => {
     const errorText = `Error text message`;
 
     expect(ActionCreator.setError(errorText)).toEqual({
-      type: types.SET_ERROR,
+      type: ActionType.SET_ERROR,
       payload: errorText
     });
 
     expect(ActionCreator.setError()).toEqual({
-      type: types.SET_ERROR,
+      type: ActionType.SET_ERROR,
       payload: null
     });
   });
