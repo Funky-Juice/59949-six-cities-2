@@ -2,7 +2,7 @@ const webpack = require(`webpack`);
 const path = require(`path`);
 
 module.exports = {
-  entry: `./src/index.js`,
+  entry: `./src/index.tsx`,
   output: {
     filename: `bundle.js`,
     path: path.join(__dirname, `public`)
@@ -20,7 +20,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: `babel-loader`,
+          loader: `ts-loader`,
         },
       }
     ],
@@ -32,7 +32,7 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: [`.js`, `.jsx`]
+    extensions: [`.ts`, `.tsx`, `.js`, `.jsx`, `json`]
   },
   devtool: `source-map`
 };
