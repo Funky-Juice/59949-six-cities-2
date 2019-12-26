@@ -1,11 +1,24 @@
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {Offer, City} from '../../types/interfaces';
 
-class CitiesList extends React.PureComponent {
+interface Props {
+  offers: Offer[]
+  activeItem: number
+  onItemClick: (index: number) => void
+  setActiveCity: (city: City) => void
+  setActiveOffers: (offers: Offer[]) => void
+  setActiveOfferId: () => void
+}
+
+class CitiesList extends React.PureComponent<Props> {
+  private filteredCitiesList: City[];
+  private readonly setActiveOfferId: () => void;
+  private readonly setActiveCity: (city: City) => void;
+  private readonly setActiveOffers: (offers: Offer[]) => void;
+
   constructor(props) {
     super(props);
 
     this.filteredCitiesList = [];
-
     this.setActiveCity = this.props.setActiveCity;
     this.setActiveOffers = this.props.setActiveOffers;
     this.setActiveOfferId = this.props.setActiveOfferId;
@@ -27,7 +40,7 @@ class CitiesList extends React.PureComponent {
     this._putDataToStore();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Readonly<any>) {
     if (prevProps.activeItem !== this.props.activeItem) {
       this._putDataToStore();
     }
@@ -39,26 +52,29 @@ class CitiesList extends React.PureComponent {
     this._setActiveOffers(this.activeCity);
   }
 
-  _filterCities(offers) {
+  _filterCities(offers: Offer[]) {
     const tempCitiesArr = [];
 
-    offers.map((offer) => tempCitiesArr.push(offer.city));
-    this.filteredCitiesList = [...new Set(tempCitiesArr.map(JSON.stringify))].map(JSON.parse);
+    offers.map((offer: Offer) => tempCitiesArr.push(offer.city));
+
+    this.filteredCitiesList = [...new Set(
+      tempCitiesArr.map((city: City) => JSON.stringify(city)))
+    ].map((it) => JSON.parse(it));
   }
 
-  _setActiveOffers(city) {
+  _setActiveOffers(city: City) {
     const cityOffers = this.props.offers.filter((it) => (it.city.name === city.name));
     this.setActiveOffers(cityOffers);
   }
 
-  _renderCities(citites) {
+  _renderCities(citites: City[]) {
     const {onItemClick} = this.props;
 
     return <>
       <div className="tabs">
         <section className="locations container">
           <ul className="locations__list tabs__list">
-            {citites.map((city, i) => (
+            {citites.map((city: City, i) => (
               <li className="locations__item" key={i}>
                 <a
                   className={`locations__item-link tabs__item ${i === this.activeItem && `tabs__item--active`}`}
@@ -82,14 +98,5 @@ class CitiesList extends React.PureComponent {
     return this._renderCities(this.filteredCitiesList);
   }
 }
-
-CitiesList.propTypes = {
-  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
-  activeItem: PropTypes.number.isRequired,
-  onItemClick: PropTypes.func.isRequired,
-  setActiveCity: PropTypes.func.isRequired,
-  setActiveOffers: PropTypes.func.isRequired,
-  setActiveOfferId: PropTypes.func.isRequired
-};
 
 export default CitiesList;

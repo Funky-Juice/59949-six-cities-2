@@ -1,7 +1,13 @@
 import FavoritesList from '../favorites-list/favorites-list';
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {Offer} from '../../types/interfaces';
 
-class FavoritesScreen extends React.PureComponent {
+interface Props {
+  favoriteOffers: Offer[]
+  getUser: () => void
+  getFavoriteOffers: () => void
+}
+
+class FavoritesScreen extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
   }
@@ -53,11 +59,5 @@ class FavoritesScreen extends React.PureComponent {
     return this._renderFavoritesList();
   }
 }
-
-FavoritesScreen.propTypes = {
-  getUser: PropTypes.func.isRequired,
-  favoriteOffers: PropTypes.arrayOf(offerPropTypes),
-  getFavoriteOffers: PropTypes.func.isRequired
-};
 
 export default FavoritesScreen;

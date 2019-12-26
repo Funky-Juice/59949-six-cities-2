@@ -1,7 +1,14 @@
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {Offer} from '../../types/interfaces';
 import OfferCard from '../offer-card/offer-card';
 
-class OffersList extends React.PureComponent {
+interface Props {
+  activeOffers: Offer[]
+  setActiveOfferId: (id: number) => void
+}
+
+class OffersList extends React.PureComponent<Props> {
+  private readonly setActiveOfferId: (id: number) => void;
+
   constructor(props) {
     super(props);
 
@@ -31,10 +38,5 @@ class OffersList extends React.PureComponent {
     return this._renderOffers(this.props.activeOffers);
   }
 }
-
-OffersList.propTypes = {
-  setActiveOfferId: PropTypes.func.isRequired,
-  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired
-};
 
 export default OffersList;

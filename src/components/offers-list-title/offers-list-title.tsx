@@ -1,7 +1,12 @@
-import {activeCityPropTypes, offerPropTypes} from '../../prop-types/prop-types';
+import {City, Offer} from '../../types/interfaces';
 import {getPlural} from '../../utils/utils';
 
-const OffersListTitle = (props) => {
+interface Props {
+  activeCity: City
+  activeOffers: Offer[]
+}
+
+const OffersListTitle = (props: Props) => {
   const {activeCity, activeOffers} = props;
 
   return <>
@@ -12,11 +17,6 @@ const OffersListTitle = (props) => {
       </b>
     </>}
   </>;
-};
-
-OffersListTitle.propTypes = {
-  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
-  activeCity: activeCityPropTypes
 };
 
 export default OffersListTitle;

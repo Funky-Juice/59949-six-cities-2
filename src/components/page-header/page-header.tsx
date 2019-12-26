@@ -1,7 +1,11 @@
 import {Link} from 'react-router-dom';
-import {userPropTypes} from '../../prop-types/prop-types';
+import {User} from '../../types/interfaces';
 
-const PageHeader = (props) => {
+interface Props {
+  user: User
+}
+
+const PageHeader = (props: Props) => {
   return <header className="header">
     <div className="container">
       <div className="header__wrapper">
@@ -30,10 +34,6 @@ const PageHeader = (props) => {
       </div>
     </div>
   </header>;
-};
-
-PageHeader.propTypes = {
-  user: userPropTypes
 };
 
 export default PageHeader;

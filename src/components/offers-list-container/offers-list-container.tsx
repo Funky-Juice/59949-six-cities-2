@@ -1,13 +1,18 @@
-import {activeCityPropTypes, offerPropTypes} from '../../prop-types/prop-types';
+import {City, Offer} from '../../types/interfaces';
 import withVisibleState from '../../hocs/with-visible-state/with-visible-state';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import OffersListTitle from '../offers-list-title/offers-list-title';
 import OffersListSort from '../offers-list-sort';
 import OffersList from '../offers-list';
 
+interface Props {
+  activeCity: City
+  activeOffers: Offer[]
+}
+
 const OffersListSortWrapped = withVisibleState(withActiveItem(OffersListSort));
 
-const OffersListContainer = (props) => {
+const OffersListContainer = (props: Props) => {
   const {activeCity, activeOffers} = props;
 
   if (activeOffers.length) {
@@ -34,11 +39,6 @@ const OffersListContainer = (props) => {
       </section>
     </>;
   }
-};
-
-OffersListContainer.propTypes = {
-  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
-  activeCity: activeCityPropTypes
 };
 
 export default OffersListContainer;

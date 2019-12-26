@@ -1,6 +1,16 @@
-import {Fragment} from 'react';
+import {FormEvent, ChangeEvent, Fragment} from 'react';
 
-const RATING_INPUTS = [
+interface Props {
+  message: string
+  isLocked: boolean
+  rating: number
+  reviewText: string
+  onTextChange: (event: ChangeEvent<HTMLTextAreaElement>) => void
+  onFormSubmit: (event: FormEvent<HTMLFormElement>) => void
+  onRatingChange: (event: ChangeEvent<HTMLInputElement>) => void
+}
+
+const RATING_INPUTS: {id: number, value: string}[] = [
   {id: 5, value: `perfect`},
   {id: 4, value: `good`},
   {id: 3, value: `not bad`},
@@ -8,7 +18,7 @@ const RATING_INPUTS = [
   {id: 1, value: `terribly`}
 ];
 
-const ReviewsForm = (props) => {
+const ReviewsForm = (props: Props) => {
   const {rating, message, isLocked, reviewText, onRatingChange, onTextChange, onFormSubmit} = props;
 
   return <>
@@ -21,7 +31,7 @@ const ReviewsForm = (props) => {
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
 
       <div className="reviews__rating-form form__rating">
-        {RATING_INPUTS.map((it) =>
+        {RATING_INPUTS.map((it: {id: number; value: string}) =>
           <Fragment key={it.id}>
             <input
               className="form__rating-input visually-hidden"
@@ -76,16 +86,6 @@ const ReviewsForm = (props) => {
       </div>
     </form>
   </>;
-};
-
-ReviewsForm.propTypes = {
-  message: PropTypes.string,
-  isLocked: PropTypes.bool.isRequired,
-  rating: PropTypes.number.isRequired,
-  reviewText: PropTypes.string.isRequired,
-  onTextChange: PropTypes.func.isRequired,
-  onFormSubmit: PropTypes.func.isRequired,
-  onRatingChange: PropTypes.func.isRequired
 };
 
 export default ReviewsForm;

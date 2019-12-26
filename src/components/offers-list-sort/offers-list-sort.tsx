@@ -1,6 +1,21 @@
-import {activeCityPropTypes, offerPropTypes} from '../../prop-types/prop-types';
+import {City, Offer} from '../../types/interfaces';
 
-class OffersListSort extends React.PureComponent {
+interface Props {
+  isVisible: boolean
+  activeItem: number
+  activeCity: City
+  activeOffers: Offer[]
+  onVisibleReset: () => void
+  onItemClick: (index: number) => void
+  onVisibleChange: (bool: boolean) => void
+  setActiveOffers: (offers: Offer[]) => void
+}
+
+class OffersListSort extends React.PureComponent<Props> {
+  private activeOffers: Offer[];
+  private readonly sortTypes: string[];
+  private readonly setActiveOffers: (offers: Offer[]) => void;
+
   constructor(props) {
     super(props);
 
@@ -142,16 +157,5 @@ class OffersListSort extends React.PureComponent {
     return this._renderSortForm();
   }
 }
-
-OffersListSort.propTypes = {
-  activeCity: activeCityPropTypes,
-  isVisible: PropTypes.bool.isRequired,
-  activeItem: PropTypes.number.isRequired,
-  onItemClick: PropTypes.func.isRequired,
-  onVisibleReset: PropTypes.func.isRequired,
-  setActiveOffers: PropTypes.func.isRequired,
-  onVisibleChange: PropTypes.func.isRequired,
-  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
-};
 
 export default OffersListSort;

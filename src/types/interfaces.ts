@@ -14,6 +14,8 @@ export interface Offer {
     images: string[]
     goods: string[]
     rating: number
+    bedrooms: number
+    max_adults: number
     is_premium: boolean
     is_favorite: boolean
     description: string
@@ -39,6 +41,7 @@ export interface Location {
 export interface Host {
     name: string
     status: string
+    is_pro: boolean
     avatar_url: string
 }
 
@@ -48,11 +51,6 @@ export interface User {
     name: string
     avatar_url: string
     is_pro: boolean
-}
-
-export interface ActiveCity {
-    name: string
-    location: Location
 }
 
 export interface Review {

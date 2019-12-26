@@ -1,6 +1,15 @@
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {Offer} from '../../types/interfaces';
 
-class BookmarkBtn extends React.PureComponent {
+interface Props {
+  offer: Offer
+  btnClass: string
+  isVisible: boolean
+  deleteOffer: (id: number) => void
+  setBookmark: (data: object) => Promise<any>
+  onVisibleChange: (bool: boolean) => void
+}
+
+class BookmarkBtn extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
 
@@ -15,7 +24,7 @@ class BookmarkBtn extends React.PureComponent {
     this._setVisibleState();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Readonly<any>) {
     if (prevProps.offer.is_favorite !== this.props.offer.is_favorite) {
       this._setVisibleState();
     }
@@ -26,7 +35,7 @@ class BookmarkBtn extends React.PureComponent {
     onVisibleChange(offer.is_favorite);
   }
 
-  _setBookmarkHandler(id) {
+  _setBookmarkHandler(id: number) {
     const {setBookmark, onVisibleChange, deleteOffer} = this.props;
 
     setBookmark({
@@ -71,14 +80,5 @@ class BookmarkBtn extends React.PureComponent {
     return this._renderBtn();
   }
 }
-
-BookmarkBtn.propTypes = {
-  offer: offerPropTypes,
-  deleteOffer: PropTypes.func,
-  btnClass: PropTypes.string.isRequired,
-  isVisible: PropTypes.bool.isRequired,
-  setBookmark: PropTypes.func.isRequired,
-  onVisibleChange: PropTypes.func.isRequired
-};
 
 export default BookmarkBtn;

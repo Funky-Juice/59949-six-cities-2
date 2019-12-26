@@ -1,6 +1,6 @@
 import PageHeader from '../page-header';
 import PageFooter from '../page-footer/page-footer';
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {Offer} from '../../types/interfaces';
 
 const getPageType = () => {
   let path = location.pathname;
@@ -23,7 +23,12 @@ const getPageType = () => {
   }
 };
 
-const Layout = (props) => {
+interface Props {
+  children: JSX.Element,
+  favoriteOffers: Offer[]
+}
+
+const Layout = (props: Props) => {
   const {children} = props;
 
   if (getPageType() === `favorites`) {
@@ -44,11 +49,6 @@ const Layout = (props) => {
       {children}
     </div>
   </>;
-};
-
-Layout.propTypes = {
-  children: PropTypes.object.isRequired,
-  favoriteOffers: PropTypes.arrayOf(offerPropTypes)
 };
 
 export default Layout;

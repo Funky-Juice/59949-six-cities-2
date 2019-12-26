@@ -1,7 +1,11 @@
-import {reviewPropTypes} from '../../prop-types/prop-types';
+import {Review} from '../../types/interfaces';
 import {calcRatingPercent} from '../../utils/utils';
 
-const ReviewsItem = (props) => {
+interface Props {
+  review: Review
+}
+
+const ReviewsItem = (props: Props) => {
   const {review} = props;
 
   const reviewDate = new Date(review.date);
@@ -36,10 +40,6 @@ const ReviewsItem = (props) => {
       </div>
     </li>
   </>;
-};
-
-ReviewsItem.propTypes = {
-  review: reviewPropTypes
 };
 
 export default ReviewsItem;

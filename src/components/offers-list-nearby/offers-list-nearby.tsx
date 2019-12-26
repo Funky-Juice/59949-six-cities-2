@@ -1,7 +1,12 @@
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {Offer} from '../../types/interfaces';
 import OfferCard from '../offer-card/offer-card';
 
-const OffersListNearby = (props) => {
+interface Props {
+  activeOffer: Offer
+  activeOffers: Offer[]
+}
+
+const OffersListNearby = (props: Props) => {
   const {activeOffer, activeOffers} = props;
 
   if (!activeOffers) {
@@ -13,7 +18,7 @@ const OffersListNearby = (props) => {
       <h2 className="near-places__title">Other places in the neighbourhood</h2>
 
       <div className="near-places__list places__list">
-        {activeOffers.map((offer) => {
+        {activeOffers.map((offer: Offer) => {
           if (offer.id === activeOffer.id) {
             return null;
           }
@@ -26,11 +31,6 @@ const OffersListNearby = (props) => {
       </div>
     </section>
   </>;
-};
-
-OffersListNearby.propTypes = {
-  activeOffer: offerPropTypes,
-  activeOffers: PropTypes.arrayOf(offerPropTypes)
 };
 
 export default OffersListNearby;

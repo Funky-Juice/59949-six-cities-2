@@ -1,5 +1,12 @@
+import {FormEvent} from "react";
 
-const AuthorizationScreenForm = (props) => {
+interface Props {
+  message: string,
+  isLocked: boolean,
+  onFormSubmit: (event: FormEvent<HTMLFormElement>) => void
+}
+
+const AuthorizationScreenForm = (props: Props) => {
   const {message, isLocked, onFormSubmit} = props;
 
   return <>
@@ -17,7 +24,7 @@ const AuthorizationScreenForm = (props) => {
             type="email"
             name="email"
             placeholder="Email"
-            required=""
+            required={false}
           ></input>
         </div>
 
@@ -28,7 +35,7 @@ const AuthorizationScreenForm = (props) => {
             type="password"
             name="password"
             placeholder="Password"
-            required=""
+            required={false}
           ></input>
         </div>
 
@@ -48,12 +55,6 @@ const AuthorizationScreenForm = (props) => {
       </form>
     </section>
   </>;
-};
-
-AuthorizationScreenForm.propTypes = {
-  message: PropTypes.string,
-  isLocked: PropTypes.bool.isRequired,
-  onFormSubmit: PropTypes.func.isRequired
 };
 
 export default AuthorizationScreenForm;

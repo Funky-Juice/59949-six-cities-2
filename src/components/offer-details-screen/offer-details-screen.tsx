@@ -1,13 +1,28 @@
-import {Redirect} from 'react-router-dom';
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {Redirect, match} from 'react-router-dom';
+import {Offer, City} from '../../types/interfaces';
 import OfferDetails from '../offer-details/offer-details';
 import OffersListNearby from '../offers-list-nearby';
 import {shuffleOffers} from '../../utils/utils';
 
+interface Props {
+  match: match
+  offers: Offer[]
+  getUser: () => void
+  getOffers: () => void
+  clearAllOffers: () => void
+  setActiveCity: (city: City) => void
+  setActiveOffers: (offers: Offer[]) => void
+  setActiveOfferId: (id: number) => void
+}
+
 const FIRST_OFFER_ITEM = 0;
 const LAST_OFFER_ITEM = 3;
 
-class OfferDetailsScreen extends React.PureComponent {
+class OfferDetailsScreen extends React.PureComponent<Props> {
+  private readonly setActiveCity: (city: City) => void;
+  private readonly setActiveOffers: (offers: Offer[]) => void;
+  private readonly setActiveOfferId: (id: number) => void;
+
   constructor(props) {
     super(props);
 
@@ -68,16 +83,5 @@ class OfferDetailsScreen extends React.PureComponent {
     return this._renderScreen();
   }
 }
-
-OfferDetailsScreen.propTypes = {
-  match: PropTypes.object.isRequired,
-  offers: PropTypes.arrayOf(offerPropTypes),
-  getUser: PropTypes.func.isRequired,
-  getOffers: PropTypes.func.isRequired,
-  setActiveCity: PropTypes.func.isRequired,
-  clearAllOffers: PropTypes.func.isRequired,
-  setActiveOffers: PropTypes.func.isRequired,
-  setActiveOfferId: PropTypes.func.isRequired
-};
 
 export default OfferDetailsScreen;

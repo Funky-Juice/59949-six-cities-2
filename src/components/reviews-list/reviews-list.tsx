@@ -1,14 +1,21 @@
-import {offerPropTypes, reviewPropTypes} from '../../prop-types/prop-types';
+import {Offer, Review} from '../../types/interfaces';
 import {sortReviewsByDate} from '../../utils/utils';
 import withReviewForm from '../../hocs/with-review-form';
 import ReviewsForm from '../reviews-form/reviews-form';
 import ReviewsItem from '../reviews-item/reviews-item';
 
+interface Props {
+  offer: Offer
+  reviews: Review[]
+  getReviews: (id: number) => Promise<any>
+  isAuthorizationRequired: boolean
+}
+
 const ReviewsFormWrapped = withReviewForm(ReviewsForm);
 const FIRST_REVIEW_ITEM = 0;
 const LAST_REVIEW_ITEM = 10;
 
-const ReviewsList = (props) => {
+const ReviewsList = (props: Props) => {
   let {reviews, offer, getReviews, isAuthorizationRequired} = props;
 
   if (!reviews) {
@@ -37,13 +44,6 @@ const ReviewsList = (props) => {
       {!isAuthorizationRequired && <ReviewsFormWrapped offer={offer}/>}
     </section>
   </>;
-};
-
-ReviewsList.propTypes = {
-  offer: offerPropTypes,
-  reviews: PropTypes.arrayOf(reviewPropTypes),
-  getReviews: PropTypes.func.isRequired,
-  isAuthorizationRequired: PropTypes.bool.isRequired
 };
 
 export default ReviewsList;

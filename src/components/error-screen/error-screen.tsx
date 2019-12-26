@@ -1,4 +1,8 @@
-const ErrorScreen = (props) => {
+interface Props {
+  errorMessage: string
+}
+
+const ErrorScreen = (props: Props) => {
   const {errorMessage} = props;
 
   return <>
@@ -17,10 +21,6 @@ const ErrorScreen = (props) => {
       </main>
     </div>
   </>;
-};
-
-ErrorScreen.propTypes = {
-  errorMessage: PropTypes.string.isRequired
 };
 
 export default ErrorScreen;

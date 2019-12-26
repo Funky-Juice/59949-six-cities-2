@@ -1,32 +1,38 @@
 import {Link} from 'react-router-dom';
 import withVisibleState from '../../hocs/with-visible-state/with-visible-state';
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {Offer} from '../../types/interfaces';
 import {calcRatingPercent} from '../../utils/utils';
 import BookmarkBtn from '../bookmark-btn';
 
+interface Props {
+  offer: Offer
+}
+
 const BookmarkBtnWrapped = withVisibleState(BookmarkBtn);
 
-const OfferCard = (props) => {
-  const {offer, showOffer} = props;
+const FavoriteOfferCard = (props: Props) => {
+  const {offer} = props;
 
   return <>
-    <article
-      className="cities__place-card place-card"
-      onMouseEnter={() => (showOffer(offer.id))}
-    >
-      {offer.is_premium && <>
-        <div className="place-card__mark">
-          <span>Premium</span>
-        </div>
-      </>}
+    <article className="favorites__card place-card">
+      <div className="favorites__image-wrapper place-card__image-wrapper">
+        {offer.is_premium && <>
+          <div className="place-card__mark">
+            <span>Premium</span>
+          </div>
+        </>}
 
-      <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={`/offer/${offer.id}`}>
-          <img className="place-card__image" src={offer.preview_image} width="260" height="200" alt="Place image"></img>
+          <img
+            className="place-card__image"
+            src={offer.preview_image}
+            width="150" height="110"
+            alt="Place image"
+          ></img>
         </Link>
       </div>
 
-      <div className="place-card__info">
+      <div className="favorites__card-info place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{offer.price}</b>
@@ -56,9 +62,4 @@ const OfferCard = (props) => {
   </>;
 };
 
-OfferCard.propTypes = {
-  offer: offerPropTypes,
-  showOffer: PropTypes.func.isRequired
-};
-
-export default OfferCard;
+export default FavoriteOfferCard;

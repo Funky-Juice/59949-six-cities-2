@@ -1,7 +1,24 @@
-import {activeCityPropTypes, offerPropTypes} from '../../prop-types/prop-types';
+import {City, Offer} from '../../types/interfaces';
+import {RefObject} from 'react';
 import leaflet from 'leaflet';
 
-class Map extends React.PureComponent {
+interface Props {
+  mapRef: RefObject<HTMLDivElement>
+  activeOfferId: number
+  activeOffers: Offer[]
+  activeCity: City
+}
+
+class Map extends React.PureComponent<Props> {
+  private map: null | any;
+  private readonly city: number[];
+  private readonly zoom: number;
+  private readonly iconUrl: string;
+  private readonly activeIconUrl: string;
+  private readonly iconSize: number[];
+  private readonly markers: any;
+  private readonly activeMarker: any;
+
   constructor(props) {
     super(props);
 
@@ -133,12 +150,5 @@ class Map extends React.PureComponent {
     return <></>;
   }
 }
-
-Map.propTypes = {
-  mapRef: PropTypes.object.isRequired,
-  activeOfferId: PropTypes.number,
-  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
-  activeCity: activeCityPropTypes
-};
 
 export default Map;

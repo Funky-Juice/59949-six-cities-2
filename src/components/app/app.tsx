@@ -13,7 +13,12 @@ const OfferDetailsWrapped = withLayout(OfferDetails);
 const FavoritesScreenWrapped = withLayout(FavoritesScreen);
 const AuthorizationScreenWrapped = withLayout(AuthorizationScreen);
 
-const App = (props) => {
+interface Props {
+  errorMessage: string
+  isAuthorizationRequired: boolean
+}
+
+const App = (props: Props) => {
   const {errorMessage, isAuthorizationRequired} = props;
 
   if (errorMessage) {
@@ -39,11 +44,6 @@ const App = (props) => {
       />
     </Switch>
   );
-};
-
-App.propTypes = {
-  errorMessage: PropTypes.string,
-  isAuthorizationRequired: PropTypes.bool.isRequired
 };
 
 export default App;

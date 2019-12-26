@@ -1,15 +1,19 @@
 import withVisibleState from '../../hocs/with-visible-state/with-visible-state';
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {Offer} from '../../types/interfaces';
 import {calcRatingPercent, getPlural} from '../../utils/utils';
 import withMap from '../../hocs/with-map/with-map';
 import ReviewsList from '../reviews-list';
 import BookmarkBtn from '../bookmark-btn';
 import Map from '../map';
 
+interface Props {
+  offer: Offer
+}
+
 const MapWrapped = withMap(Map);
 const BookmarkBtnWrapped = withVisibleState(BookmarkBtn);
 
-const OfferDetails = (props) => {
+const OfferDetails = (props: Props) => {
   let {offer} = props;
 
   if (!offer) {
@@ -104,10 +108,6 @@ const OfferDetails = (props) => {
 
     <MapWrapped mapClass={`property`}/>
   </section>;
-};
-
-OfferDetails.propTypes = {
-  offer: offerPropTypes
 };
 
 export default OfferDetails;

@@ -1,4 +1,4 @@
-import {activeCityPropTypes, offerPropTypes} from '../../prop-types/prop-types';
+import {City, Offer} from '../../types/interfaces';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import withMap from '../../hocs/with-map/with-map';
 
@@ -6,10 +6,19 @@ import OffersListContainer from '../offers-list-container/offers-list-container'
 import CitiesList from '../cities-list';
 import Map from '../map';
 
+interface Props {
+  offers: Offer[]
+  activeCity: City
+  activeOffers: Offer[]
+  getUser: () => void
+  getOffers: () => void
+  clearAllOffers: () => void
+}
+
 const MapWrapped = withMap(Map);
 const CitiesListWrapped = withActiveItem(CitiesList);
 
-class MainScreen extends React.PureComponent {
+class MainScreen extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
   }
@@ -53,14 +62,5 @@ class MainScreen extends React.PureComponent {
     return this._renderScreen();
   }
 }
-
-MainScreen.propTypes = {
-  offers: PropTypes.arrayOf(offerPropTypes),
-  getUser: PropTypes.func.isRequired,
-  getOffers: PropTypes.func.isRequired,
-  activeCity: activeCityPropTypes,
-  activeOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
-  clearAllOffers: PropTypes.func.isRequired
-};
 
 export default MainScreen;

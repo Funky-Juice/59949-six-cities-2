@@ -1,9 +1,13 @@
 import {Link} from 'react-router-dom';
 import {sortOffersByCity, groupOffersByCity} from '../../utils/utils';
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {Offer} from '../../types/interfaces';
 import FavoriteOfferCard from '../favorite-offer-card/favorite-offer-card';
 
-const FavoritesList = (props) => {
+interface Props {
+  favoriteOffers: Offer[]
+}
+
+const FavoritesList = (props: Props) => {
   const {favoriteOffers} = props;
 
   sortOffersByCity(favoriteOffers);
@@ -11,7 +15,7 @@ const FavoritesList = (props) => {
 
   return <>
     <ul className="favorites__list">
-      {Object.entries(offersGroups).map((offersGroup, i) => (
+      {Object.entries(offersGroups).map((offersGroup: [string, Offer[]], i) => (
         <li className="favorites__locations-items" key={i}>
           <div className="favorites__locations locations locations--current">
             <div className="locations__item">
@@ -30,10 +34,6 @@ const FavoritesList = (props) => {
       ))}
     </ul>
   </>;
-};
-
-FavoritesList.propTypes = {
-  favoriteOffers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
 export default FavoritesList;
