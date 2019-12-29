@@ -1,6 +1,6 @@
 import {City, Offer} from '../../types/interfaces';
 import {RefObject} from 'react';
-import leaflet from 'leaflet';
+import * as Leaflet from 'leaflet';
 
 interface Props {
   mapRef: RefObject<HTMLDivElement>
@@ -11,11 +11,11 @@ interface Props {
 
 class Map extends React.PureComponent<Props> {
   private map: null | any;
-  private readonly city: number[];
+  private readonly city: Leaflet.LatLngTuple;
   private readonly zoom: number;
   private readonly iconUrl: string;
   private readonly activeIconUrl: string;
-  private readonly iconSize: number[];
+  private readonly iconSize: Leaflet.PointTuple;
   private readonly markers: any;
   private readonly activeMarker: any;
 
@@ -23,25 +23,24 @@ class Map extends React.PureComponent<Props> {
     super(props);
 
     this.map = null;
-
     this.city = [52.38333, 4.9];
     this.zoom = 12;
+    this.iconSize = [30, 30];
     this.iconUrl = `/img/pin.svg`;
     this.activeIconUrl = `/img/pin-active.svg`;
-    this.iconSize = [30, 30];
-    this.markers = leaflet.layerGroup();
-    this.activeMarker = leaflet.layerGroup();
+    this.markers = Leaflet.layerGroup();
+    this.activeMarker = Leaflet.layerGroup();
   }
 
   get icon() {
-    return leaflet.icon({
+    return Leaflet.icon({
       iconUrl: this.iconUrl,
       iconSize: this.iconSize
     });
   }
 
   get activeIcon() {
-    return leaflet.icon({
+    return Leaflet.icon({
       iconUrl: this.activeIconUrl,
       iconSize: this.iconSize
     });
@@ -87,11 +86,11 @@ class Map extends React.PureComponent<Props> {
   }
 
   _mapInit(container) {
-    this.map = leaflet.map(container, {
+    this.map = Leaflet.map(container, {
       center: this.city,
       zoom: this.zoom,
       zoomControl: false,
-      marker: true
+      markerZoomAnimation: true
     });
 
     this._renderLayer();
@@ -111,16 +110,16 @@ class Map extends React.PureComponent<Props> {
 
     if (activeOffer) {
       const {latitude: x, longitude: y} = activeOffer.location;
-      leaflet
-          .marker([x, y], {icon: this.activeIcon})
-          .addTo(this.activeMarker);
+      Leaflet
+        .marker([x, y], {icon: this.activeIcon})
+        .addTo(this.activeMarker);
 
       this.map.addLayer(this.activeMarker);
     }
   }
 
   _renderLayer() {
-    leaflet
+    Leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
         attribution: `\
       &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
@@ -136,8 +135,8 @@ class Map extends React.PureComponent<Props> {
 
     offersList.map((offer) => {
       const {latitude: x, longitude: y} = offer.location;
-      const marker = leaflet.marker(
-          [x, y], {icon: this.icon}
+      const marker = Leaflet.marker(
+        [x, y], {icon: this.icon}
       );
 
       this.markers.addLayer(marker);
