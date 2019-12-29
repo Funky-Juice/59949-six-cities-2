@@ -1,5 +1,13 @@
+import {RefObject} from 'react';
+
+interface Props {
+  mapClass: string
+}
+
 const withMap = (Component) => {
-  class WithMap extends React.PureComponent {
+  return class WithMap extends React.PureComponent<Props> {
+    private readonly _mapRef: RefObject<HTMLDivElement>;
+
     constructor(props) {
       super(props);
 
@@ -18,12 +26,6 @@ const withMap = (Component) => {
       </>;
     }
   }
-
-  WithMap.propTypes = {
-    mapClass: PropTypes.string.isRequired
-  };
-
-  return WithMap;
 };
 
 export default withMap;

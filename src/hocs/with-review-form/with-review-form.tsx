@@ -1,7 +1,20 @@
-import {offerPropTypes} from '../../prop-types/prop-types';
+import {ChangeEvent, FormEvent} from 'react';
+import {Offer} from '../../types/interfaces';
+
+interface Props {
+  offer: Offer
+  sendReview: (data: object) => Promise<any>
+}
+
+interface State {
+  isLocked: boolean
+  reviewText: string
+  rating: number
+  message: null | string
+}
 
 const withReviewForm = (Component) => {
-  class WithReviewForm extends React.PureComponent {
+  return class WithReviewForm extends React.PureComponent<Props, State> {
     constructor(props) {
       super(props);
 
@@ -17,21 +30,21 @@ const withReviewForm = (Component) => {
       this._handleRatingChange = this._handleRatingChange.bind(this);
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<any>) {
       if (prevState.reviewText !== this.state.reviewText || prevState.rating !== this.state.rating) {
         this._validateFields(this.state);
       }
     }
 
-    _handleTextChange(evt) {
+    _handleTextChange(evt: ChangeEvent<HTMLTextAreaElement>) {
       this.setState({reviewText: evt.target.value});
     }
 
-    _handleRatingChange(evt) {
+    _handleRatingChange(evt: ChangeEvent<HTMLInputElement>) {
       this.setState({rating: Number(evt.target.value)});
     }
 
-    _validateFields(state) {
+    _validateFields(state: State) {
       const {rating, reviewText} = state;
       const MIN_CHARACTERS = 50;
       const MAX_CHARACTERS = 300;
@@ -49,9 +62,9 @@ const withReviewForm = (Component) => {
       }));
     }
 
-    _handleFormSubmit(evt) {
+    _handleFormSubmit(evt: FormEvent<HTMLFormElement>) {
       const {isLocked, rating, reviewText} = this.state;
-      const {offer} = this.props;
+      const {offer, sendReview} = this.props;
 
       evt.preventDefault();
       if (isLocked) {
@@ -63,7 +76,7 @@ const withReviewForm = (Component) => {
         message: null
       }));
 
-      this.props.sendReview({
+      sendReview({
         rating,
         reviewText,
         id: offer.id
@@ -80,25 +93,20 @@ const withReviewForm = (Component) => {
     }
 
     render() {
+      const {rating, message, isLocked, reviewText} = this.state;
+
       return <Component
         {...this.props}
-        rating={this.state.rating}
-        message={this.state.message}
-        isLocked={this.state.isLocked}
-        reviewText={this.state.reviewText}
+        rating={rating}
+        message={message}
+        isLocked={isLocked}
+        reviewText={reviewText}
         onTextChange={this._handleTextChange}
         onRatingChange={this._handleRatingChange}
         onFormSubmit={this._handleFormSubmit}
       />;
     }
   }
-
-  WithReviewForm.propTypes = {
-    offer: offerPropTypes,
-    sendReview: PropTypes.func.isRequired
-  };
-
-  return WithReviewForm;
 };
 
 export default withReviewForm;

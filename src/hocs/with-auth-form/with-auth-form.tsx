@@ -1,5 +1,18 @@
+import {FormEvent} from 'react';
+
+interface Props {
+  onAuth: (authData) => Promise<any>
+}
+
+interface State {
+  isLocked: boolean
+  message: null | string
+}
+
 const withAuthForm = (Component) => {
-  class WithAuthForm extends React.PureComponent {
+  return class WithAuthForm extends React.PureComponent<Props, State> {
+    private emailValidationPattern: RegExp;
+
     constructor(props) {
       super(props);
 
@@ -18,7 +31,7 @@ const withAuthForm = (Component) => {
         return this.setState({message: `Check your email`});
       }
 
-      const passIsValid = data.password ? true : false;
+      const passIsValid = !!data.password;
       if (!passIsValid) {
         return this.setState({message: `Enter any password`});
       }
@@ -28,7 +41,10 @@ const withAuthForm = (Component) => {
 
     _getInputsValues(form) {
       const formInputsArray = [...form.elements];
-      const authData = {};
+      const authData = {
+        email: ``,
+        password: ``
+      };
 
       formInputsArray.forEach((it) => {
         if (it.name === `email`) {
@@ -40,7 +56,7 @@ const withAuthForm = (Component) => {
       return authData;
     }
 
-    _handleFormSubmit(evt) {
+    _handleFormSubmit(evt: FormEvent<HTMLFormElement>) {
       const {onAuth} = this.props;
       evt.preventDefault();
 
@@ -64,20 +80,16 @@ const withAuthForm = (Component) => {
     }
 
     render() {
+      const {message, isLocked} = this.state;
+
       return <Component
         {...this.props}
-        message={this.state.message}
-        isLocked={this.state.isLocked}
+        message={message}
+        isLocked={isLocked}
         onFormSubmit={this._handleFormSubmit}
       />;
     }
   }
-
-  WithAuthForm.propTypes = {
-    onAuth: PropTypes.func.isRequired
-  };
-
-  return WithAuthForm;
 };
 
 export default withAuthForm;

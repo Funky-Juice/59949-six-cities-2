@@ -1,7 +1,11 @@
 import {Redirect} from 'react-router-dom';
 
+interface Props {
+  isAuthorizationRequired: boolean
+}
+
 const withAuth = (Component) => {
-  const WithAuth = (props) => {
+  return (props: Props) => {
     const {isAuthorizationRequired} = props;
 
     if (isAuthorizationRequired) {
@@ -9,12 +13,6 @@ const withAuth = (Component) => {
     }
     return <Component {...props}/>;
   };
-
-  WithAuth.propTypes = {
-    isAuthorizationRequired: PropTypes.bool.isRequired
-  };
-
-  return WithAuth;
 };
 
 export default withAuth;

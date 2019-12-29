@@ -1,6 +1,18 @@
+import {Offer, City} from '../../types/interfaces'
+
+interface Props {
+  offer?: Offer
+  btnClass?: string
+  activeCity?: City
+  activeOffers?: Offer[]
+}
+
+interface State {
+  isVisible: boolean
+}
 
 const withVisibleState = (Component) => {
-  class WithVisibleState extends React.PureComponent {
+  return class WithVisibleState extends React.PureComponent<Props, State> {
     constructor(props) {
       super(props);
 
@@ -12,7 +24,7 @@ const withVisibleState = (Component) => {
       this._visibleChangeHandler = this._visibleChangeHandler.bind(this);
     }
 
-    _visibleChangeHandler(bool) {
+    _visibleChangeHandler(bool: boolean) {
       this.setState({isVisible: bool});
     }
 
@@ -21,16 +33,16 @@ const withVisibleState = (Component) => {
     }
 
     render() {
+      const {isVisible} = this.state;
+
       return <Component
         {...this.props}
         onVisibleReset={this._visibleResetHandler}
         onVisibleChange={this._visibleChangeHandler}
-        isVisible={this.state.isVisible}
+        isVisible={isVisible}
       />;
     }
   }
-
-  return WithVisibleState;
 };
 
 export default withVisibleState;

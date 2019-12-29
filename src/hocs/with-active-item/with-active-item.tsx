@@ -1,6 +1,16 @@
+import {Offer, City} from '../../types/interfaces';
+
+interface Props {
+  offers: Offer[]
+  activeCity?: City
+}
+
+interface State {
+  activeItem: number
+}
 
 const withActiveItem = (Component) => {
-  class WithActiveItem extends React.PureComponent {
+  return class WithActiveItem extends React.PureComponent<Props, State> {
     constructor(props) {
       super(props);
 
@@ -11,13 +21,13 @@ const withActiveItem = (Component) => {
       this._itemClickHandler = this._itemClickHandler.bind(this);
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps: Readonly<any>) {
       if (prevProps.activeCity !== this.props.activeCity) {
         this._resetActiveItem();
       }
     }
 
-    _itemClickHandler(index) {
+    _itemClickHandler(index: number) {
       this.setState({activeItem: index});
     }
 
@@ -33,19 +43,6 @@ const withActiveItem = (Component) => {
       />;
     }
   }
-
-  WithActiveItem.propTypes = {
-    activeCity: PropTypes.shape({
-      name: PropTypes.string,
-      location: PropTypes.shape({
-        latitude: PropTypes.number,
-        longitude: PropTypes.number,
-        zoom: PropTypes.number
-      })
-    })
-  };
-
-  return WithActiveItem;
 };
 
 export default withActiveItem;
