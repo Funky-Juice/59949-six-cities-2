@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import ActionCreator from './store/actions';
