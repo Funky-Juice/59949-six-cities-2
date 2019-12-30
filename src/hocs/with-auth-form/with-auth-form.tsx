@@ -1,7 +1,12 @@
 import {FormEvent} from 'react';
 
+interface AuthData {
+  email: string
+  password: string
+}
+
 interface Props {
-  onAuth: (authData) => Promise<any>
+  onAuth: (authData: AuthData) => Promise<any>
 }
 
 interface State {

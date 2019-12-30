@@ -1,6 +1,5 @@
 import PageHeader from '../page-header';
 import PageFooter from '../page-footer/page-footer';
-import {Offer} from '../../types/interfaces';
 
 const getPageType = () => {
   let path = location.pathname;
@@ -24,8 +23,7 @@ const getPageType = () => {
 };
 
 interface Props {
-  children: JSX.Element,
-  favoriteOffers: Offer[]
+  children: JSX.Element
 }
 
 const Layout = (props: Props) => {
